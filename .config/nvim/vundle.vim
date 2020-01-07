@@ -13,7 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'https://github.com/ctrlpvim/ctrlp.vim'
 Plugin 'https://github.com/scrooloose/nerdtree'
 "Plugin 'https://github.com/vim-syntastic/syntastic'
-Plugin 'https://github.com/jelera/vim-javascript-syntax'
+"Plugin 'https://github.com/jelera/vim-javascript-syntax'
 Plugin 'https://github.com/sheerun/vim-polyglot'
 
 " All of your Plugins must be added before the following line

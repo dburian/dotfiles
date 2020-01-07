@@ -153,7 +153,7 @@ for_window [class="Spotify"] move to workspace $ws10
 exec --no-startup-id redshift -l 28.137:-15.434 -t5700:3600  
 exec --no-startup-id compton --config ~/.config/compton/config
 exec --no-startup-id zsh ~/.scripts/urxvt-theme mix_a_lot
-exec --no-startup-id xset r rate 150 25
+exec --no-startup-id xset r rate 180 25
 
 
 # reload the configuration file
@@ -253,7 +253,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Caps lock indication
-bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+#bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 
 # Keyboard layout switches
 exec --no-startup-id setxkbmap -layout "us,cz(qwerty)" -option 'grp:win_space_toggle'

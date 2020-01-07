@@ -1,7 +1,6 @@
 # Pure prompt
 
-fpath+=('/home/dburian/.nvm/versions/node/v13.0.1/lib/node_modules/pure-prompt/functions')
-
+fpath+=('/home/dburian/.nvm/versions/node/v12.14.1/lib/node_modules/pure-prompt/functions')
 
 # Set up the prompt
 
@@ -47,8 +46,3 @@ source ~/.alias
 PATH=$PATH:~/.scripts:~/.local/bin
 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-export PATH="$HOME/.rbenv/bin:$PATH"
-
-# For starting up rbenv (rubu version manager)
-eval "$(rbenv init -)"

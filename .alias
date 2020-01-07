@@ -12,6 +12,9 @@ alias zathura='zathura --fork'
 alias dmenu='dmenu -i -l 37 -fn "System San Francisco Display-13:bold" -nb "#07090D" -nf "#fff" -sb "#fff" -sf "#07090D"'
 
 alias cdbak='cd ~/Documents/bak;f'
+alias cddotfiles='cd ~/Documents/dotfiles;f'
+
 alias vimrc='vim ~/.config/nvim/init.vim'
 alias vundlerc='vim ~/.config/nvim/vundle.vim'
 alias i3rc='vim ~/.config/i3/config'
+

@@ -1,13 +1,15 @@
-URxvt.font:  xft:SourceCodePro-Regular:size=11,\
-             xft:Font Awesome 5 Free Regular:size=11,\
-             xft:Font Awesome 5 Free Solid:size=11
+URxvt.font:  xft:SourceCodePro-Regular:size=11
 URxvt.boldFont: xft:SourceCodePro-Medium:size=11:medium
 URxvt.depth: 32
 URxvt.scrollBar: false
+URxvt.iso14755: False
+URxvt.internalBorder: 13
 
-URxvt.perl-ext-common: keyboard-select,selection-to-clipboard
+URxvt.perl-ext-common: keyboard-select,selection-to-clipboard,font-size
 
 URxvt.clipboard.autocopy: true
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.keyboard-select.clipboard: true
+
+URxvt.keysym.Meta-Escape: perl:keyboard-select:activate
+URxvt.keysym.Meta-s: perl:keyboard-select:search
+
