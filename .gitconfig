@@ -1,0 +1,5 @@
+[user]
+	email = david.burian@me.com
+	name = David Burian
+[core]
+	editor = nvim

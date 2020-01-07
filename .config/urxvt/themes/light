@@ -1,0 +1,38 @@
+! My light theme
+
+! special
+*.foreground:   #07090d
+*.background:   [95]#ffffff
+*.cursorColor:  #07090d
+ 
+! black
+*.color0:       #1d1f21
+*.color8:       #bbbebb
+ 
+! red
+*.color1:       #6a3535
+*.color9:       #6a3535
+ 
+! green
+*.color2:       #0c897b
+*.color10:      #1a6a64
+ 
+! yellow
+*.color3:       #f0c674
+*.color11:      #f0c674
+ 
+! blue
+*.color4:       #1a6a64
+*.color12:      #005b62
+ 
+! magenta
+*.color5:       #539e7e
+*.color13:      #539e7e
+ 
+! cyan
+*.color6:       #3f4f39
+*.color14:      #3f4f39
+ 
+! white
+*.color7:       #c5c8c6
+*.color15:      #740b0b

@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/dburian/Documents'
+let g:netrw_dirhist_2='/home/dburian/.config/Xthemes'
+let g:netrw_dirhist_3='/home/dburian/.config'
+let g:netrw_dirhist_4='/home/dburian/.config/i3'
+let g:netrw_dirhist_5='/home/dburian/.config'
+let g:netrw_dirhist_6='/home/dburian/.config/i3'
+let g:netrw_dirhist_7='/home/dburian/Documents/daw/server/bin'
+let g:netrw_dirhist_8='/home/dburian/.config/Xthemes/themes'

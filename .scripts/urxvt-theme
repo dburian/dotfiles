@@ -1,0 +1,52 @@
+#!/bin/bash
+# My script for changing themes of urxvt
+
+RESOURCES=/home/dburian/.config/urxvt/.Xresources
+
+THEMES_DIR=/home/dburian/.config/urxvt/themes
+
+print_help() {
+    echo "This program is used to change the theme of URxvt terminal"
+    echo "It uses Xresources theme files in $THEMES_DIR"
+    echo "Syntax: urxvt-theme <options>|<name of config file>"
+    echo "Options:"
+    echo "  -l|--list     Prints possible themes"
+    echo "  -c|--current  Prints currently used theme"
+}
+
+
+[ $# -lt 1 ] && echo "Program needs at least one argument" \
+  && print_help \
+  && exit 1
+
+case $1 in
+  -l|--list)
+    ls $THEMES_DIR
+    exit 0
+  ;;
+  -c|--current)
+    head -n 1 $RESOURCES | cut -d "!" -f 2 
+    exit 0
+  ;;
+esac
+
+THEME=$THEMES_DIR/$1
+CONF=$THEMES_DIR/../URxvt-global-conf
+
+if [ -e $THEME ]; then
+  echo "Setting theme $THEME"
+  cat $CONF $THEME > $RESOURCES
+  sed -i "1 i\!Used theme: $THEME" $RESOURCES
+else
+  echo "Invalid argument $1" \
+  && print_help \
+  && exit 1
+fi
+
+echo "Assigning .Xresources"
+xrdb -merge $RESOURCES \
+xrdb $RESOURCES \
+&& echo "Done. Restart your session to see the efect" \
+&& exit 0
+
+exit 1
