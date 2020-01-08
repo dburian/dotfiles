@@ -3,6 +3,15 @@
 
 config_version: 2
 settings:
+  aliases:
+    global:
+      q: close
+      qa: quit
+      w: session-save
+      wq: quit --save
+      wqa: quit --save
+  auto_save.session:
+    global: true
   bindings.commands:
     global:
       normal:
@@ -12,6 +21,8 @@ settings:
         j: scroll-px 0 30
         k: scroll-px 0 -30
         l: scroll-px 30 0
+        yY: yank
+        yy: yank -s
   url.searchengines:
     global:
       DEFAULT: https://duckduckgo.com/?q={}

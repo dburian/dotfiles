@@ -47,7 +47,7 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-set $dmenu 'dmenu -i -l 37 -fn "System San Francisco Display-13:bold" -nb "#07090D" -nf "#fff" -sb "#fff" -sf "#07090D"'
+set $dmenu 'dmenu -i -fn "System San Francisco Display-10:bold" -nb "#07090D" -nf "#fff" -sb "#fff" -sf "#07090D"'
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu=$dmenu
 
 # Keyboard arrows
@@ -155,13 +155,13 @@ exec --no-startup-id compton --config ~/.config/compton/config
 exec --no-startup-id zsh ~/.scripts/urxvt-theme mix_a_lot
 exec --no-startup-id xset r rate 180 25
 
-
+bindsym $mod+n exec --no-startup-id ~/.local/bin/flash_window
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' '~/.scripts/i3-exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -259,4 +259,5 @@ bindsym XF86AudioPrev exec playerctl previous
 exec --no-startup-id setxkbmap -layout "us,cz(qwerty)" -option 'grp:win_space_toggle'
 
 # Desktop wallpaper
-exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper-water.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/solid.png
+exec_always --no-startup-id ~/.local/bin/flashfocus

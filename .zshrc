@@ -43,6 +43,6 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 source ~/.alias
 
 # Adding my scripts to path
-PATH=$PATH:~/.scripts:~/.local/bin
+export PATH=$PATH:~/.scripts:~/.local/bin
 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

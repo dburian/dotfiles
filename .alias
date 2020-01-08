@@ -5,11 +5,13 @@ alias lr="ls -lahR"
 alias t="tree -a -L 2"
 
 alias vim='nvim'
+alias pip='pip3'
+alias python='python3'
 
 alias f='ranger'
 alias zathura='zathura --fork'
 
-alias dmenu='dmenu -i -l 37 -fn "System San Francisco Display-13:bold" -nb "#07090D" -nf "#fff" -sb "#fff" -sf "#07090D"'
+alias dmenu='dmenu -i -fn "System San Francisco Display-10:bold" -nb "#07090D" -nf "#fff" -sb "#fff" -sf "#07090D"'
 
 alias cdbak='cd ~/Documents/bak;f'
 alias cddotfiles='cd ~/Documents/dotfiles;f'
@@ -18,3 +20,4 @@ alias vimrc='vim ~/.config/nvim/init.vim'
 alias vundlerc='vim ~/.config/nvim/vundle.vim'
 alias i3rc='vim ~/.config/i3/config'
 
+alias todo='vim ~/Documents/my_files/todo.txt'
