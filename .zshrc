@@ -45,4 +45,8 @@ source ~/.alias
 # Adding my scripts to path
 export PATH=$PATH:~/.scripts:~/.local/bin
 
+NPM_STORE="${HOME}/.npm-packages"
+export PATH="$PATH:$NPM_STORE/bin"
+export MANPATH="${MANPATH-$(manpath)}:$NPM_STORE/share/man"
+
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

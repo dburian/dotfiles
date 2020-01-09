@@ -204,6 +204,9 @@ set $black #000000
 set $red #E45649
 set $brown #986801
 
+set $background #7C8696
+set $mix_a_lot_bg #171717
+
 # window colors
 #                       border              background         text                 indicator
 client.focused          $red                $red               $deep                #00ff00
@@ -225,14 +228,14 @@ bar {
   strip_workspace_numbers yes
   position top
   colors {
-      background $deep
+      background $background
       separator $grey
-      statusline $white
+      statusline $mix_a_lot_bg
 
       #                  border             background         text
-      focused_workspace  $beige             $beige             $deep
-      inactive_workspace $deep              $deep              $white
-      urgent_workspace   $red               $red               $white
+      focused_workspace  $background        $background        $white
+      inactive_workspace $background        $background        $mix_a_lot_bg
+      urgent_workspace   $background        $background        $red
     }
 }
 

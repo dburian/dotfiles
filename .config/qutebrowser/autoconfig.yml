@@ -17,6 +17,8 @@ settings:
       normal:
         J: tab-prev
         K: tab-next
+        PP: open -t -- {clipboard}
+        Pp: open -t -- {primary}
         h: scroll-px -30 0
         j: scroll-px 0 30
         k: scroll-px 0 -30

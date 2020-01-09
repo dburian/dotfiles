@@ -55,9 +55,23 @@ command TexView !zathura --fork %:p:r.pdf
 
 "let g:syntastic_javascript_checkers = ["eslint"]
 
+""" Mappings
+
+nmap <F2> :NERDTreeToggle<CR>
+nmap <F3> :CtrlP<CR>
+imap <F2> <Esc>:NERDTreeToggle<CR>
+imap <F3> <Esc>:CtrlP<CR>
+
+nmap <C-L> <C-W>l
+nmap <C-K> <C-W>k
+nmap <C-J> <C-W>j
+nmap <C-H> <C-W>h
 """ Custom
 
 let g:ctrlp_extensions = ['tag', 'changes']
+let g:livedown_browser = "qutebrowser"
+let g:livedown_open    = 1
+let g:livedown_port    = 1000
 
 """ Autocommands
 "" Due to ivis
