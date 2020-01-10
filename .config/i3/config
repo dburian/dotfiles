@@ -47,7 +47,7 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-set $dmenu 'dmenu -i -fn "System San Francisco Display-9:bold" -nb "#171717" -nf "#fff" -sb "#fff" -sf "#171717"'
+set $dmenu 'dmenu -i -fn "System San Francisco Display-8:bold" -nb "#7c8696" -nf "#171717" -sb "#7c8696" -sf "#fff"'
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu=$dmenu
 
 # Keyboard arrows

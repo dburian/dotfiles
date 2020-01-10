@@ -1,0 +1,43 @@
+#!/bin/sh
+# Script to change brightness with dmenu.
+
+set -x
+. ~/.alias
+
+CURR=`xbacklight`
+PROMPT="Current brightness is `printf "%.2f" ${CURR}`%"
+OPTIONS="set
+increase
+decrease
+quit"
+
+CMD_TYPE=`echo "$OPTIONS" | dmenu -p "$PROMPT"`
+[ -z "$CMD_TYPE" ] || [ "$CMD_TYPE" = "quit" ] && exit 0
+
+THRES="
+5
+10
+25
+50
+75
+100"
+
+PREP=`[ "$CMD_TYPE" = "set" ] && echo "to" || echo "by"`
+CMD_THRES=`echo "$THRES" | dmenu -p "${CMD_TYPE} brightness ${PREP}:"`
+
+case "$CMD_TYPE" in
+  set)
+    echo "Setting screen brightness to ${CMD_THRES}%"
+    xbacklight -set "$CMD_THRES"
+    ;;
+
+  increase)
+    echo "Increasing screen brightness by ${CMD_THRES}%"
+    xbacklight -inc "$CMD_THRES"
+    ;;
+
+  decrease)
+    echo "Decreasing screen brightness by ${CMD_THRES}%"
+    xbacklight -dec "$CMD_THRES"
+    ;;
+esac

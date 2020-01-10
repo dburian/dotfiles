@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=My Brightness
+Comment=Adjusts screen broghtness
+Exec=/home/dburian/.scripts/brightness
+Terminal=false

@@ -11,7 +11,7 @@ alias python='python3'
 alias f='ranger'
 alias zathura='zathura --fork'
 
-alias dmenu='dmenu -i -fn "System San Francisco Display-9:bold" -nb "#171717" -nf "#fff" -sb "#fff" -sf "#171717"'
+alias dmenu='dmenu -i -fn "System San Francisco Display-8:bold" -nb "#7c8696" -nf "#171717" -sb "#7c8696" -sf "#fff"'
 
 alias cdbak='cd ~/Documents/bak;f'
 alias cddotfiles='cd ~/Documents/dotfiles;f'
