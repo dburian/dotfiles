@@ -43,18 +43,6 @@ command TexUpdate write | !pdflatex %:t
 command TexView !zathura --fork %:p:r.pdf
 
 
-""" Recommended for syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
-"let g:syntastic_javascript_checkers = ["eslint"]
-
 """ Mappings
 
 nmap <F2> :NERDTreeToggle<CR>
@@ -73,8 +61,25 @@ let g:livedown_browser = "qutebrowser"
 let g:livedown_open    = 1
 let g:livedown_port    = 1000
 
+""" ALE
+let g:ale_linters = {'*': ['remove_trailing_lines','trim_whitespace'], 'javascript': ['eslint'] }
+
+let g:ale_fixers = {'*': ['remove_trailing_lines','trim_whitespace'], 'javascript': ['prettier', 'eslint'] }
+
+let g:ale_fixers.javascript = ['eslint']
+
+let g:ale_open_list = 0
+let g:ale_completion_enabled = 1
+let g:ale_hover_to_preview = 0
+let g:ale_lint_on_text_changed = 'insert'
+
 """ Autocommands
 "" Due to ivis
 au BufReadPre *.js :set tabstop=4 shiftwidth=4
 
+""" For closing quickfix window
+augroup CloseLoclistWindowGroup
+  autocmd!
+  autocmd QuitPre * if empty(&buftype) | lclose | endif
+augroup END
 

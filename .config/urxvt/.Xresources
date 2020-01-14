@@ -1,4 +1,3 @@
-!Used theme: /home/dburian/.config/urxvt/themes/mix_a_lot
 URxvt.font:  xft:SourceCodePro-Regular:size=11
 URxvt.boldFont: xft:SourceCodePro-Medium:size=11:medium
 URxvt.depth: 32

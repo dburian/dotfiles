@@ -10,15 +10,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'https://github.com/ctrlpvim/ctrlp.vim'
-"Plugin 'https://github.com/vim-syntastic/syntastic'
-
-Plugin 'https://github.com/scrooloose/nerdtree'
 Plugin 'https://github.com/sheerun/vim-polyglot'
+Plugin 'https://github.com/ctrlpvim/ctrlp.vim'
+Plugin 'dense-analysis/ale'
+Plugin 'https://github.com/scrooloose/nerdtree'
 Plugin 'https://github.com/shime/vim-livedown'
-
-Plugin 'https://github.com/junegunn/fzf'    "'file:///home/dburian/Programs/fzf'
-"Plugin 'https://github.com/junegunn/fzf.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
