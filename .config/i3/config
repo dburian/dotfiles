@@ -15,7 +15,7 @@ set $mod Mod4
 # In case you ever need presentation....
 
 #xrandr --output VGA1 --mode 1024x768 --same-as LVDS1           #same screen
-#xrandr --output VGA1 --mode 1024x768 --right-of LVDS1          #second monitor
+#second monitor
 
 
 # Font for window titles. Will also be used by the bar unless a different font

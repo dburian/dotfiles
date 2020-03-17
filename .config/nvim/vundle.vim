@@ -1,32 +1,37 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Argument is directory for plugins
+call plug#begin('~/.vim/bundle')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'https://github.com/sheerun/vim-polyglot'
-Plugin 'https://github.com/ctrlpvim/ctrlp.vim'
-Plugin 'dense-analysis/ale'
-Plugin 'https://github.com/scrooloose/nerdtree'
-Plugin 'https://github.com/shime/vim-livedown'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
+" Intellisense engine
 "
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Syntax files
+Plug 'https://github.com/sheerun/vim-polyglot'
+
+" Fuzzy search
+Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+
+" Linters
+Plug 'dense-analysis/ale'
+
+" File browsing
+Plug 'https://github.com/scrooloose/nerdtree'
+
+" Adding surround verb to vim
+Plug 'https://github.com/tpope/vim-surround'
+
+" Adding comment verb to vim
+Plug 'https://github.com/tpope/vim-commentary'
+
+" Adding indent noun to vim
+Plug 'https://github.com/michaeljsmith/vim-indent-object'
+
+" Adding replace-with-register verb to vim
+Plug 'https://github.com/inkarkat/vim-ReplaceWithRegister'
+
+
+" Automatically executes:
+"   filetype plugin indent on
+"   syntax enable
+call plug#end()

@@ -1,4 +1,6 @@
-:so ~/.config/nvim/vundle.vim
+:so ~/.config/nvim/plug.vim
+
+set wildmode=list:longest " Setup Tab completion to work like in a shell
 
 """ Tab Completion
 set wildmode=list:longest " Setup Tab completion to work like in a shell
@@ -24,8 +26,20 @@ set expandtab    " use spaces instead of tabs
 set tabstop=2    " global tab width
 set shiftwidth=2 " spaces to use when indenting
 
+""" Line numbers
+" set relativenumber
+
+
 """ Folds
-set foldmethod=indent
+" set foldmethod=indent
+
+" For syntax folding...
+
+set foldmethod=syntax
+set foldlevelstart=0
+let javaScript_fold=1
+let vimsyn_folding='af'
+let xml_syntax_folding=1
 
 """ Numbered lines
 set number
@@ -36,6 +50,9 @@ syntax enable
 """ For formatting lines
 set textwidth=80
 
+""" Tags
+set tags+=./.git/tags
+set cpoptions+=d
 
 """ Compile latex files
 command TexCompile write | !pdflatex %:t; biber %:t:r; pdflatex %:t
@@ -44,7 +61,6 @@ command TexView !zathura --fork %:p:r.pdf
 
 
 """ Mappings
-
 nmap <F2> :NERDTreeToggle<CR>
 nmap <F3> :CtrlP<CR>
 imap <F2> <Esc>:NERDTreeToggle<CR>
@@ -54,24 +70,37 @@ nmap <C-L> <C-W>l
 nmap <C-K> <C-W>k
 nmap <C-J> <C-W>j
 nmap <C-H> <C-W>h
-""" Custom
 
+command -nargs=1 Rename execute "%s/" . expand("<cword>") . "/<args>/gc"
+
+""" Custom
 let g:ctrlp_extensions = ['tag', 'changes']
-let g:livedown_browser = "qutebrowser"
-let g:livedown_open    = 1
-let g:livedown_port    = 1000
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v(\.git)|(node_modules)',
+  \ 'file': '\vnode_modules/*',
+  \ }
 
 """ ALE
 let g:ale_linters = {'*': ['remove_trailing_lines','trim_whitespace'], 'javascript': ['eslint'] }
-
-let g:ale_fixers = {'*': ['remove_trailing_lines','trim_whitespace'], 'javascript': ['prettier', 'eslint'] }
-
-let g:ale_fixers.javascript = ['eslint']
+" let g:ale_fixers = {'*': ['remove_trailing_lines','trim_whitespace'], 'javascript': ['prettier', 'eslint'] }
+" let g:ale_fixers.javascript = ['eslint']
 
 let g:ale_open_list = 0
+let g:ale_set_highlights = 1
+let g:ale_sign_highlight_linenrs = 1
 let g:ale_completion_enabled = 1
 let g:ale_hover_to_preview = 0
-let g:ale_lint_on_text_changed = 'insert'
+
+set signcolumn=yes
+
+highlight SignColumn ctermbg=NONE
+highlight Folded cterm=italic,bold ctermfg=247 ctermbg=NONE
+highlight Todo cterm=italic,bold ctermfg=240 ctermbg=NONE
+highlight Comment ctermfg=240
+highlight Error cterm=bold ctermfg=124 ctermbg=NONE
+highlight SpellBad ctermbg=52
+highlight LineNr ctermfg=240
+highlight CursorLineNr ctermfg=240
 
 """ Autocommands
 "" Due to ivis
@@ -83,3 +112,4 @@ augroup CloseLoclistWindowGroup
   autocmd QuitPre * if empty(&buftype) | lclose | endif
 augroup END
 
+:so ~/.config/nvim/coc_settings.vim

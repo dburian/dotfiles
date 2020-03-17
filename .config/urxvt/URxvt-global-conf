@@ -1,3 +1,5 @@
+Xcursor.size: 15
+
 URxvt.font:  xft:SourceCodePro-Regular:size=11
 URxvt.boldFont: xft:SourceCodePro-Medium:size=11:medium
 URxvt.depth: 32

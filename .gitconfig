@@ -3,3 +3,5 @@
 	name = David Burian
 [core]
 	editor = nvim
+[init]
+	templatedir = ~/Documents/my_files/.git_template
