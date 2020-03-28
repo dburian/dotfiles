@@ -11,14 +11,14 @@ alias python='python3'
 alias f='ranger'
 alias zathura='zathura --fork'
 
-alias dmenu='dmenu -i -fn "System San Francisco Display-8:bold" -nb "#7c8696" -nf "#171717" -sb "#7c8696" -sf "#fff"'
+alias dmenu='dmenu -i -fn "System San Francisco Display-8:bold" -nb "#c7c7c7" -nf "#414454" -sb "#c7c7c7" -sf "#000"'
 
 alias cdbak='cd ~/Documents/bak;f'
 alias codebak='cd ~/Documents/bak;vim .'
 alias cddotfiles='cd ~/Documents/dotfiles;f'
 
 alias vimrc='vim ~/.config/nvim/init.vim'
-alias plugrc='vim ~/.config/nvim/vundle.vim'
+alias plugrc='vim ~/.config/nvim/plug.vim'
 alias cocrc='vim ~/.config/nvim/coc_settings.vim'
 alias i3rc='vim ~/.config/i3/config'
 

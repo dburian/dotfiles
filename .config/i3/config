@@ -47,7 +47,7 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-set $dmenu 'dmenu -i -fn "System San Francisco Display-8:bold" -nb "#7c8696" -nf "#171717" -sb "#7c8696" -sf "#fff"'
+set $dmenu 'dmenu -i -fn "System San Francisco Display-8:bold" -nb "#c7c7c7" -nf "#414454" -sb "#c7c7c7" -sf "#000"'
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu=$dmenu
 
 # Keyboard arrows
@@ -143,7 +143,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-assign [class="Vivaldi-stable"] $ws5
+# assign [class="Vivaldi-stable"] $ws5
 #assign [class="Spotify"] $ws10 #Currently does not work...work aroun is to move it manually later
 for_window [class="Spotify"] move to workspace $ws10
 
@@ -152,10 +152,18 @@ for_window [class="Spotify"] move to workspace $ws10
 #exec --no-startup-id vivaldi
 exec --no-startup-id redshift -l 28.137:-15.434 -t5700:3600  
 exec --no-startup-id compton --config ~/.config/compton/config
-exec --no-startup-id zsh ~/.scripts/urxvt-theme mix_a_lot
+exec --no-startup-id zsh ~/.scripts/urxvt-theme snazzy
 exec --no-startup-id xset r rate 180 25
 
+# Keyboard layout switches
+exec --no-startup-id setxkbmap -layout "us,cz(qwerty)" -option 'grp:win_space_toggle'
+
+# Desktop wallpaper
+exec --no-startup-id feh --bg-fill ~/Pictures/solid_white.png
+exec_always --no-startup-id ~/.local/bin/flashfocus
 bindsym $mod+n exec --no-startup-id ~/.local/bin/flash_window
+
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -165,27 +173,27 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+      # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym $left resize shrink width 10 px or 10 ppt
-        bindsym $down resize grow height 10 px or 10 ppt
-        bindsym $up resize shrink height 10 px or 10 ppt
-        bindsym $right resize grow width 10 px or 10 ppt
+      # Pressing left will shrink the window’s width.
+      # Pressing right will grow the window’s width.
+      # Pressing up will shrink the window’s height.
+      # Pressing down will grow the window’s height.
+      bindsym $left resize shrink width 10 px or 10 ppt
+      bindsym $down resize grow height 10 px or 10 ppt
+      bindsym $up resize shrink height 10 px or 10 ppt
+      bindsym $right resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+      # same bindings, but for the arrow keys
+      bindsym Left resize shrink width 10 px or 10 ppt
+      bindsym Down resize grow height 10 px or 10 ppt
+      bindsym Up resize shrink height 10 px or 10 ppt
+      bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+      # back to normal: Enter or Escape or $mod+r
+      bindsym Return mode "default"
+      bindsym Escape mode "default"
+      bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -194,7 +202,7 @@ bindsym $mod+r mode "resize"
 # Setting window colours
 
 set $beige #F2E4D8
-set $grey #BFB0A3
+set $grey #414454
 set $blue #5D6A73
 set $blue-dark #111C26
 set $deep #07090D
@@ -204,7 +212,7 @@ set $black #000000
 set $red #E45649
 set $brown #986801
 
-set $background #7C8696
+set $background #c7c7c7
 set $mix_a_lot_bg #171717
 
 # window colors
@@ -230,11 +238,11 @@ bar {
   colors {
       background $background
       separator $grey
-      statusline $mix_a_lot_bg
+      statusline $grey
 
       #                  border             background         text
-      focused_workspace  $background        $background        $white
-      inactive_workspace $background        $background        $mix_a_lot_bg
+      focused_workspace  $background        $background        $black
+      inactive_workspace $background        $background        $grey
       urgent_workspace   $background        $background        $red
     }
 }
@@ -258,9 +266,3 @@ bindsym XF86AudioPrev exec playerctl previous
 # Caps lock indication
 #bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 
-# Keyboard layout switches
-exec --no-startup-id setxkbmap -layout "us,cz(qwerty)" -option 'grp:win_space_toggle'
-
-# Desktop wallpaper
-exec --no-startup-id feh --bg-fill ~/Pictures/solid.png
-exec_always --no-startup-id ~/.local/bin/flashfocus

@@ -27,7 +27,7 @@ set tabstop=2    " global tab width
 set shiftwidth=2 " spaces to use when indenting
 
 """ Line numbers
-" set relativenumber
+set relativenumber
 
 
 """ Folds
@@ -61,6 +61,7 @@ command TexView !zathura --fork %:p:r.pdf
 
 
 """ Mappings
+map <space> <leader>
 nmap <F2> :NERDTreeToggle<CR>
 nmap <F3> :CtrlP<CR>
 imap <F2> <Esc>:NERDTreeToggle<CR>
@@ -80,27 +81,32 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\vnode_modules/*',
   \ }
 
+let NERDTreeShowHidden=1
+
 """ ALE
 let g:ale_linters = {'*': ['remove_trailing_lines','trim_whitespace'], 'javascript': ['eslint'] }
 " let g:ale_fixers = {'*': ['remove_trailing_lines','trim_whitespace'], 'javascript': ['prettier', 'eslint'] }
-" let g:ale_fixers.javascript = ['eslint']
 
 let g:ale_open_list = 0
 let g:ale_set_highlights = 1
 let g:ale_sign_highlight_linenrs = 1
-let g:ale_completion_enabled = 1
 let g:ale_hover_to_preview = 0
+let g:ale_virtualtext_cursor = 1
+
 
 set signcolumn=yes
 
 highlight SignColumn ctermbg=NONE
-highlight Folded cterm=italic,bold ctermfg=247 ctermbg=NONE
-highlight Todo cterm=italic,bold ctermfg=240 ctermbg=NONE
-highlight Comment ctermfg=240
-highlight Error cterm=bold ctermfg=124 ctermbg=NONE
-highlight SpellBad ctermbg=52
-highlight LineNr ctermfg=240
-highlight CursorLineNr ctermfg=240
+highlight Folded cterm=italic,bold ctermfg=250 ctermbg=NONE
+highlight Todo cterm=italic,bold ctermfg=244 ctermbg=NONE
+highlight Comment ctermfg=244
+highlight Error cterm=bold ctermfg=9 ctermbg=NONE
+highlight SpellBad ctermbg=NONE ctermfg=9 cterm=underline
+highlight link ALEVirtualTextError Error
+highlight link ALEVirtualTextWarning Error
+highlight LineNr ctermfg=244
+highlight CursorLineNr ctermfg=244
+highlight MatchParen ctermbg=250
 
 """ Autocommands
 "" Due to ivis
