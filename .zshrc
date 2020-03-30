@@ -1,6 +1,6 @@
 # Pure prompt
 
-fpath+=('/home/dburian/.nvm/versions/node/v12.14.1/lib/node_modules/pure-prompt/functions')
+fpath+=('/home/dburian/.npm-packages/lib/node_modules/pure-prompt/functions')
 
 # Set up the prompt
 
