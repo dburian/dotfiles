@@ -1,11 +1,23 @@
 Xcursor.size: 15
 
-URxvt.font:  xft:SourceCodePro-Regular:size=11
-URxvt.boldFont: xft:SourceCodePro-Medium:size=11:medium
-URxvt.depth: 32
+#define SourceCodeProR xft:SourceCodePro-Regular:pixelsize=14
+#define SourceCodeProM xft:SourceCodePro-Medium:pixelsize=14
+#define SourceCodeProNFR xft:Sauce Code Pro NF:size=13
+
+!big nono
+#define AnonymousProR xft:Anonymous Pro:size=11
+#define AnonymousProB xft:Anonymous Pro B:size=11
+#define FontAwesomeR xft:Font Awesome 5 Free-Regular-400:pixelsize=14
+
+URxvt*imLocale: en_US.UTF-8
+URxvt.font: SourceCodeProR, SourceCodeProNFR
+URxvt.boldFont: SourceCodeProR, SourceCodeProNFR
+URxvt*depth: 32
 URxvt.scrollBar: false
 URxvt.iso14755: False
 URxvt.internalBorder: 13
+Urxvt*buffered: false
+URxvt.intensityStyles: false
 
 URxvt.perl-ext-common: keyboard-select,selection-to-clipboard,font-size
 
