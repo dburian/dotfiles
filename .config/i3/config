@@ -93,12 +93,13 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+bindsym $mod+q layout default
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
+# bindsym $mod+q focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -150,10 +151,11 @@ for_window [class="Spotify"] move to workspace $ws10
 
 #exec --no-startup-id spotify
 #exec --no-startup-id vivaldi
-exec --no-startup-id redshift -l 28.137:-15.434 -t5700:3600  
+exec --no-startup-id redshift -l 28.137:-15.434 -t5700:3600
 exec --no-startup-id compton --config ~/.config/compton/config
 exec --no-startup-id zsh ~/.scripts/urxvt-theme snazzy
 exec --no-startup-id xset r rate 180 25
+exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-4
 
 # Keyboard layout switches
 exec --no-startup-id setxkbmap -layout "us,cz(qwerty)" -option 'grp:win_space_toggle'

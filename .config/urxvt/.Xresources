@@ -1,12 +1,12 @@
 !Used theme: /home/dburian/.config/urxvt/themes/snazzy
 Xcursor.size: 15
 
-URxvt.font:  xft:SourceCodePro-Regular:size=11
-URxvt.boldFont: xft:SourceCodePro-Medium:size=11:medium
+URxvt.font:  xft:SourceCodePro-Regular:pixelsize=13
+URxvt.boldFont: xft:SourceCodePro-Medium:pixelsize=13:medium
 URxvt.depth: 32
 URxvt.scrollBar: false
 URxvt.iso14755: False
-URxvt.internalBorder: 13
+URxvt.internalBorder: 10
 
 URxvt.perl-ext-common: keyboard-select,selection-to-clipboard,font-size
 

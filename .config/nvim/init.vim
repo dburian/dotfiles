@@ -61,7 +61,9 @@ command TexView !zathura --fork %:p:r.pdf
 
 
 """ Mappings
-map <space> <leader>
+" nnoremap <SPACE> <Nop>
+map <Space> <Leader>
+
 nmap <F2> :NERDTreeToggle<CR>
 nmap <F3> :CtrlP<CR>
 imap <F2> <Esc>:NERDTreeToggle<CR>
@@ -72,10 +74,19 @@ nmap <C-K> <C-W>k
 nmap <C-J> <C-W>j
 nmap <C-H> <C-W>h
 
+imap <C-L> <Esc><C-W>l
+imap <C-K> <Esc><C-W>k
+imap <C-J> <Esc><C-W>j
+imap <C-H> <Esc><C-W>h
+
+nmap <Leader>gf :ALENext<CR>
+nmap <Leader>gb :ALEPrevious<CR>
+nmap <Leader>sr :syntax sync fromstart<CR>
+
 command -nargs=1 Rename execute "%s/" . expand("<cword>") . "/<args>/gc"
 
 """ Custom
-let g:ctrlp_extensions = ['tag', 'changes']
+let g:ctrlp_extensions = ['undo', 'changes']
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v(\.git)|(node_modules)',
   \ 'file': '\vnode_modules/*',
@@ -85,14 +96,13 @@ let NERDTreeShowHidden=1
 
 """ ALE
 let g:ale_linters = {'*': ['remove_trailing_lines','trim_whitespace'], 'javascript': ['eslint'] }
-" let g:ale_fixers = {'*': ['remove_trailing_lines','trim_whitespace'], 'javascript': ['prettier', 'eslint'] }
+let g:ale_fixers = {'*': ['remove_trailing_lines','trim_whitespace'], 'javascript': ['prettier', 'eslint'] }
 
 let g:ale_open_list = 0
 let g:ale_set_highlights = 1
 let g:ale_sign_highlight_linenrs = 1
 let g:ale_hover_to_preview = 0
 let g:ale_virtualtext_cursor = 1
-
 
 set signcolumn=yes
 
@@ -104,6 +114,7 @@ highlight Error cterm=bold ctermfg=9 ctermbg=NONE
 highlight SpellBad ctermbg=NONE ctermfg=9 cterm=underline
 highlight link ALEVirtualTextError Error
 highlight link ALEVirtualTextWarning Error
+highlight link ALEWarning Error
 highlight LineNr ctermfg=244
 highlight CursorLineNr ctermfg=244
 highlight MatchParen ctermbg=250
@@ -118,4 +129,4 @@ augroup CloseLoclistWindowGroup
   autocmd QuitPre * if empty(&buftype) | lclose | endif
 augroup END
 
-:so ~/.config/nvim/coc_settings.vim
+:so ~/.config/nvim/coc_init.vim

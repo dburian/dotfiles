@@ -43,10 +43,14 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 source ~/.alias
 
 # Adding my scripts to path
-export PATH=$PATH:~/.scripts:~/.local/bin
+export PATH=$PATH:~/.scripts:~/.local/bin:/snap/bin
 
 NPM_STORE="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_STORE/bin"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_STORE/share/man"
 
+export EDITOR="/usr/local/bin/nvim"
+export PAGER="/usr/bin/less"
+
+source /home/dburian/.config/broot/launcher/bash/br
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

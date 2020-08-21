@@ -30,6 +30,12 @@ Plug 'https://github.com/michaeljsmith/vim-indent-object'
 " Adding replace-with-register verb to vim
 Plug 'https://github.com/inkarkat/vim-ReplaceWithRegister'
 
+" Better session management
+Plug 'https://github.com/tpope/vim-obsession'
+
+" Git
+Plug 'https://github.com/tpope/vim-fugitive'
+
 
 " Automatically executes:
 "   filetype plugin indent on

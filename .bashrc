@@ -127,3 +127,8 @@ source ~/.alias
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export $EDITOR="/usr/local/bin/nvim"
+export $PAGER="/usr/bin/less"
+
+source /home/dburian/.config/broot/launcher/bash/br

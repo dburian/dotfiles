@@ -23,3 +23,5 @@ pkg-config
 unzip
 qutebrowser
 python3-pip
+pm-utils
+broot

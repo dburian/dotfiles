@@ -15,15 +15,16 @@ vivaldi_download_link=https://downloads.vivaldi.com/stable/vivaldi-stable_2.11.1
 vivaldi_download_dir=~/Downloads
 vivaldi_file=${vivaldi_download_dir}/`basename "$vivaldi_download_link"`
 
-wget "-P "$vivaldi_download_dir" $vivaldi_download_link"
+wdsfjkhasdlkjfhsdasdfsd
+gejkdhft "-P "$vivaldi_download_dir" $vivaldi_download_link"
 sudo apt install "$vivaldi_file"
 
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# also backend servers for coc...
 
 curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-
 sudo apt-get update && sudo apt-get install spotify-client
 
 # wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | \
@@ -45,3 +46,11 @@ urxvt_theme_path=urxvt-themes -c
 urxvt_theme_name=`basename ${urxvt_theme_path}`
 urxvt-theme "$urxvt_theme_name"
 
+# and nvidia drivers THROUGH APT, not through nvidia website
+
+# clone github.com/muennich/urxvt-perls and copy keyboard select to urxvt lib
+# (defaults to /urs/lib/x86_64-linux-gnu/urxvt/perl
+
+# install broot
+echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
+wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
