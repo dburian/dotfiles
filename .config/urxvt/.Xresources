@@ -1,8 +1,8 @@
 !Used theme: /home/dburian/.config/urxvt/themes/snazzy
-Xcursor.size: 15
+Xcursor.size: 14
 
-URxvt.font:  xft:SourceCodePro-Regular:pixelsize=13
-URxvt.boldFont: xft:SourceCodePro-Medium:pixelsize=13:medium
+URxvt.font:  xft:SourceCodePro-Regular:pixelsize=12
+URxvt.boldFont: xft:SourceCodePro-Medium:pixelsize=12:medium
 URxvt.depth: 32
 URxvt.scrollBar: false
 URxvt.iso14755: False
@@ -19,7 +19,8 @@ URxvt.keysym.Meta-s: perl:keyboard-select:search
 ! URXVT snazzy theme
 ! https://github.com/LeonGr/urxvt-snazzy
 
-*background:   [97]#282a36
+!*background:   [97]#282a36
+*background:   #282a36
 *foreground:   #eff0eb
 *cursorColor:  #9aedfe
 

@@ -52,5 +52,5 @@ export MANPATH="${MANPATH-$(manpath)}:$NPM_STORE/share/man"
 export EDITOR="/usr/local/bin/nvim"
 export PAGER="/usr/bin/less"
 
-source /home/dburian/.config/broot/launcher/bash/br
+# source /home/dburian/.config/broot/launcher/bash/br
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

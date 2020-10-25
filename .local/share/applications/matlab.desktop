@@ -1,0 +1,6 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Matlab
+Exec=matlab -desktop
+Terminal=false
+Type=Application

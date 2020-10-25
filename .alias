@@ -18,6 +18,9 @@ alias dmenu='dmenu -i -fn "System San Francisco Display-8:bold" -nb "#c7c7c7" -n
 alias cdbak='cd ~/Documents/bak'
 alias cddotfiles='cd ~/Documents/dotfiles'
 alias cdfact='cd ~/Documents/fact'
+alias cdmff='cd ~/Documents/my_files/mff'
+alias cdmyfiles='cd ~/Documents/my_files'
+
 
 alias vimrc='vim ~/.config/nvim/init.vim'
 alias plugrc='vim ~/.config/nvim/plug.vim'

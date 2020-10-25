@@ -1,5 +1,9 @@
 :so ~/.config/nvim/plug.vim
 
+:so ~/.config/nvim/startup/mappings.vim
+"80 columns
+"Abbreviations specific to buffer type
+
 set wildmode=list:longest " Setup Tab completion to work like in a shell
 
 """ Tab Completion
@@ -25,6 +29,7 @@ set list         " show invisible characters
 set expandtab    " use spaces instead of tabs
 set tabstop=2    " global tab width
 set shiftwidth=2 " spaces to use when indenting
+set shiftround   " round to shiftwidth multiple
 
 """ Line numbers
 set relativenumber
@@ -59,29 +64,6 @@ command TexCompile write | !pdflatex %:t; biber %:t:r; pdflatex %:t
 command TexUpdate write | !pdflatex %:t
 command TexView !zathura --fork %:p:r.pdf
 
-
-""" Mappings
-" nnoremap <SPACE> <Nop>
-map <Space> <Leader>
-
-nmap <F2> :NERDTreeToggle<CR>
-nmap <F3> :CtrlP<CR>
-imap <F2> <Esc>:NERDTreeToggle<CR>
-imap <F3> <Esc>:CtrlP<CR>
-
-nmap <C-L> <C-W>l
-nmap <C-K> <C-W>k
-nmap <C-J> <C-W>j
-nmap <C-H> <C-W>h
-
-imap <C-L> <Esc><C-W>l
-imap <C-K> <Esc><C-W>k
-imap <C-J> <Esc><C-W>j
-imap <C-H> <Esc><C-W>h
-
-nmap <Leader>gf :ALENext<CR>
-nmap <Leader>gb :ALEPrevious<CR>
-nmap <Leader>sr :syntax sync fromstart<CR>
 
 command -nargs=1 Rename execute "%s/" . expand("<cword>") . "/<args>/gc"
 
@@ -121,7 +103,10 @@ highlight MatchParen ctermbg=250
 
 """ Autocommands
 "" Due to ivis
-au BufReadPre *.js :set tabstop=4 shiftwidth=4
+augroup ivis
+  autocmd!
+  autocmd BufReadPre *.js :set tabstop=4 shiftwidth=4
+augroup END
 
 """ For closing quickfix window
 augroup CloseLoclistWindowGroup
