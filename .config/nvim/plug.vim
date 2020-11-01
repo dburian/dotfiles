@@ -36,6 +36,9 @@ Plug 'https://github.com/tpope/vim-obsession'
 " Git
 Plug 'https://github.com/tpope/vim-fugitive'
 
+" Moving accross lines
+Plug 'https://github.com/easymotion/vim-easymotion'
+
 
 " Automatically executes:
 "   filetype plugin indent on

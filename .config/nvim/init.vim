@@ -60,12 +60,12 @@ set tags+=./.git/tags
 set cpoptions+=d
 
 """ Compile latex files
-command TexCompile write | !pdflatex %:t; biber %:t:r; pdflatex %:t
-command TexUpdate write | !pdflatex %:t
-command TexView !zathura --fork %:p:r.pdf
+command! TexCompile write | !pdflatex %:t; biber %:t:r; pdflatex %:t
+command! TexUpdate write | !pdflatex %:t
+command! TexView !zathura --fork %:p:r.pdf
 
 
-command -nargs=1 Rename execute "%s/" . expand("<cword>") . "/<args>/gc"
+command! -nargs=1 Rename execute "%s/" . expand("<cword>") . "/<args>/gc"
 
 """ Custom
 let g:ctrlp_extensions = ['undo', 'changes']

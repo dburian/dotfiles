@@ -1,12 +1,16 @@
 let mapleader = '\'
 
+" Using just leader as easymotion prefix
+map <leader> <Plug>(easymotion-prefix)
+
+
 "File navigation
-nnoremap <F2> :NERDTreeToggle<CR>
-nnoremap <F3> :CtrlP<CR>
-inoremap <F2> <Esc>:NERDTreeToggle<CR>
-inoremap <F3> <Esc>:CtrlP<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>c :CtrlP<CR>
+nnoremap <leader>cb :CtrlPBuffer<cr>
 
 "Pane navigation
+"TODO: if no pane, split current
 nnoremap <C-L> <C-W>l
 nnoremap <C-K> <C-W>k
 nnoremap <C-J> <C-W>j
@@ -31,7 +35,7 @@ inoremap <Down> <Nop>
 inoremap <backspace> <nop>
 inoremap <delete> <nop>
 
-"Extra functionality
+" Extra functionality
 
 "Typing
 nnoremap <leader>U viwUe
@@ -41,8 +45,8 @@ inoremap <leader>U <esc>viwUea
 
 "Accessing files
 "VIMRC
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>ec :vsplit $MYVIMRC<cr>
+nnoremap <leader>sc :source $MYVIMRC<cr>
 
 nnoremap <Leader>gf :ALENext<CR>
 nnoremap <Leader>gb :ALEPrevious<CR>

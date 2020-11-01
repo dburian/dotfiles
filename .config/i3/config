@@ -158,7 +158,7 @@ exec --no-startup-id xset r rate 180 25
 exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-4
 
 # Keyboard layout switches
-exec --no-startup-id setxkbmap -layout "us,cz(qwerty)" -option 'grp:win_space_toggle'
+exec --no-startup-id setxkbmap -layout "us,cz(qwerty)" -option 'grp:win_space_toggle' -option 'ctrl:nocaps'
 
 # Desktop wallpaper
 exec --no-startup-id feh --bg-fill ~/Pictures/solid_white.png
