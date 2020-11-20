@@ -41,6 +41,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 source ~/.alias
+source ~/.pass
 
 # Adding my scripts to path
 export PATH=$PATH:~/.scripts:~/.local/bin:/snap/bin
@@ -51,6 +52,8 @@ export MANPATH="${MANPATH-$(manpath)}:$NPM_STORE/share/man"
 
 export EDITOR="/usr/local/bin/nvim"
 export PAGER="/usr/bin/less"
+
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/x86_64-linux-gnu/pkgconfig
 
 # source /home/dburian/.config/broot/launcher/bash/br
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

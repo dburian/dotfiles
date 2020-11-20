@@ -1,5 +1,4 @@
 SVG
-#nnerHTML
 JSON
 UI
 JSX
@@ -41,4 +40,16 @@ React's
 StaticPieChart
 SimpleBarChart
 WCM
-w
+requestAnimationFrame
+jumpBackward
+AnimationDataContext
+RecordedAnimation
+timeDomain
+DataAccess
+changeSpeed
+jumpForward
+DataSource
+DataSources
+GenericDataSource
+TimeSeriesDataSource
+setTimeDomain

@@ -1,8 +1,8 @@
 :so ~/.config/nvim/plug.vim
 
-:so ~/.config/nvim/startup/mappings.vim
-"80 columns
-"Abbreviations specific to buffer type
+:so ~/.config/nvim/start/mappings.vim
+"TODO: 80 columns
+"TODO: Abbreviations specific to buffer type
 
 set wildmode=list:longest " Setup Tab completion to work like in a shell
 
@@ -32,7 +32,8 @@ set shiftwidth=2 " spaces to use when indenting
 set shiftround   " round to shiftwidth multiple
 
 """ Line numbers
-set relativenumber
+set number          " display line numbers
+set relativenumber  " number lines relative to current line
 
 
 """ Folds
@@ -46,9 +47,6 @@ let javaScript_fold=1
 let vimsyn_folding='af'
 let xml_syntax_folding=1
 
-""" Numbered lines
-set number
-
 """ Syntax on
 syntax enable
 
@@ -59,13 +57,6 @@ set textwidth=80
 set tags+=./.git/tags
 set cpoptions+=d
 
-""" Compile latex files
-command! TexCompile write | !pdflatex %:t; biber %:t:r; pdflatex %:t
-command! TexUpdate write | !pdflatex %:t
-command! TexView !zathura --fork %:p:r.pdf
-
-
-command! -nargs=1 Rename execute "%s/" . expand("<cword>") . "/<args>/gc"
 
 """ Custom
 let g:ctrlp_extensions = ['undo', 'changes']
