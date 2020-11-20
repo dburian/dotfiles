@@ -6,8 +6,12 @@ map <leader> <Plug>(easymotion-prefix)
 " Editing existing mappings
 nnoremap / /\v
 
+"File navigation
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>p :CtrlP<CR>
+nnoremap <leader>b :CtrlPBuffer<cr>
+
 "Pane navigation
-"TODO: if no pane, split current
 nnoremap <c-l> <c-w>l
 nnoremap <c-k> <c-w>k
 nnoremap <c-j> <c-w>j

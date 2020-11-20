@@ -53,3 +53,11 @@ DataSources
 GenericDataSource
 TimeSeriesDataSource
 setTimeDomain
+keyframe
+TimeContext
+TimeInterval
+s
+TimeIntervalsContext
+LineChart
+reusability
+RecordedAnimation
