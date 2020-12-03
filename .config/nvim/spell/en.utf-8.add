@@ -61,3 +61,8 @@ TimeIntervalsContext
 LineChart
 reusability
 RecordedAnimation
+OnOffChart
+AreaChart
+CoreUI
+dataSources
+ivis

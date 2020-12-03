@@ -61,3 +61,4 @@ nnoremap <Leader>sr :syntax sync fromstart<CR>
 "Additional functionality
 "TODO: if LSP does not attach...<leader>rn
 nnoremap <leader>s :%s/\v<<c-r><c-w>>//gc<left><left><left>
+

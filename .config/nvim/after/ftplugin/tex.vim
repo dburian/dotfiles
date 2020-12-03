@@ -1,19 +1,28 @@
-se foldmethod=marker
+set foldmethod=marker
+set iskeyword+=\
 
 "NORMAL mappings
 nnoremap <buffer> <localleader>c :call <SID>compile()<cr>
 
 
-"INSERT mappings
-inoremap <leader>t \texttt{
+"ABBREVIATIONS
+inoreabbrev \t \texttt
+inoreabbrev \i \item 
 
-inoremap <leader>be \begin{enumerate}<cr>
-inoremap <leader>ee \end{enumerate}<cr>
-inoremap <leader>i \item 
+inoreabbrev \s \section
+inoreabbrev \ss \subsection
+inoreabbrev \sss \subsubsection
 
-inoremap <leader>s \section{
-inoremap <leader>ss \subsection{
-inoremap <leader>sss \subsubsection{
+inoreabbrev \be \begin{enumerate}<cr>
+inoreabbrev \ee \end{enumerate}<cr>
+
+inoreabbrev \bu \begin{usrstory}<cr>
+inoreabbrev \eu \end{usrstory}<cr>
+
+inoreabbrev \bg \begin{goal}<cr>
+inoreabbrev \eg \end{goal}<cr>
+
+
 
 "FUNCTIONS
 let b:root_file = ''
