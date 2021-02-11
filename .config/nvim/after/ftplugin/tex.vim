@@ -22,6 +22,9 @@ inoreabbrev \eu \end{usrstory}<cr>
 inoreabbrev \bg \begin{goal}<cr>
 inoreabbrev \eg \end{goal}<cr>
 
+inoreabbrev \refsec Section~\ref
+inoreabbrev \reffig Figure~\ref
+
 
 
 "FUNCTIONS

@@ -66,3 +66,17 @@ AreaChart
 CoreUI
 dataSources
 ivis
+refreshInterval
+aggregationInterval
+refrefreshInterval
+getIntervalSpec
+getIntervalAbsolute
+intervalAccessMixin
+getInterval
+LiveAnimation
+preprocess
+Elasticsearch's
+Kibana's
+Grafana's
+plugin
+GeoLoop
