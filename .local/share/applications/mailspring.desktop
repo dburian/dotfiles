@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Mailspring
+Exec=/snap/bin/mailspring %U
+Terminal=false

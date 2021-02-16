@@ -10,6 +10,13 @@ mark-ovredir-focused = true;
 #inactive-opacity = 0.9;
 #inactive-dim = 0.9;
 
+# For no tearing
+backend = "glx";
+glx-no-stencil = true;
+xrender-sync-fence = true;
+vsync = true;
+
+
 # Needed for flashfocus
 detect-client-opacity = true;
 opacity-rule = [

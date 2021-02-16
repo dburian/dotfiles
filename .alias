@@ -5,8 +5,10 @@ alias lr="ls -lahR"
 alias t="tree -a -L 2"
 
 alias vim='nvim'
+alias mutt='neomutt'
 alias pip='pip3'
 alias python='python3'
+alias tmux='tmux -f ~/.config/tmux/tmux.conf'
 
 alias f='ranger'
 alias zathura='zathura --fork'
@@ -14,12 +16,15 @@ alias zathura='zathura --fork'
 alias dmenu='dmenu -i -fn "System San Francisco Display-8:bold" -nb "#c7c7c7" -nf "#414454" -sb "#c7c7c7" -sf "#000"'
 
 alias cdbak='cd ~/Documents/bak'
+alias cddotfiles='cd ~/Documents/dotfiles'
 alias cdfact='cd ~/Documents/fact'
-alias cddotfiles='cd ~/Documents/dotfiles;f'
+alias cdmff='cd ~/Documents/my_files/mff'
+alias cdmyfiles='cd ~/Documents/my_files'
 
 alias vimrc='vim ~/.config/nvim/init.vim'
 alias plugrc='vim ~/.config/nvim/plug.vim'
 alias cocrc='vim ~/.config/nvim/coc_settings.vim'
 alias i3rc='vim ~/.config/i3/config'
+alias tmuxrc='vim ~/.config/tmux/tmux.conf'
 
 alias todo='vim ~/Documents/my_files/todo.txt'

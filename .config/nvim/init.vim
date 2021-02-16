@@ -1,5 +1,9 @@
 :so ~/.config/nvim/plug.vim
 
+:so ~/.config/nvim/start/mappings.vim
+"TODO: 80 columns
+"TODO: Abbreviations specific to buffer type
+
 set wildmode=list:longest " Setup Tab completion to work like in a shell
 
 """ Tab Completion
@@ -25,9 +29,11 @@ set list         " show invisible characters
 set expandtab    " use spaces instead of tabs
 set tabstop=2    " global tab width
 set shiftwidth=2 " spaces to use when indenting
+set shiftround   " round to shiftwidth multiple
 
 """ Line numbers
-set relativenumber
+set number          " display line numbers
+set relativenumber  " number lines relative to current line
 
 
 """ Folds
@@ -41,9 +47,6 @@ let javaScript_fold=1
 let vimsyn_folding='af'
 let xml_syntax_folding=1
 
-""" Numbered lines
-set number
-
 """ Syntax on
 syntax enable
 
@@ -54,28 +57,9 @@ set textwidth=80
 set tags+=./.git/tags
 set cpoptions+=d
 
-""" Compile latex files
-command TexCompile write | !pdflatex %:t; biber %:t:r; pdflatex %:t
-command TexUpdate write | !pdflatex %:t
-command TexView !zathura --fork %:p:r.pdf
-
-
-""" Mappings
-map <space> <leader>
-nmap <F2> :NERDTreeToggle<CR>
-nmap <F3> :CtrlP<CR>
-imap <F2> <Esc>:NERDTreeToggle<CR>
-imap <F3> <Esc>:CtrlP<CR>
-
-nmap <C-L> <C-W>l
-nmap <C-K> <C-W>k
-nmap <C-J> <C-W>j
-nmap <C-H> <C-W>h
-
-command -nargs=1 Rename execute "%s/" . expand("<cword>") . "/<args>/gc"
 
 """ Custom
-let g:ctrlp_extensions = ['tag', 'changes']
+let g:ctrlp_extensions = ['undo', 'changes']
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v(\.git)|(node_modules)',
   \ 'file': '\vnode_modules/*',
@@ -85,14 +69,13 @@ let NERDTreeShowHidden=1
 
 """ ALE
 let g:ale_linters = {'*': ['remove_trailing_lines','trim_whitespace'], 'javascript': ['eslint'] }
-" let g:ale_fixers = {'*': ['remove_trailing_lines','trim_whitespace'], 'javascript': ['prettier', 'eslint'] }
+let g:ale_fixers = {'*': ['remove_trailing_lines','trim_whitespace'], 'javascript': ['prettier', 'eslint'] }
 
 let g:ale_open_list = 0
 let g:ale_set_highlights = 1
 let g:ale_sign_highlight_linenrs = 1
 let g:ale_hover_to_preview = 0
 let g:ale_virtualtext_cursor = 1
-
 
 set signcolumn=yes
 
@@ -104,13 +87,17 @@ highlight Error cterm=bold ctermfg=9 ctermbg=NONE
 highlight SpellBad ctermbg=NONE ctermfg=9 cterm=underline
 highlight link ALEVirtualTextError Error
 highlight link ALEVirtualTextWarning Error
+highlight link ALEWarning Error
 highlight LineNr ctermfg=244
 highlight CursorLineNr ctermfg=244
 highlight MatchParen ctermbg=250
 
 """ Autocommands
 "" Due to ivis
-au BufReadPre *.js :set tabstop=4 shiftwidth=4
+augroup ivis
+  autocmd!
+  autocmd BufReadPre *.js :set tabstop=4 shiftwidth=4
+augroup END
 
 """ For closing quickfix window
 augroup CloseLoclistWindowGroup
@@ -118,4 +105,4 @@ augroup CloseLoclistWindowGroup
   autocmd QuitPre * if empty(&buftype) | lclose | endif
 augroup END
 
-:so ~/.config/nvim/coc_settings.vim
+:so ~/.config/nvim/coc_init.vim
