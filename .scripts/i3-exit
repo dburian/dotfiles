@@ -1,5 +1,0 @@
-#!/bin/bash
-# Flashfocus needs to be killed before exiting i3
-
-killall flashfocus
-i3-msg exit
