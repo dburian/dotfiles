@@ -1,16 +1,5 @@
 let mapleader = '\'
 
-" Using just leader as easymotion prefix
-map <leader> <Plug>(easymotion-prefix)
-
-" Editing existing mappings
-nnoremap / /\v
-
-"File navigation
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>p :CtrlP<CR>
-nnoremap <leader>b :CtrlPBuffer<cr>
-
 "Pane navigation
 nnoremap <c-l> <c-w>l
 nnoremap <c-k> <c-w>k
@@ -42,20 +31,11 @@ inoremap <delete> <nop>
 nnoremap <leader>U viwUe
 inoremap <leader>U <esc>viwUea
 
-" Maping to get out of insert mode? 'jk'
-
 "Accessing files
-"File navigation
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>p :CtrlP<CR>
-nnoremap <leader>b :CtrlPBuffer<cr>
-
 "VIMRC
 nnoremap <leader>ec :vsplit $MYVIMRC<cr>
 nnoremap <leader>sc :source $MYVIMRC<cr>
 
-nnoremap <Leader>]a :ALENext<CR>
-nnoremap <Leader>[a :ALEPrevious<CR>
 nnoremap <Leader>sr :syntax sync fromstart<CR>
 
 "Additional functionality

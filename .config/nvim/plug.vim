@@ -1,22 +1,8 @@
 " Argument is directory for plugins
-call plug#begin('~/.vim/bundle')
-
-
-" Intellisense engine
-"
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#begin('~/.local/share/nvim/bundle')
 
 " Syntax files
 Plug 'https://github.com/sheerun/vim-polyglot'
-
-" Fuzzy search
-Plug 'https://github.com/ctrlpvim/ctrlp.vim'
-
-" Linters
-Plug 'dense-analysis/ale'
-
-" File browsing
-Plug 'https://github.com/scrooloose/nerdtree'
 
 " Adding surround verb to vim
 Plug 'https://github.com/tpope/vim-surround'
@@ -29,9 +15,6 @@ Plug 'https://github.com/michaeljsmith/vim-indent-object'
 
 " Adding replace-with-register verb to vim
 Plug 'https://github.com/inkarkat/vim-ReplaceWithRegister'
-
-" Better session management
-Plug 'https://github.com/tpope/vim-obsession'
 
 " Git
 Plug 'https://github.com/tpope/vim-fugitive'
