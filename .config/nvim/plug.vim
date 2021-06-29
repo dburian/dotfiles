@@ -22,6 +22,10 @@ Plug 'https://github.com/tpope/vim-fugitive'
 " Moving accross lines
 Plug 'https://github.com/easymotion/vim-easymotion'
 
+" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+
 
 " Automatically executes:
 "   filetype plugin indent on

@@ -23,7 +23,7 @@ autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
-_comp_options+=(globdots) #Autocomplete hidden files
+comp_options+=(globdots) #Autocomplete hidden files
 
 source /home/dburian/.config/broot/launcher/bash/br
 
