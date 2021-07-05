@@ -9,6 +9,7 @@ local awful = require("awful")
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
+local signals
 -- Theme handling library
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
@@ -37,8 +38,8 @@ end)
 -- }}}
 
 -- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
-beautiful.init("~/.config/awesome/themes/" .. "mountain/theme.lua")
+-- Themes define colours, icons, font, wallpaper, wibar...
+beautiful.init("~/.config/awesome/themes/" .. "retro/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -61,13 +62,16 @@ myawesomemenu = {
 }
 
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
-                                  }
-                        })
+mymainmenu = awful.menu({
+    items = {
+        { "awesome", myawesomemenu, beautiful.awesome_icon },
+        { "open terminal", terminal }
+    }
+})
 
 -- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+-- Set the terminal for applications that require it
+menubar.utils.terminal = terminal
 -- }}}
 
 -- {{{ Tag
@@ -82,13 +86,6 @@ tag.connect_signal("request::default_layouts", function()
 end)
 -- }}}
 
--- {{{ Wibar
-
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
-
--- Create a textclock widget
-mytextclock = wibox.widget.textclock()
 
 screen.connect_signal("request::wallpaper", function(s)
     -- Wallpaper
@@ -102,60 +99,21 @@ screen.connect_signal("request::wallpaper", function(s)
     end
 end)
 
+-- {{{ Wibar
 screen.connect_signal("request::desktop_decoration", function(s)
     -- Each screen has its own tag table.
     awful.tag(
-        { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+        { "home", "files", "editor", "work", "web", "6", "7", "back", "music" },
         s,
         awful.layout.layouts[1]
     )
 
-    -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist {
-        screen  = s,
-        filter  = awful.widget.taglist.filter.noempty,
-        buttons = {
-            awful.button({ }, 1, function(t) t:view_only() end),
-            awful.button({ modkey }, 1, function(t)
-                                            if client.focus then
-                                                client.focus:move_to_tag(t)
-                                            end
-                                        end),
-            awful.button({ }, 3, awful.tag.viewtoggle),
-            awful.button({ modkey }, 3, function(t)
-                                            if client.focus then
-                                                client.focus:toggle_tag(t)
-                                            end
-                                        end),
-            awful.button({ }, 4, function(t) awful.tag.viewprev(t.screen) end),
-            awful.button({ }, 5, function(t) awful.tag.viewnext(t.screen) end),
-        }
-    }
-
-    -- Create the wibox
-    s.mywibox = awful.wibar({
-        position = "top",
-        screen = s,
-        bg = "#c7ced898",
-        height = dpi(18)
-    })
-
-    -- Add widgets to the wibox
-    s.mywibox.widget = {
-        layout = wibox.layout.align.horizontal,
-        s.mytaglist,
-        wibox.container.place(
-            { -- Right widgets
-                layout = wibox.layout.fixed.horizontal,
-                mykeyboardlayout,
-                wibox.widget.systray(),
-                mytextclock,
-            },
-            "right",
-            "center"
-        )
-    }
+    local themed_wibar = beautiful.wibar
+    if type(themed_wibar) == "function" then
+        themed_wibar(s)
+    end
 end)
+
 -- }}}
 
 -- {{{ Mouse bindings
@@ -326,6 +284,40 @@ awful.keyboard.append_global_keybindings({
         end,
     }
 })
+
+local mute_cmd = 'pactl set-sink-mute 0 toggle'
+local volume_up_cmd = 'pactl set-sink-volume 0 +5%'
+local volume_down_cmd = 'pactl set-sink-volume 0 -5%'
+local mute_mic_cmd = 'pactl set-source-mute 1 toggle'
+
+local brightness_up_cmd = 'xbacklight -inc 10'
+local brightness_down_cmd = 'xbacklight -dec 10'
+
+function global_cmd(cmd, signal_name, ...)
+    return function()
+        awful.spawn.easy_async_with_shell(cmd, function() end)
+        if signal_name then
+            screen.emit_signal(signal_name, arg)
+        end
+    end
+end
+
+awful.keyboard.append_global_keybindings({
+    awful.key ({}, 'XF86AudioMute', global_cmd(mute_cmd, 'global::volume_changed', 'hi', 'hello'),
+            {description = "mute audio", group = 'global'}),
+    awful.key ({}, 'XF86AudioLowerVolume', function() awful.spawn.easy_async_with_shell(volume_down_cmd, function() end) end,
+            {description = "turn volume down", group = 'global'}),
+    awful.key ({}, 'XF86AudioRaiseVolume', function() awful.spawn.easy_async_with_shell(volume_up_cmd, function() end) end,
+            {description = "turn volume up", group = 'global'}),
+    awful.key ({}, 'XF86AudioMicMute', function() awful.spawn.easy_async_with_shell(mute_mic_cmd, function() end) end,
+            {description = "mute mic", group = 'global'}),
+
+    awful.key ({}, 'XF86MonBrightnessUp', function() awful.spawn.easy_async_with_shell(brightness_up_cmd, function() end) end,
+            {description = "raise monitor brightness", group = 'global'}),
+    awful.key ({}, 'XF86MonBrightnessDown', function() awful.spawn.easy_async_with_shell(brightness_down_cmd, function() end) end,
+            {description = "lower monitor brightness", group = 'global'}),
+})
+
 
 client.connect_signal("request::default_mousebindings", function()
     awful.mouse.append_client_mousebindings({

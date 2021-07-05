@@ -4,11 +4,14 @@ vim.cmd('source ~/.config/nvim/plug.vim')
 -- My files
 require('mappings')
 
+-- Plugin configuration
+require('telescope')
+
+print('init.lua sourced')
+
 
 -- Settings
-local o = vim.o   --global options
-local wo = vim.wo --window local options
-local bo = vim.bo --buffer local options
+local o = vim.opt   --global options
 
 --- Tab completion
 o.wildmode = 'list:lastused' --on Tab complete with the last buffer used
@@ -23,17 +26,17 @@ o.hidden = true      --can abandoned buffers are not unloaded but hidden
 
 --- Editor
 o.scrolloff = 3  --show 3 lines of context around cursor
-wo.list = true   --show invisible characters
+o.list = true   --show invisible characters
 
-bo.expandtab = true   --use spaces instead of tabs
-bo.tabstop = 2        --global tab width
-bo.shiftwidth = 2     --spaces to use when indenting
+o.expandtab = true   --use spaces instead of tabs
+o.tabstop = 2        --global tab width
+o.shiftwidth = 2     --spaces to use when indenting
 o.shiftround = true   --round to multiples of shiftwidth with '>' and '<'
 
-bo.formatoptions = 'tcqj' --autoformatting options see :help fo-table
+o.formatoptions = 'tcqj' --autoformatting options see :help fo-table
 
-wo.number = true          --display line numbers
-wo.relativenumber = true  --number lines relative to current line
+o.number = true          --display line numbers
+o.relativenumber = true  --number lines relative to current line
 
 vim.cmd('syntax enable')  -- enable syntax highlighting
 
