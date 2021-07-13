@@ -5,38 +5,37 @@ vim.cmd('source ~/.config/nvim/plug.vim')
 require('mappings')
 
 -- Plugin configuration
-require('telescope')
-
-print('init.lua sourced')
-
+require('plugin/telescope')
+require('plugin/slip')
 
 -- Settings
-local o = vim.opt   --global options
+local opt = vim.opt
 
 --- Tab completion
-o.wildmode = 'list:lastused' --on Tab complete with the last buffer used
+opt.wildmode = 'list:lastused' --on Tab complete with the last buffer used
 
 --- Search
 
-o.ignorecase = true  --case-insensitive search
-o.smartcase = true   --but case-sensitive if expression contains a capital letter
+opt.ignorecase = true  --case-insensitive search
+opt.smartcase = true   --but case-sensitive if expression contains a capital letter
 
 --- Buffers
-o.hidden = true      --can abandoned buffers are not unloaded but hidden
+opt.hidden = true      --can abandoned buffers are not unloaded but hidden
 
 --- Editor
-o.scrolloff = 3  --show 3 lines of context around cursor
-o.list = true   --show invisible characters
+opt.scrolloff = 3  --show 3 lines of context around cursor
+opt.list = true   --show invisible characters
 
-o.expandtab = true   --use spaces instead of tabs
-o.tabstop = 2        --global tab width
-o.shiftwidth = 2     --spaces to use when indenting
-o.shiftround = true   --round to multiples of shiftwidth with '>' and '<'
+opt.expandtab = true   --use spaces instead of tabs
+opt.tabstop = 2        --global tab width
+opt.shiftwidth = 2     --spaces to use when indenting
+opt.shiftround = true   --round to multiples of shiftwidth with '>' and '<'
 
-o.formatoptions = 'tcqj' --autoformatting options see :help fo-table
+opt.textwidth = 80
+opt.formatoptions = 'tcqj' --autoformatting options see :help fo-table
 
-o.number = true          --display line numbers
-o.relativenumber = true  --number lines relative to current line
+opt.number = true          --display line numbers
+opt.relativenumber = true  --number lines relative to current line
 
 vim.cmd('syntax enable')  -- enable syntax highlighting
 

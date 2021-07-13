@@ -39,7 +39,7 @@ end)
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font, wallpaper, wibar...
-beautiful.init("~/.config/awesome/themes/" .. "retro/theme.lua")
+beautiful.init("~/.config/awesome/themes/" .. "no_bar/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"

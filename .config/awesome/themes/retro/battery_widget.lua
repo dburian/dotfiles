@@ -31,6 +31,14 @@ function battery_widget()
         local icon_widget = widget:get_children_by_id('icon')[1]
         local text_widget = widget:get_children_by_id('text')[1]
 
+        if notification == nil and cap < 5 and status ~= 'Charging' then
+            notification = naughty.notify({
+                title = 'Critical battery',
+                text = 'Battery is at ' .. cap .. '% and falling.',
+                timeout = 0,
+            })
+        end
+
         if status == 'Charging' then
             icon_widget:set_image(icons.charging)
 
@@ -49,13 +57,6 @@ function battery_widget()
             icon_widget:set_image(icons.low)
         end
 
-        if notification == nil and cap < 5 then
-            notification = naughty.notify({
-                title = 'Critical battery',
-                text = 'Battery is at ' .. cap .. '% and falling.',
-                timeout = 0,
-            })
-        end
 
         text_widget:set_text(cap .. '%')
     end

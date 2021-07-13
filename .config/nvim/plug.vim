@@ -35,6 +35,9 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 
 
+" My stuff
+Plug '~/Documents/Slip.nvim'
+
 " Automatically executes:
 "   filetype plugin indent on
 "   syntax enable

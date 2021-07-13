@@ -1,6 +1,5 @@
 -- Configuration of telescope plugin
 
-require('telescope').setup{
-}
+require('telescope').setup{}
 
 require('telescope').load_extension('fzf')

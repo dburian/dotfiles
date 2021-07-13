@@ -35,24 +35,28 @@ vim.api.nvim_set_keymap('n', '<leader>U','viwUe', {noremap = true})
 vim.api.nvim_set_keymap('i', '<leader>U','<esc>viwUea', {noremap = true})
 
 -- Accessing files
+--TODO: move to telescope.lua
 vim.api.nvim_set_keymap(
   'n',
   '<leader>fd',
-  ':lua require("telescope.builtin").git_files({cwd = "~/Documents/dotfiles\", hidden = true})<cr>',
-  {noremap = true}
+  ':lua require("telescope.builtin").git_files({cwd = "~/Documents/dotfiles", hidden = true})<CR>',
+  {noremap = true, silent = true}
 )
 vim.api.nvim_set_keymap(
   'n',
   '<leader>fg',
   ':lua require("telescope.builtin").git_files({hidden = true})<cr>',
-  {noremap = true}
+  {noremap = true, silent = true}
 )
 vim.api.nvim_set_keymap(
   'n',
   '<leader>b',
   ':lua require("telescope.builtin").file_browser({hidden = true})<cr>',
-  {noremap = true}
+  {noremap = true, silent = true}
 )
-vim.api.nvim_set_keymap('n',
-  '<leader>sc',':luafile ~/.config/nvim/init.lua<cr>', {noremap = true}
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader>sc',
+  ':luafile ~/.config/nvim/init.lua<cr>',
+  {noremap = true, silent = true}
 )
