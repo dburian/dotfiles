@@ -2,27 +2,34 @@
 
 ## Functional
   [ ] nvim
-    [ ] pretty
-    [ ] LSP
-    [ ] lint?
-    [ ] project starter
+    [x] LSP
+    [ ] project starter (at least something pretty)
     [x] fuzzy file
-  [ ] rofi scripts
-  [ ] awesome config
+    [x] autocompletion
+    [x] snippets
+    [ ] treesitter
+    [ ] status line
+  [ ] rofi
+    [x] status script
+    [ ] wifi script
+    [ ] bluetooth script
+    [ ] edit files script
+    [ ] programs script
+    [ ] projects script
+  [x] awesome config
   [ ] brightness
+    [x] keymap
+    [ ] notification
   [ ] volume
+    [x] keymap
+    [ ] notification
   [ ] battery
+    [x] display
+    [ ] notification
 
 ## Pretty
   [ ] colours
-      [ ] rofi
+      [x] rofi
       [ ] broot
       [ ] awesome
-  [ ] system font
-  [ ] maybe terminal font
-  [ ] awesome themes
-  [ ] nvim
-    [ ] powerline
-
-## Administration
-  [x] start a personal wiki
+  [x] awesome themes

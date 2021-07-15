@@ -1,18 +1,12 @@
 -- Plugins
 vim.cmd('source ~/.config/nvim/plug.vim')
 
--- My files
-require('mappings')
-
--- Plugin configuration
-require('plugin/telescope')
-require('plugin/slip')
 
 -- Settings
 local opt = vim.opt
 
 --- Tab completion
-opt.wildmode = 'list:lastused' --on Tab complete with the last buffer used
+opt.wildmode = 'list:full' --on Tab complete with the last buffer used
 
 --- Search
 
@@ -43,4 +37,14 @@ vim.cmd('syntax enable')  -- enable syntax highlighting
 vim.g.base16colorspace = 256
 vim.cmd('source ~/.config/nvim/theme.vim')
 
---TODO: autocompletion
+-- Lsp server config
+require('lsp.lua')
+
+-- My files
+require('mappings')
+
+-- Plugin configuration
+require('plugin.telescope')
+require('plugin.slip')
+require('plugin.nvim-compe')
+require('plugin.luasnip')
