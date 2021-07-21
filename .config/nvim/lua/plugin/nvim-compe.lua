@@ -18,8 +18,10 @@ local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
+-- What does this do?
 local check_back_space = function()
     local col = vim.fn.col('.') - 1
+    -- If at the beginning of line or after a space
     if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
         return true
     else
@@ -35,10 +37,11 @@ _G.tab_complete = function()
     return t '<C-n>'
   elseif luasnip.expand_or_jumpable() then
     return t '<Plug>luasnip-expand-or-jump'
-  elseif check_back_space() then
-    return t '<Tab>'
+  -- elseif check_back_space() then
   else
-    return vim.fn['compe#complete']()
+    return t '<Tab>'
+  -- else
+  --   return vim.fn['compe#complete']()
   end
 end
 

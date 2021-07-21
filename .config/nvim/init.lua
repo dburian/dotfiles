@@ -1,10 +1,23 @@
 -- Plugins
 vim.cmd('source ~/.config/nvim/plug.vim')
 
+-- Lsp server config
+require('lsp.lua')
+
+-- My files
+require('mappings')
+
+-- Plugin configuration
+require('plugin.telescope')
+require('plugin.slip')
+require('plugin.nvim-compe')
+require('plugin.luasnip')
 
 -- Settings
 local opt = vim.opt
 
+-- Messages
+opt.shortmess:remove('A')
 --- Tab completion
 opt.wildmode = 'list:full' --on Tab complete with the last buffer used
 
@@ -36,15 +49,4 @@ vim.cmd('syntax enable')  -- enable syntax highlighting
 --- Colors
 vim.g.base16colorspace = 256
 vim.cmd('source ~/.config/nvim/theme.vim')
-
--- Lsp server config
-require('lsp.lua')
-
--- My files
-require('mappings')
-
--- Plugin configuration
-require('plugin.telescope')
-require('plugin.slip')
-require('plugin.nvim-compe')
-require('plugin.luasnip')
+vim.g.colors_name = nil

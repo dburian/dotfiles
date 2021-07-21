@@ -28,7 +28,7 @@ export dotfiles="/home/dburian/Documents/dotfiles"
 
 # Aliases
 alias l="ls -lah"
-alias vim="nvim"
+alias v="nvim"
 alias clipmenu="clipmenu -dmenu -p Clipmenu"
 alias rofi="rofi -show combi"
 

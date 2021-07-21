@@ -1,9 +1,39 @@
 @import "colors"
 
+window {
+    font:             "DejaVu Sans Mono 10";
+    padding:          10;
+    background-color: var(background);
+    transparency:     "screenshot";
+    fullscreen:       true;
+}
+inputbar {
+    padding:    10;
+    spacing:    0px ;
+    text-color: var(normal-foreground);
+    children:   [entry];
+}
+entry {
+    padding:           0;
+    text-color:        var(normal-foreground);
+    spacing:           0;
+    placeholder-color: rgba ( 128, 128, 128, 100 % );
+    placeholder:       "Type to filter";
+    blink: false;
+}
+listview {
+    padding:      10;
+    columns:      1;
+    fixed-columns: false;
+    scrollbar:    false;
+    border-color: var(separatorcolor);
+    spacing:      10;
+    fixed-height: 0;
+}
+
 element {
-    padding: 20;
+    padding: 5;
     border:  0;
-    border-radius: 5;
 }
 element normal.normal {
     background-color: var(normal-background);
@@ -18,20 +48,18 @@ element normal.active {
     text-color:       var(normal-foreground);
 }
 element selected {
-    border: 3px;
-    border-color: var(normal-foreground);
 }
 element selected.normal {
-    background-color: var(normal-background);
-    text-color:       var(normal-foreground);
+    background-color: var(selected-normal-background);
+    text-color:       var(selected-normal-foreground);
 }
 element selected.urgent {
-    background-color: var(urgent-background);
-    text-color:       var(urgent-foreground);
+    background-color: var(selected-urgent-background);
+    text-color:       var(selected-urgent-foreground);
 }
 element selected.active {
-    background-color: var(normal-background);
-    text-color:       var(normal-foreground);
+    background-color: var(selected-normal-background);
+    text-color:       var(selected-normal-foreground);
 }
 element alternate.normal {
     background-color: var(normal-background);
@@ -50,13 +78,6 @@ element-text {
     highlight:        inherit;
     text-color:       inherit;
 }
-window {
-    font:             "DejaVu Sans Mono 12";
-    padding:          100;
-    background-color: var(background);
-    transparency:     "screenshot";
-    fullscreen:       true;
-}
 
 mainbox {
     padding: 0;
@@ -69,32 +90,4 @@ message {
 }
 textbox {
     text-color: var(foreground);
-}
-listview {
-    padding:      20;
-    columns:      1;
-    fixed-columns: true;
-    scrollbar:    false;
-    border-color: var(separatorcolor);
-    spacing:      0;
-    fixed-height: 0;
-}
-inputbar {
-    padding:    20 20 50 20;
-    spacing:    0px ;
-    text-color: var(normal-foreground);
-    children:   [entry];
-}
-case-indicator {
-    spacing:    0;
-    text-color: var(normal-foreground);
-}
-entry {
-    font:              "DejaVu Sans Mono 12";
-    padding:           0 0 0 23;
-    text-color:        var(normal-foreground);
-    spacing:           0;
-    placeholder-color: rgba ( 128, 128, 128, 100 % );
-    placeholder:       "Type to filter";
-    blink: false;
 }

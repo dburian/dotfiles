@@ -16,7 +16,10 @@
     [ ] edit files script
     [ ] programs script
     [ ] projects script
-  [x] awesome config
+    [x] colours
+  [x] awesome
+    [x] config
+    [x] themes
   [ ] brightness
     [x] keymap
     [ ] notification
@@ -26,10 +29,6 @@
   [ ] battery
     [x] display
     [ ] notification
-
-## Pretty
-  [ ] colours
-      [x] rofi
-      [ ] broot
-      [ ] awesome
-  [x] awesome themes
+  [ ] broot
+      [x] colours
+      [ ] PR to base16
