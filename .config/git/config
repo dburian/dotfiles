@@ -7,3 +7,6 @@
 
 [color]
   ui = auto
+
+[alias]
+  root = rev-parse --show-toplevel

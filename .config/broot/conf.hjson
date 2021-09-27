@@ -9,7 +9,9 @@
     {
       invocation: edit
       shortcut: e
-      execution: "$EDITOR +{line} {file}"
+      external: "cd {directory}; git root 2>/dev/null 1>&2 && cd `git root`; $EDITOR +{line} {file}"
+      leave_broot: true
+      from_shell: true
     }
 
     # Bypassing xdg-open
@@ -18,6 +20,7 @@
       key: enter
       apply_to: "file"
       execution: "$EDITOR +{line} {file}"
+      leave_broot: false
     }
     {
       invocation: open_and_quit
@@ -53,6 +56,15 @@
       internal: "focus ~"
     }
 
+    # Tree manipulation
+    {
+      invocation: touch {path}
+      shortcut: t
+      execution: touch {path}
+      leave_broot: false
+      set_working_dir: true
+    }
+
     # Git stuff
     {
       invocation: git_status
@@ -68,18 +80,18 @@
 
   skin: {
   # Start flavours
-# Base16 DanQing scheme for broot
-# scheme author: Wenhan Zhu (Cosmos) (zhuwenhan950913@gmail.com)
+# Base16 OneDark scheme for broot
+# scheme author: Lalit Magant (http://github.com/tilal6991)
 
-default: rgb(45,48,47) none
+default: rgb(40,44,52) none
 
-tree: rgb(138,179,97) none
+tree: rgb(152,195,121) none
 
-file: rgb(224,240,239) none
-directory: rgb(224,240,239) none bold
-exe: rgb(176,164,227) none
-link: rgb(224,240,239) none italic
-perm__: rgb(157,168,163) none
+file: rgb(171,178,191) none
+directory: rgb(171,178,191) none bold
+exe: rgb(97,175,239) none
+link: rgb(171,178,191) none italic
+perm__: rgb(84,88,98) none
 perm_r: none none
 perm_w: none none
 perm_x: none none
@@ -87,31 +99,31 @@ perm_x: none none
 # sparse:
 # content_extract:
 # content_match:
-selected_line: none rgb(90,96,93)
-char_match: rgb(204,164,227) none
+selected_line: none rgb(62,68,81)
+char_match: rgb(198,120,221) none
 # file_error:
-flag_label: rgb(138,179,97) none bold
-flag_value: rgb(224,240,239) none
-input: rgb(224,240,239) none
-status_error:  rgb(249,144,111) rgb(67,72,70)
-status_job:  rgb(240,194,57) rgb(67,72,70)
-status_normal:  rgb(202,216,210) rgb(67,72,70)
-status_italic:  rgb(138,179,97) rgb(67,72,70)
-status_bold:  rgb(138,179,97) rgb(67,72,70)
-status_code:  rgb(48,223,243) rgb(67,72,70)
-status_ellipsis:  rgb(202,216,210) rgb(67,72,70)
+flag_label: rgb(152,195,121) none bold
+flag_value: rgb(171,178,191) none
+input: rgb(171,178,191) none
+status_error:  rgb(224,108,117) rgb(53,59,69)
+status_job:  rgb(229,192,123) rgb(53,59,69)
+status_normal:  rgb(86,92,100) rgb(53,59,69)
+status_italic:  rgb(152,195,121) rgb(53,59,69)
+status_bold:  rgb(152,195,121) rgb(53,59,69)
+status_code:  rgb(86,182,194) rgb(53,59,69)
+status_ellipsis:  rgb(86,92,100) rgb(53,59,69)
 # purpose_normal:
 # purpose_italic:
 # purpose_bold:
 # purpose_ellipsis:
 # scrollbar_track:
 # scrollbar_thumb:
-help_paragraph: rgb(224,240,239) none
-help_bold: rgb(138,179,97) none bold
-help_italic: rgb(138,179,97) none
-help_code: rgb(48,223,243) none
-help_headers: rgb(176,164,227) none
-help_table_border: rgb(157,168,163) none
+help_paragraph: rgb(171,178,191) none
+help_bold: rgb(152,195,121) none bold
+help_italic: rgb(152,195,121) none
+help_code: rgb(86,182,194) none
+help_headers: rgb(97,175,239) none
+help_table_border: rgb(84,88,98) none
 # preview:
 # preview_line_number:
 # preview_match:

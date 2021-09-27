@@ -1,7 +1,7 @@
 @import "colors"
 
 window {
-    font:             "DejaVu Sans Mono 10";
+    font:             "JetBrains Mono NL Medium 10";
     padding:          10;
     background-color: var(background);
     transparency:     "screenshot";

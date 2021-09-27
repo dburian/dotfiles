@@ -1,17 +1,20 @@
 -- Plugins
 vim.cmd('source ~/.config/nvim/plug.vim')
 
+-- Globals
+require('globals')
+
 -- Lsp server config
-require('lsp.lua')
+config_require('lsp.lua')
 
 -- My files
-require('mappings')
+config_require('mappings')
 
 -- Plugin configuration
-require('plugin.telescope')
-require('plugin.slip')
-require('plugin.nvim-compe')
-require('plugin.luasnip')
+config_require('plugin.telescope')
+config_require('plugin.slip')
+config_require('plugin.nvim-compe')
+config_require('plugin.luasnip')
 
 -- Settings
 local opt = vim.opt
@@ -22,7 +25,6 @@ opt.shortmess:remove('A')
 opt.wildmode = 'list:full' --on Tab complete with the last buffer used
 
 --- Search
-
 opt.ignorecase = true  --case-insensitive search
 opt.smartcase = true   --but case-sensitive if expression contains a capital letter
 
@@ -43,6 +45,9 @@ opt.formatoptions = 'tcqj' --autoformatting options see :help fo-table
 
 opt.number = true          --display line numbers
 opt.relativenumber = true  --number lines relative to current line
+
+opt.mouse = 'nv' --enable mouse for normal and visual mode
+opt.timeoutlen = 500 --timeout for key sequences
 
 vim.cmd('syntax enable')  -- enable syntax highlighting
 

@@ -25,6 +25,12 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap(
   'n',
+  '<leader>lg',
+  ':lua require("telescope.builtin").live_grep()<cr>',
+  {noremap = true, silent = true}
+)
+vim.api.nvim_set_keymap(
+  'n',
   '<leader>c',
   ':lua require"telescope.builtin".commands()<cr>',
   {noremap = true, silent = true}

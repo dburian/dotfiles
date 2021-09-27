@@ -7,20 +7,14 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
--- Widget and layout library
-local wibox = require("wibox")
-local signals
 -- Theme handling library
 local beautiful = require("beautiful")
-local dpi = beautiful.xresources.apply_dpi
 -- Notification library
 local naughty = require("naughty")
 -- Declarative object management
 local ruled = require("ruled")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
-
-require('awful.remote')
 
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -292,8 +286,8 @@ local volume_up_cmd = 'pactl set-sink-volume 0 +5%'
 local volume_down_cmd = 'pactl set-sink-volume 0 -5%'
 local mute_mic_cmd = 'pactl set-source-mute 1 toggle'
 
-local brightness_up_cmd = 'xbacklight -inc 10'
-local brightness_down_cmd = 'xbacklight -dec 10'
+local brightness_up_cmd = 'xbacklight -inc 5'
+local brightness_down_cmd = 'xbacklight -dec 5'
 
 function global_cmd(cmd, signal_name, ...)
     return function()

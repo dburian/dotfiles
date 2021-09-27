@@ -1,7 +1,6 @@
 
 local m = {}
 
-
 function m.on_attach(_, bufnr)
   local opts = {noremap = true, silent = true}
 
@@ -10,8 +9,6 @@ function m.on_attach(_, bufnr)
 
   -- Native completion filled by lsp
   bfo('omnifunc', 'v:vim.lua.lsp.omnifunc')
-
-  bfk('i', '<leader>c', '<c-x><c-o>')
 
   bfk('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
   bfk('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
