@@ -54,4 +54,3 @@ vim.cmd('syntax enable')  -- enable syntax highlighting
 --- Colors
 vim.g.base16colorspace = 256
 vim.cmd('source ~/.config/nvim/theme.vim')
-vim.g.colors_name = nil

@@ -6,23 +6,28 @@ local OPT_SEP = '\x1f'
 local OPT_PREFIX = '\0'
 local ROW_SEP = '\n'
 
-local global_options = {
-  ['no-custom'] = 'true',
-  ['markup-rows'] = 'true',
+local DEF_GLOB_OPTIONS = {
+    ['no-custom'] = 'true',
+    ['markup-rows'] = 'true',
 }
 
 local lib = {}
 
+function lib.string_split(str, sep)
+  local segments = {}
+
+  for s in string.gmatch(str, '([^' .. sep .. ']+)') do
+    table.insert(segments, s)
+  end
+
+  return segments
+end
 function lib.get_cmd_output(cmd, multiple_lines)
   local output_handle = io.popen(cmd)
 
   local output
   if multiple_lines then
-    local str = output_handle:lines('a')()
-    output = {}
-    for line in string.gmatch(str, '([^\n]+)') do
-      table.insert(output, line)
-    end
+    output = lib.string_split(output_handle:lines('a')(), '\n')
   else
     output = output_handle:lines()()
   end
@@ -35,7 +40,172 @@ function lib.execute_cmd(cmd)
   os.execute(cmd .. '> /dev/null 2>&1')
 end
 
-function lib.format_global_options(global_options)
+local funcs = {}
+
+function funcs.get_date_time()
+  return {{
+    label = 'DATE TIME',
+    text = os.date('%d.%m %H:%M'),
+  }}
+end
+function funcs.get_battery()
+  local perc_file = '/sys/class/power_supply/BAT1/capacity'
+  local state_file = '/sys/class/power_supply/BAT1/status'
+
+  local perc = io.lines(perc_file)()
+  local state = io.lines(state_file)()
+
+  return {{
+    label = 'BATT CAPA',
+    text = perc .. '%' .. ' (' .. state .. ')',
+  }}
+end
+function funcs.get_kb_layout(selection)
+  if selection then
+    lib.execute_cmd('xkblayout_state set +1')
+
+    return nil
+  end
+
+  return {{
+      label = 'KEYB LAYO',
+      text = lib.get_cmd_output('xkblayout_state print "%s"'),
+      options = {
+        info = 'get_kb_layout'
+      }
+  }}
+end
+function funcs.get_brightness()
+  return {{
+      label = 'BACK BRIG',
+      text = lib.get_cmd_output('xbacklight -get') .. '%',
+  }}
+end
+function funcs.get_volume()
+  local cmd = 'pacmd list-sinks | grep "volume" | head -n 1 | cut -d "/" -f 2'
+
+  local volume_on_default_sink = lib.get_cmd_output(cmd)
+
+  return {{
+      label = 'VOLU LEVE',
+      text = volume_on_default_sink:match('([^%s]+)'),
+  }}
+end
+
+function funcs.wifi_menu()
+  local active_connection = lib.get_cmd_output(
+    'nmcli -g NAME connection show --active'
+  ) or nil
+
+  return {{
+    label = 'RADI WIFI',
+    text = active_connection or 'off',
+    options = {
+      info = 'wifi_list_ssids',
+    }
+  }}
+end
+function funcs.wifi_list_ssids(selection)
+
+  if selection == 'off' then
+    lib.execute_cmd('nmcli radio wifi on')
+  end
+
+  local available_SSIDs = lib.get_cmd_output('nmcli -g SSID,RATE,SIGNAL,SECURITY,IN-USE device wifi list', true)
+
+  local rows = {
+    {
+      label = 'WIFI CONN',
+      text = 'REFRESH',
+      options = {
+        info = 'wifi_list_ssids'
+      }
+    }
+  }
+
+  for _, ssid in ipairs(available_SSIDs) do
+    local props = lib.string_split(ssid, ':')
+
+    table.insert(rows, {
+      label = 'WIFI CONN',
+      text = table.concat(props, '   '),
+      options = {
+        info = 'wifi_connect'
+      }
+    })
+  end
+
+  if selection ~= 'off' then
+    table.insert(rows, 2, {
+      label = 'RADI WIFI',
+      text = 'off',
+      options = {
+        info = 'wifi_off'
+      }
+    })
+  end
+
+  return rows
+end
+function funcs.wifi_connect(selection)
+  local ssid = lib.string_split(selection, ' ')[1]
+
+  -- (<cmd> &) executes the command asychronously
+  local cmd = '(nmcli connection up "' .. ssid .. '" &)'
+
+  lib.execute_cmd(cmd)
+
+  return nil
+end
+function funcs.wifi_off()
+  lib.execute_cmd('nmcli radio wifi off')
+  return nil
+end
+
+function funcs.vivaldi(selection)
+  if selection then
+    lib.execute_cmd('exec vivaldi-stable')
+
+    return nil
+  end
+
+  return {{
+    label = 'EXEC PROG',
+    text = 'vivaldi',
+    options = {
+      info = 'vivaldi',
+    }
+  }}
+end
+
+local initial_func = function()
+  local init_funcs = {
+    funcs.get_date_time,
+    funcs.get_battery,
+    funcs.get_brightness,
+    funcs.get_volume,
+    funcs.get_kb_layout,
+    funcs.wifi_menu,
+    funcs.vivaldi,
+  }
+
+  local rows = {}
+
+  local i = next(init_funcs)
+  while i do
+    local new_rows = init_funcs[i]()
+
+    for _, r in ipairs(new_rows) do
+      table.insert(rows, r)
+    end
+
+    i = next(init_funcs, i)
+  end
+
+  return rows
+end
+
+local format_global_options = function(global_options)
   local str = ''
   for k, v in pairs(global_options) do
     str = str .. OPT_PREFIX .. k .. OPT_SEP .. v .. ROW_SEP
@@ -43,210 +213,57 @@ function lib.format_global_options(global_options)
 
   return str
 end
-function lib.format_row(label, text, options)
+local format_row = function(row)
   local str = ''
-  str = str .. label .. '    ' .. '<i>' .. text .. '</i>'
+  str = str .. row.label .. '    ' .. '<i>' .. row.text .. '</i>'
 
-  if options then
+  if row.options then
 
-    local opt_key = next(options)
+    local opt_key = next(row.options)
 
-    str = str .. OPT_PREFIX .. opt_key .. OPT_SEP .. options[opt_key]
+    str = str .. OPT_PREFIX .. opt_key .. OPT_SEP .. row.options[opt_key]
 
-    opt_key = next(options, opt_key)
+    opt_key = next(row.options, opt_key)
     while opt_key ~= nil do
-      str = str .. OPT_SEP .. opt_key .. OPT_SEP .. options[opt_key]
-      opt_key = next(options, opt_key)
+      str = str .. OPT_SEP .. opt_key .. OPT_SEP .. row.options[opt_key]
+      opt_key = next(row.options, opt_key)
     end
   end
 
   return str .. ROW_SEP
 end
-function lib.format_rows(rows_spec)
+local format_rows = function(rows_spec)
   local str = ''
 
   for _, r in ipairs(rows_spec) do
-    str = str .. lib.format_row(r.label, r.func(), r.options)
+    str = str .. format_row(r)
   end
 
   return str
 end
-function lib.parse_selection(rows, arg)
-  local selected_row_text = string.match(arg[1], '<i>([^<]*)</i>')
-  local selected_info = os.getenv('ROFI_INFO')
+local print_func = function(func, selection)
+  local rows, global_options = func(selection)
 
-  for _, r in ipairs(rows) do
-    if r.options.info == selected_info then
-      local nested_rows = r.func(selected_row_text)
-      if nested_rows then
-        local str = lib.format_global_options(global_options)
-        str = str .. lib.format_rows(nested_rows)
 
-        print(str)
-      end
-
-      break
-    end
-  end
-end
-
-local status = {}
-
-function status.get_date_time()
-  return os.date('%d.%m %H:%M')
-end
-function status.get_battery()
-  local perc_file = '/sys/class/power_supply/BAT1/capacity'
-  local state_file = '/sys/class/power_supply/BAT1/status'
-
-  local perc = io.lines(perc_file)()
-  local state = io.lines(state_file)()
-
-  return perc .. '%' .. ' (' .. state .. ')'
-end
-function status.get_kb_layout()
-  local cmd = 'xkblayout_state print "%s"'
-
-  return lib.get_cmd_output(cmd)
-end
-function status.get_brightness()
-  local cmd = 'xbacklight -get'
-
-  return lib.get_cmd_output(cmd) .. '%'
-end
-function status.get_volume()
-  local cmd = 'pacmd list-sinks | grep "volume" | head -n 1 | cut -d "/" -f 2'
-
-  local volume_on_default_sink = lib.get_cmd_output(cmd)
-  return volume_on_default_sink:gmatch('([^%s]+)')()
-end
-
-local radio = {}
-
-function radio.wifi_toggle(selection)
-  if selection then
-    if selection == 'enabled' then
-      lib.execute_cmd('nmcli radio wifi off')
-    else
-      lib.execute_cmd('nmcli radio wifi on')
-    end
-
-    return nil
+  if not rows then
+    return
   end
 
-  local cmd = 'nmcli radio wifi'
+  local str = format_global_options(global_options or DEF_GLOB_OPTIONS)
+  str = str .. format_rows(rows)
 
-  return lib.get_cmd_output(cmd)
+  print(str)
 end
-function radio.wifi_connect(selection)
-  local active_connection = lib.get_cmd_output('nmcli -f NAME connection show --active', true)[2]
-
-  if selection then
-    if selection == active_connection then
-      local rows = {}
-
-      for _, ssid in ipairs(radio.wifi_list_available_SSIDs()) do
-        table.insert(rows, {
-            label = 'WIFI CONN',
-            func = function () return ssid end,
-            options = {
-              info = 'wifi_connect'
-            }
-        })
-      end
-
-      return rows
-    else
-      lib.execute_cmd('ncmli connection up ' .. selection)
-
-      return nil
-    end
-  end
-
-  return active_connection
-end
-function radio.wifi_list_available_SSIDs()
-  local ssids = lib.get_cmd_output('nmcli -f SSID device wifi list', true)
-
-  table.remove(ssids, 1) --remove header
-
-  return ssids
-end
-
-local programs = {}
-
-function programs.vivaldi(selection)
-  if selection then
-    lib.execute_cmd('exec vivaldi-stable')
-    return nil
-  end
-
-  return 'vivaldi'
-end
-
-local rows = {
-  {
-    label = 'DATE TIME',
-    func = status.get_date_time,
-    options = {
-      nonselectable = 'true'
-    },
-  },
-  {
-    label = 'BATT CAPA',
-    func = status.get_battery,
-    options = {
-      nonselectable = 'true'
-    }
-  },
-  {
-    label = 'KEYB LAYO',
-    func = status.get_kb_layout,
-    options = {
-      nonselectable = 'true'
-    }
-  },
-  {
-    label = 'BRIG LEVE',
-    func = status.get_brightness,
-    options = {
-      nonselectable = 'true'
-    }
-  },
-  {
-    label = 'VOLU LEVE',
-    func = status.get_volume,
-    options = {
-      nonselectable = 'true'
-    }
-  },
-  {
-    label = 'WIFI TOGG',
-    func = radio.wifi_toggle,
-    options = {
-      info = 'toggle_wifi',
-    }
-  },
-  {
-    label = 'WIFI CONN',
-    func = radio.wifi_connect,
-    options = {
-      info = 'wifi_connect',
-    }
-  },
-  {
-    label = 'EXEC PROG',
-    func = programs.vivaldi,
-    options = {
-      info = 'vivaldi'
-    }
-  }
-}
 
 if #arg > 0 then
-  lib.parse_selection(rows, arg)
+  local selected_info = os.getenv('ROFI_INFO')
+  local selected_row_text = string.match(arg[1], '<i>([^<]*)</i>')
+
+  for k, f in pairs(funcs) do
+    if k == selected_info then
+      print_func(f, selected_row_text)
+    end
+  end
 else
-  local str = lib.format_global_options(global_options)
-  str = str .. lib.format_rows(rows)
-  print(str)
+  print_func(initial_func)
 end

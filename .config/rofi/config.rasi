@@ -12,4 +12,6 @@ configuration {
   disable-history: true;
 
   theme: "~/.config/rofi/theme.rasi";
+
+  kb-cancel: "Super+space";
 }
