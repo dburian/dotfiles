@@ -36,8 +36,14 @@ function lib.get_cmd_output(cmd, multiple_lines)
 
   return output
 end
-function lib.execute_cmd(cmd)
-  os.execute(cmd .. '> /dev/null 2>&1')
+function lib.execute_cmd(cmd, background)
+
+  cmd = cmd .. ' < /dev/null > /dev/null 2>&1'
+  if background then
+    cmd = 'setsid ' .. cmd .. ' &'
+  end
+
+  os.execute(cmd)
 end
 
 local funcs = {}
@@ -75,13 +81,25 @@ function funcs.get_kb_layout(selection)
       }
   }}
 end
-function funcs.get_brightness()
+function funcs.brightness(selection)
+  if selection then
+    local num = tonumber(string.match(selection, '(%d+)%%'))
+
+    lib.execute_cmd('xbacklight -set ' .. (num > 50 and '1' or '100'))
+
+    return nil
+  end
+
   return {{
       label = 'BACK BRIG',
       text = lib.get_cmd_output('xbacklight -get') .. '%',
+      options = {
+        info = 'brightness',
+        meta = 'brightness'
+      }
   }}
 end
-function funcs.get_volume()
+function funcs.volume()
   local cmd = 'pacmd list-sinks | grep "volume" | head -n 1 | cut -d "/" -f 2'
 
   local volume_on_default_sink = lib.get_cmd_output(cmd)
@@ -92,33 +110,46 @@ function funcs.get_volume()
   }}
 end
 
-function funcs.wifi_menu()
-  local active_connection = lib.get_cmd_output(
-    'nmcli -g NAME connection show --active'
-  ) or nil
+function funcs.connections_menu()
+  local connectivity, wifi_state = string.match(
+    lib.get_cmd_output(
+      'nmcli -g STATE,WIFI general'
+    ),
+    '([^:]+):([^:]+)'
+  )
 
-  return {{
-    label = 'RADI WIFI',
-    text = active_connection or 'off',
-    options = {
-      info = 'wifi_list_ssids',
-    }
-  }}
-end
-function funcs.wifi_list_ssids(selection)
-
-  if selection == 'off' then
-    lib.execute_cmd('nmcli radio wifi on')
+  local active_connection = nil
+  if connectivity ~= 'disconnected' then
+    active_connection = lib.get_cmd_output('nmcli -g NAME connection show --active')
   end
 
+  return {
+    {
+      label = 'WIFI STAT',
+      text = wifi_state,
+      options = {
+        info = 'wifi_state'
+      }
+    },
+    {
+      label = 'INTE CONN',
+      text = active_connection and connectivity .. ' to ' .. active_connection or connectivity,
+      options = wifi_state == 'enabled' and {
+        info = 'wifi_list_connections'
+      } or nil
+    }
+  }
+
+end
+function funcs.wifi_list_connections()
   local available_SSIDs = lib.get_cmd_output('nmcli -g SSID,RATE,SIGNAL,SECURITY,IN-USE device wifi list', true)
 
   local rows = {
     {
       label = 'WIFI CONN',
-      text = 'REFRESH',
+      text = '--refresh--',
       options = {
-        info = 'wifi_list_ssids'
+        info = 'wifi_list_connections'
       }
     }
   }
@@ -135,36 +166,28 @@ function funcs.wifi_list_ssids(selection)
     })
   end
 
-  if selection ~= 'off' then
-    table.insert(rows, 2, {
-      label = 'RADI WIFI',
-      text = 'off',
-      options = {
-        info = 'wifi_off'
-      }
-    })
-  end
-
   return rows
 end
 function funcs.wifi_connect(selection)
   local ssid = lib.string_split(selection, ' ')[1]
 
   -- (<cmd> &) executes the command asychronously
-  local cmd = '(nmcli connection up "' .. ssid .. '" &)'
+  local cmd = '(nmcli device wifi connect "' .. ssid .. '" &)'
 
   lib.execute_cmd(cmd)
 
   return nil
 end
-function funcs.wifi_off()
-  lib.execute_cmd('nmcli radio wifi off')
+function funcs.wifi_state(selection)
+  local onoff = selection == 'enabled' and 'off' or 'on'
+  lib.execute_cmd('nmcli radio wifi ' .. onoff)
+
   return nil
 end
 
 function funcs.vivaldi(selection)
   if selection then
-    lib.execute_cmd('exec vivaldi-stable')
+    lib.execute_cmd('vivaldi-stable', true)
 
     return nil
   end
@@ -178,14 +201,31 @@ function funcs.vivaldi(selection)
   }}
 end
 
+function funcs.clipboard(selection)
+  if selection then
+    lib.execute_cmd('clipmenu -dmenu -p Clipmenu', true)
+
+    return nil
+  end
+
+  return {{
+    label = 'CLIP BOAR',
+    text = 'clipmenu',
+    options = {
+      info = 'clipboard'
+    }
+  }}
+end
+
 local initial_func = function()
   local init_funcs = {
     funcs.get_date_time,
     funcs.get_battery,
-    funcs.get_brightness,
-    funcs.get_volume,
+    funcs.brightness,
+    funcs.volume,
     funcs.get_kb_layout,
-    funcs.wifi_menu,
+    funcs.connections_menu,
+    funcs.clipboard,
     funcs.vivaldi,
   }
 
@@ -244,7 +284,6 @@ end
 local print_func = function(func, selection)
   local rows, global_options = func(selection)
 
-
   if not rows then
     return
   end
@@ -257,7 +296,7 @@ end
 
 if #arg > 0 then
   local selected_info = os.getenv('ROFI_INFO')
-  local selected_row_text = string.match(arg[1], '<i>([^<]*)</i>')
+  local selected_row_text = string.match(arg[1], '<i>(.+)</i>$')
 
   for k, f in pairs(funcs) do
     if k == selected_info then

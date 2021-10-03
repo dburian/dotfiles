@@ -3,9 +3,6 @@ local map = vim.api.nvim_set_keymap
 -- Leader
 vim.g.mapleader='\\'
 
--- Leader for easymotion
-map('n', '<leader>e', '<Plug>(easymotion-prefix)', {noremap = true})
-
 -- Pane navigation
 map('n', '<c-l>', '<c-w>l', {noremap = true})
 map('n', '<c-k>', '<c-w>k', {noremap = true})

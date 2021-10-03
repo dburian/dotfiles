@@ -12,8 +12,9 @@ config_require('mappings')
 
 -- Plugin configuration
 config_require('plugin.telescope')
+config_require('plugin.treesitter')
 config_require('plugin.slip')
-config_require('plugin.nvim-compe')
+config_require('plugin.nvim-cmp')
 config_require('plugin.luasnip')
 
 -- Settings
@@ -49,7 +50,7 @@ opt.relativenumber = true  --number lines relative to current line
 opt.mouse = 'nv' --enable mouse for normal and visual mode
 opt.timeoutlen = 500 --timeout for key sequences
 
-vim.cmd('syntax enable')  -- enable syntax highlighting
+opt.clipboard:append('unnamedplus')
 
 --- Colors
 vim.g.base16colorspace = 256

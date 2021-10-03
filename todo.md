@@ -7,25 +7,28 @@
     [x] fuzzy file
     [x] autocompletion
     [x] snippets
-    [ ] treesitter
+    [x] treesitter
     [ ] status line
+    [x] fix ftdetect
+    [x] fix clipboard
+    [x] fix easy-motion
   [ ] rofi
     [x] status script
-    [ ] wifi script
+    [x] wifi script
     [ ] bluetooth script
-    [ ] edit files script
     [ ] programs script
-    [ ] projects script
+    [?] projects script
     [x] colours
+    [ ] clean work desktops
   [x] awesome
     [x] config
     [x] themes
   [ ] brightness
     [x] keymap
-    [ ] notification
+    [-] notification
   [ ] volume
     [x] keymap
-    [ ] notification
+    [-] notification
   [ ] battery
     [x] display
     [ ] notification

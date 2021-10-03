@@ -5,10 +5,10 @@ function m.on_attach(_, bufnr)
   local opts = {noremap = true, silent = true}
 
   local bfk = function(mode, lhs, rhs) vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts) end
-  local bfo = function(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  -- local bfo = function(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   -- Native completion filled by lsp
-  bfo('omnifunc', 'v:vim.lua.lsp.omnifunc')
+  -- bfo('omnifunc', 'v:vim.lua.lsp.omnifunc')
 
   bfk('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
   bfk('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
