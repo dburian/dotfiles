@@ -6,7 +6,6 @@ config_require'slip'.setup{
     },
     slip = {
       name = 'Slip logs',
-      --FIXME does not understand ~
       path = '/home/dburian/Documents/Slip.nvim/logs',
     }
   },
@@ -15,8 +14,15 @@ config_require'slip'.setup{
 
 vim.api.nvim_set_keymap(
   'n',
-  '<leader>ns',
-  ':lua require("slip.actions").create_note()<cr>',
+  '<leader>np',
+  ':lua require("slip.actions").create_note({edit_cmd = "vs"})<cr>',
+  {noremap = true}
+)
+
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader>nb',
+  ':lua require("slip.actions").create_note({edit_cmd = "vs", type = "bibliographical"})<cr>',
   {noremap = true}
 )
 

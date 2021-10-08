@@ -34,4 +34,9 @@ alias rofi="rofi -show combi"
 
 alias ssh="TERM=xterm-color ssh"
 
+# Python related
+alias pip="pip3"
+alias venv="python3 -m venv"
+alias activate="activate_virtual_environment"
+
 

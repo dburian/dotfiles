@@ -10,3 +10,9 @@
 
 [alias]
   root = rev-parse --show-toplevel
+
+[alias]
+  s = status
+
+[alias]
+  c = commit

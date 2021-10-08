@@ -1,5 +1,6 @@
 " Argument is directory for plugins
 call plug#begin('~/.local/share/nvim/bundle')
+"TODO: rewrite this in lua, maybe switch to packer?
 
 " Verbs
 Plug 'https://github.com/tpope/vim-surround'
@@ -33,7 +34,6 @@ Plug 'saadparwaiz1/cmp_luasnip'
 
 " Snippets
 Plug 'L3MON4D3/LuaSnip'
-
 
 " My stuff
 Plug '~/Documents/Slip.nvim'

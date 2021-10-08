@@ -12,6 +12,8 @@
     [x] fix ftdetect
     [x] fix clipboard
     [x] fix easy-motion
+    [x] python LSP
+    [x] jupyter
   [ ] rofi
     [x] status script
     [x] wifi script

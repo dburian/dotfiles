@@ -6,6 +6,7 @@ require('globals')
 
 -- Lsp server config
 config_require('lsp.lua')
+config_require('lsp.python')
 
 -- My files
 config_require('mappings')

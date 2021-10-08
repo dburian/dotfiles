@@ -18,6 +18,8 @@ export KEYTIMEOUT=1 #For -v recommended
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
+
+
 # Autocomplete
 autoload -Uz compinit
 zstyle ':completion:*' menu select
@@ -26,6 +28,9 @@ compinit
 comp_options+=(globdots) #Autocomplete hidden files
 
 source /home/dburian/.config/broot/launcher/bash/br
+
+# functions
+source /home/dburian/.config/zsh/funcs
 
 # zsh-syntax-highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
