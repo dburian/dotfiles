@@ -53,7 +53,7 @@
     {
       invocation: home
       shortcut: h
-      internal: "focus ~"
+      cmd: ":focus ~;:input_clear"
     }
 
     # Tree manipulation
@@ -63,6 +63,12 @@
       execution: touch {path}
       leave_broot: false
       set_working_dir: true
+    }
+    {
+      invocation: ln {link_path}
+      execution: ln -s "{file}" "{link_path}"
+      leave_broot: false
+      set_working_dir: false
     }
 
     # Git stuff

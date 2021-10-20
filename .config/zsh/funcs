@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# Activates virtual environment in the cwd
+activate_virtual_environment() {
+  activate_path=`find . -maxdepth 3 -path "*/bin/activate" -type f`
+
+  [ "$activate_path" = '' ] && echo 'No environment to activate.' && return 1
+
+  source $activate_path
+  return 0
+}
+
+# Wraps tmux
+tmux() {
+  # If called with args, continue straight to tmux
+  if [[ -n "$@" ]]; then
+    command tmux "$@"
+    return
+  fi
+
+  # Reconstructs the project's tmux session or creates new one
+  if [ -x .tmux ]; then
+    ./.tmux
+    return
+  fi
+
+  local session_name=$(basename $(pwd))
+  command tmux new-session -A -s "$session_name"
+}

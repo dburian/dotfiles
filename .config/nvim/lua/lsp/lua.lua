@@ -16,8 +16,6 @@ local server_src_path = '/home/dburian/.local/src/lua-language-server'
 local server_bin = server_src_path .. '/bin/Linux/lua-language-server'
 local main_script_path = server_src_path .. '/main.lua'
 
-vim.lsp.set_log_level("debug")
-
 -- configured for use with neovim
 require'lspconfig'.sumneko_lua.setup{
   cmd = {server_bin, '-E', main_script_path},

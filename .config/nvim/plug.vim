@@ -30,10 +30,15 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Autocompletion
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-path'
 Plug 'saadparwaiz1/cmp_luasnip'
 
 " Snippets
 Plug 'L3MON4D3/LuaSnip'
+
+" Jupyter integration
+Plug 'bfredl/nvim-ipy'
+Plug 'goerz/jupytext.vim'
 
 " My stuff
 Plug '~/Documents/Slip.nvim'

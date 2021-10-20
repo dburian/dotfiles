@@ -2,38 +2,45 @@
 
 ## Functional
   [ ] nvim
+    [ ] status line
+    [-] project starter (at least something pretty)
     [x] LSP
-    [ ] project starter (at least something pretty)
     [x] fuzzy file
     [x] autocompletion
     [x] snippets
     [x] treesitter
-    [ ] status line
     [x] fix ftdetect
     [x] fix clipboard
     [x] fix easy-motion
     [x] python LSP
     [x] jupyter
+  [ ] tmux
+    [ ] colors
+    [ ] nice nice
+    [ ] key bindings
+    [ ] .tmux in projects
   [ ] rofi
-    [x] status script
-    [x] wifi script
+    [ ] projects script - find .tmux
     [ ] bluetooth script
     [ ] programs script
-    [?] projects script
-    [x] colours
     [ ] clean work desktops
-  [x] awesome
-    [x] config
-    [x] themes
-  [ ] brightness
-    [x] keymap
-    [-] notification
-  [ ] volume
-    [x] keymap
-    [-] notification
+    [ ] flash disks
+    [ ] connected screens
+    [x] colours
+    [x] status script
+    [x] wifi script
   [ ] battery
     [x] display
     [ ] notification
-  [ ] broot
-      [x] colours
-      [ ] PR to base16
+  [x] broot
+    [x] colours
+    [-] PR to base16
+  [x] awesome
+    [x] config
+    [x] themes
+  [x] brightness
+    [x] keymap
+    [-] notification
+  [x] volume
+    [x] keymap
+    [-] notification

@@ -7,6 +7,8 @@ require('globals')
 -- Lsp server config
 config_require('lsp.lua')
 config_require('lsp.python')
+config_require('lsp.java')
+config_require('lsp.dart')
 
 -- My files
 config_require('mappings')
@@ -17,6 +19,9 @@ config_require('plugin.treesitter')
 config_require('plugin.slip')
 config_require('plugin.nvim-cmp')
 config_require('plugin.luasnip')
+
+-- TODO: temporary, think off a better setup
+config_require('jupyter_integration')
 
 -- Settings
 local opt = vim.opt
@@ -53,6 +58,9 @@ opt.timeoutlen = 500 --timeout for key sequences
 
 opt.clipboard:append('unnamedplus')
 
+vim.cmd[[syntax on]]
+
+-- Configure pythons for remote plugins
 --- Colors
 vim.g.base16colorspace = 256
 vim.cmd('source ~/.config/nvim/theme.vim')

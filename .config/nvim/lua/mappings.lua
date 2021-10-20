@@ -1,7 +1,8 @@
 local map = vim.api.nvim_set_keymap
 
 -- Leader
-vim.g.mapleader='\\'
+vim.g.mapleader = ','
+
 
 -- Pane navigation
 map('n', '<c-l>', '<c-w>l', {noremap = true})
@@ -40,6 +41,7 @@ map('i', 'kj', '<esc>', {noremap = true})
 map('n', 'Y', 'y$', {noremap = true})
 
 -- Typing
+map('n', '<esc>', ':noh<cr>', {noremap = true})
 map('n', '<leader>U','viwUe', {noremap = true})
 map('i', '<leader>U','<esc>viwUea', {noremap = true})
 

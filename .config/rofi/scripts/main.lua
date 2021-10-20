@@ -68,14 +68,14 @@ function funcs.get_battery()
 end
 function funcs.get_kb_layout(selection)
   if selection then
-    lib.execute_cmd('xkblayout_state set +1')
+    lib.execute_cmd('xkblayout-state set +1')
 
     return nil
   end
 
   return {{
       label = 'KEYB LAYO',
-      text = lib.get_cmd_output('xkblayout_state print "%s"'),
+      text = lib.get_cmd_output('xkblayout-state print "%s"'),
       options = {
         info = 'get_kb_layout'
       }
@@ -200,6 +200,36 @@ function funcs.vivaldi(selection)
     }
   }}
 end
+function funcs.blender(selection)
+  if selection then
+    lib.execute_cmd('blender', true)
+
+    return nil
+  end
+
+  return {{
+    label = 'EXEC PROG',
+    text = 'blender',
+    options = {
+      info = 'blender',
+    }
+  }}
+end
+function funcs.android_emulator(selection)
+  if selection then
+    lib.execute_cmd('zsh -c "emulator -avd api_30 -gpu host"', true)
+
+    return nil
+  end
+
+  return {{
+    label = 'EXEC PROG',
+    text = 'android emulator',
+    options = {
+      info = 'android_emulator',
+    }
+  }}
+end
 
 function funcs.clipboard(selection)
   if selection then
@@ -227,6 +257,8 @@ local initial_func = function()
     funcs.connections_menu,
     funcs.clipboard,
     funcs.vivaldi,
+    funcs.blender,
+    funcs.android_emulator,
   }
 
   local rows = {}

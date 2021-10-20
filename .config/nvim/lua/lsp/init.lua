@@ -14,8 +14,8 @@ function m.on_attach(_, bufnr)
   bfk('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
   bfk('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 
-  bfk('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
-  -- bfk('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  bfk('n', '<leader>h', '<Cmd>lua vim.lsp.buf.hover()<CR>')
+  bfk('i', '<leader>h', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
 
   bfk('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
   bfk('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
