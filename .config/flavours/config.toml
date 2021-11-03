@@ -1,0 +1,15 @@
+[[item]]
+file = '~/.config/alacritty/alacritty.yml'
+template = 'alacritty'
+subtemplate = 'default-256'
+
+[[item]]
+file = '~/.config/nvim/theme.vim'
+template = 'vim'
+rewrite = true
+
+[[item]]
+file = '~/.config/rofi/colors.rasi'
+template = 'rofi'
+subtemplate = 'colors'
+rewrite = true
