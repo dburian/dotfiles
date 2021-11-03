@@ -3,21 +3,9 @@ local map = vim.api.nvim_set_keymap
 -- Leader
 vim.g.mapleader = ','
 
-
--- Pane navigation
-map('n', '<c-l>', '<c-w>l', {noremap = true})
-map('n', '<c-k>', '<c-w>k', {noremap = true})
-map('n', '<c-j>', '<c-w>j', {noremap = true})
-map('n', '<c-h>', '<c-w>h', {noremap = true})
-
-map('i', '<c-l>', '<Esc><c-w>l', {noremap = true})
-map('i', '<c-k>', '<Esc><c-w>k', {noremap = true})
-map('i', '<c-j>', '<Esc><c-w>j', {noremap = true})
-map('i', '<c-h>', '<Esc><c-w>h', {noremap = true})
-
 -- Quickfix navigation
-map('n', '<c-p>', ':cprev<cr>', {noremap = true})
-map('n', '<c-n>', ':cnext<cr>', {noremap = true})
+map('n', '<c-k>', ':cprev<cr>', {noremap = true})
+map('n', '<c-j>', ':cnext<cr>', {noremap = true})
 
 
 -- Removing old habits

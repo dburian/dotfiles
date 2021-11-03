@@ -19,6 +19,7 @@ config_require('plugin.treesitter')
 config_require('plugin.slip')
 config_require('plugin.nvim-cmp')
 config_require('plugin.luasnip')
+config_require('plugin.express_line')
 
 -- TODO: temporary, think off a better setup
 config_require('jupyter_integration')

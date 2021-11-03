@@ -217,7 +217,7 @@ function funcs.blender(selection)
 end
 function funcs.android_emulator(selection)
   if selection then
-    lib.execute_cmd('zsh -c "emulator -avd api_30 -gpu host"', true)
+    lib.execute_cmd('flutter emulators --launch api_30', true)
 
     return nil
   end

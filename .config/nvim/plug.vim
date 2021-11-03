@@ -33,12 +33,17 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
 Plug 'saadparwaiz1/cmp_luasnip'
 
+Plug 'onsails/lspkind-nvim' " nice icons in autocomplete menu
+
 " Snippets
 Plug 'L3MON4D3/LuaSnip'
 
 " Jupyter integration
 Plug 'bfredl/nvim-ipy'
 Plug 'goerz/jupytext.vim'
+
+" Status line
+Plug 'tjdevries/express_line.nvim'
 
 " My stuff
 Plug '~/Documents/Slip.nvim'

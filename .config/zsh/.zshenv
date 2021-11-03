@@ -14,6 +14,7 @@ export MYSQL_HISTFILE="/dev/null"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 
 ## Clipboard manager - clipmenu
 export CM_LAUNCHER="rofi"
@@ -36,19 +37,18 @@ export PATH="/opt/android-sdk/emulator:$PATH"
 export wiki="/home/dburian/Documents/wiki"
 export dotfiles="/home/dburian/Documents/dotfiles"
 
-# Aliases
+## Shortcuts
 alias l="ls -lah"
 alias v="nvim"
+alias z="zathura --fork"
+alias activate="activate_virtual_environment"
+alias d="directory"
+alias f="edit-file"
+
+## Always with these flags
 alias clipmenu="clipmenu -dmenu -p Clipmenu"
 alias rofi="rofi -show combi"
-
 alias ssh="TERM=xterm-color ssh"
-
-alias z="zathura --fork"
-
-## Python related
 alias pip="pip3"
-alias venv="python3 -m venv"
-alias activate="activate_virtual_environment"
 
 

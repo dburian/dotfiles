@@ -3,6 +3,8 @@ autoload -U colors && colors
 
 # Pure prompt
 autoload -U promptinit; promptinit
+PURE_PROMPT_SYMBOL='$'
+PURE_PROMPT_VICMD_SYMBOL='?'
 prompt pure
 
 # Lines configured by zsh-newuser-install
@@ -25,9 +27,6 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 comp_options+=(globdots) #Autocomplete hidden files
-
-# Broot
-source /home/dburian/.config/broot/launcher/bash/br
 
 # functions
 source /home/dburian/.config/zsh/funcs

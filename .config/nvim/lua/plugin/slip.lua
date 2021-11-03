@@ -46,3 +46,10 @@ vim.api.nvim_set_keymap(
   '<cmd>lua require("slip.actions").insert_link()<cr>',
   {noremap = true}
 )
+
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader>nlg',
+  '<cmd>lua require("slip.actions").live_grep()<cr>',
+  {noremap = true}
+)
