@@ -1,0 +1,10 @@
+[Unit]
+Description=Run battery notifier every 30 seconds
+Documentation=https://github.com/arindas/batnotify
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=2min
+
+[Install]
+WantedBy=timers.target

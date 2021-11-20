@@ -24,8 +24,8 @@ function m.connect_to_qtconsole()
   buf_map(0, 'n', '<leader>ra', '<Plug>(IPy-RunAll)', {silent = true})
   buf_map(0, 'n', '<leader>rr', '<Plug>(IPy-Run)', {silent = true})
   buf_map(0, 'v', '<leader>rr', '<Plug>(IPy-Run)', {silent = true})
-  buf_map(0, 'n', ']c', '/# %%<cr>:noh<cr>j', {silent = true, noremap = true})
-  buf_map(0, 'n', '[c', '?# %%<cr>n:noh<cr>j', {silent = true, noremap = true})
+  buf_map(0, 'n', ']c', '/# %%$<cr>:noh<cr>j', {silent = true, noremap = true})
+  buf_map(0, 'n', '[c', '?# %%$<cr>n:noh<cr>j', {silent = true, noremap = true})
 end
 
 
