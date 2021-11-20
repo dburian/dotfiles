@@ -39,7 +39,7 @@ directory() {
   # Quickly navigate to a folder with fzf
   #
 
-  cd $(find . -type d | fzf)
+  cd $(find . -type d 2>/dev/null | fzf)
 }
 
 edit-file() {
@@ -47,9 +47,11 @@ edit-file() {
   # Quickly edit a file with fzf
   #
 
-  file=$(find . -type f | fzf )
-  parent_dir=$(dirname $file)
+  file=$(find . -type f 2>/dev/null | fzf )
 
-  cd "$parent_dir"
-  nvim `basename $file`
+  if [ -z "$file" ] ; then
+    return
+  fi
+
+  nvim $file
 }

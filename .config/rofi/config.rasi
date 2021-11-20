@@ -1,6 +1,6 @@
 configuration {
   modi: "combi";
-  combi-modi: "main:~/.config/rofi/scripts/main.lua";
+  combi-modi: "drun";
   combi-hide-mode-prefix: true;
 
   scroll-method: 1;

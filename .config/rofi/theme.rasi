@@ -5,7 +5,7 @@ window {
     padding:          10;
     background-color: var(background);
     transparency:     "screenshot";
-    fullscreen:       true;
+    fullscreen:       false;
 }
 inputbar {
     padding:    10;

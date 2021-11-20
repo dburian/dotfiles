@@ -8,13 +8,17 @@ export XDG_DATA_HOME="$HOME"/.local/share
 export XDG_CACHE_HOME="$HOME"/.cache
 
 ## Cleaning ~
-export XAUTHORITY="$XDG_CONFIG_HOME"/X11/.Xauthority
+export XAUTHORITY="$XDG_CONFIG_HOME"/X11/Xauthority
 export LESSHISTFILE="/dev/null"
 export MYSQL_HISTFILE="/dev/null"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export GHCUP_USE_XDG_DIRS='yes'
+export CABAL_CONFIG="$XDG_CONFIG_HOME"/cabal/config
+export CABAL_DIR="$XDG_CACHE_HOME"/cabal
 
 ## Clipboard manager - clipmenu
 export CM_LAUNCHER="rofi"
@@ -34,8 +38,7 @@ export CHROME_EXECUTABLE=`which google-chrome-stable`
 export PATH="/opt/android-sdk/emulator:$PATH"
 
 ## Locations
-export wiki="/home/dburian/Documents/wiki"
-export dotfiles="/home/dburian/Documents/dotfiles"
+export dots="/home/dburian/Documents/dotfiles"
 
 ## Shortcuts
 alias l="ls -lah"
