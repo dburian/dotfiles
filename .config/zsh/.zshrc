@@ -29,6 +29,9 @@ zmodload zsh/complist
 compinit
 comp_options+=(globdots) #Autocomplete hidden files
 
+# Batch rename
+autoload zmv
+
 # functions
 source /home/dburian/.config/zsh/funcs
 

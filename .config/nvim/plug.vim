@@ -8,12 +8,17 @@ Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/inkarkat/vim-ReplaceWithRegister'
 Plug 'https://github.com/easymotion/vim-easymotion'
 
+" Repeat whole plugin maps
+Plug 'tpope/vim-repeat'
+
 " Objects/nouns
 Plug 'https://github.com/michaeljsmith/vim-indent-object'
 
 " Git
 Plug 'https://github.com/tpope/vim-fugitive'
 
+" Project drawer
+Plug 'tpope/vim-vinegar'
 
 " Telescope
 Plug 'nvim-lua/popup.nvim'

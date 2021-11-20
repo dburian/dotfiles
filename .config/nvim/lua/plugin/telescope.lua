@@ -1,44 +1,30 @@
 -- Configuration of telescope plugin
 
-local action_set = require('telescope.actions.set')
+local telescope_actions = require("telescope.actions.set")
 
 -- until they fix https://github.com/nvim-telescope/telescope.nvim/issues/559
+local fixfolds = {
+  hidden = true,
+  attach_mappings = function(_)
+    telescope_actions.select:enhance({
+      post = function()
+        vim.cmd(":normal! zx")
+      end,
+    })
+    return true
+  end,
+}
+
 require('telescope').setup {
   pickers = {
-    find_files = {
-      hidden = true,
-      attach_mappings = function()
-        action_set.select:enhance({
-          post = function()
-            vim.cmd(":normal! zx")
-          end
-        })
-        return true
-      end
-    },
-    git_files = {
-      hidden = true,
-      attach_mappings = function()
-        action_set.select:enhance({
-          post = function()
-            vim.cmd(":normal! zx")
-          end
-        })
-        return true
-      end
-    },
-    live_grep = {
-      hidden = true,
-      attach_mappings = function()
-        action_set.select:enhance({
-          post = function()
-            vim.cmd(":normal! zx")
-          end
-        })
-        return true
-      end
-    },
-  }
+    buffers = fixfolds,
+    file_browser = fixfolds,
+    find_files = fixfolds,
+    git_files = fixfolds,
+    grep_string = fixfolds,
+    live_grep = fixfolds,
+    oldfiles = fixfolds,
+  },
 }
 
 require('telescope').load_extension('fzf')
@@ -58,13 +44,19 @@ vim.api.nvim_set_keymap(
 
 vim.api.nvim_set_keymap(
   'n',
-  '<leader>b',
-  ':lua require("telescope.builtin").file_browser({hidden = true})<cr>',
+  '<leader>fb',
+  ':lua require("telescope.builtin").buffers()<cr>',
   {noremap = true, silent = true}
 )
 vim.api.nvim_set_keymap(
   'n',
-  '<leader>lg',
+  '<leader>fl',
   ':lua require("telescope.builtin").live_grep()<cr>',
+  {noremap = true, silent = true}
+)
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader>ft',
+  ':lua require("telescope.builtin").file_browser()<cr>',
   {noremap = true, silent = true}
 )

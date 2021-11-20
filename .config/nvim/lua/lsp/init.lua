@@ -10,20 +10,21 @@ function m.on_attach(_, bufnr)
   -- Native completion filled by lsp
   -- bfo('omnifunc', 'v:vim.lua.lsp.omnifunc')
 
-  bfk('n', '<leader>lgd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-  bfk('n', '<leader>lgr', '<cmd>lua vim.lsp.buf.references()<CR>')
-  bfk('n', '<leader>lgi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+  bfk('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+  bfk('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+  bfk('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 
-  bfk('n', '<leader>lh', '<Cmd>lua vim.lsp.buf.hover()<CR>')
-  bfk('i', '<leader>lh', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  bfk('n', '<leader>h', '<Cmd>lua vim.lsp.buf.hover()<CR>')
+  bfk('i', '<leader>h', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
 
-  bfk('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>')
-  bfk('n', '<leader>lc', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+  bfk('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
+  bfk('n', '<leader>ca', "<cmd>lua require'telescope.builtin'.code_actions()<cr>")
+  bfk('n', '<leader>fs', "<cmd>lua require'telescope.builtin'.lsp_document_symbols()<cr>")
 
-  bfk('n', '<leader>l[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-  bfk('n', '<leader>l]d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
-  bfk('n', '<leader>ld', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
-  bfk('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+  bfk('n', '<leader>[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+  bfk('n', '<leader>]d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+  bfk('n', '<leader>dl', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
+  bfk('n', '<leader>fo', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 end
 
 return m

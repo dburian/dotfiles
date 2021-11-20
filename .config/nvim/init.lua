@@ -18,8 +18,10 @@ config_require('plugin.telescope')
 config_require('plugin.treesitter')
 config_require('plugin.slip')
 config_require('plugin.nvim-cmp')
-config_require('plugin.luasnip')
 config_require('plugin.express_line')
+config_require('plugin.vinegar')
+
+config_require('plugin.luasnip.init')
 
 -- TODO: temporary, think off a better setup
 config_require('jupyter_integration')
@@ -49,6 +51,7 @@ opt.shiftwidth = 2     --spaces to use when indenting
 opt.shiftround = true   --round to multiples of shiftwidth with '>' and '<'
 
 opt.textwidth = 80
+opt.colorcolumn = '80' --paints 80th column w/ different color
 opt.formatoptions = 'tcqj' --autoformatting options see :help fo-table
 
 opt.number = true          --display line numbers

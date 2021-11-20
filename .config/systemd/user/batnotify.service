@@ -1,0 +1,9 @@
+[Unit]
+Description=Creates Notification when battery is below safe level.
+Documentation=https://github.com/arindas/batnotify
+
+[Service]
+ExecStart=/bin/bash -c "~/.local/bin/batnotify"
+
+[Install]
+WantedBy=default.target
