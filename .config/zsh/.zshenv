@@ -2,6 +2,16 @@
 ## Programs
 export EDITOR="nvim"
 
+## PATH
+export PATH="$PATH:/usr/lib/jvm/default/bin"
+export PATH="$PATH:/home/dburian/.cache/cabal/bin"
+
+export ANDROID_SDK_ROOT='/opt/android-sdk'
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin/
+export PATH=$PATH:$ANDROID_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/
+
 ## Helpful constants
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_DATA_HOME="$HOME"/.local/share
@@ -29,13 +39,10 @@ export npm_config_prefix="$XDG_DATA_HOME"/node_modules
 export userconfig="$XDG_DATA_HOME"/npm
 
 ## JAVA
-# relink /usr/lib/jvm/default
-export JAVA_HOME='/usr/lib/jvm/java-8-openjdk/jre'
-# export JAVA_HOME='/usr/lib/jvm/java-16-openjdk'
+export JAVA_HOME='/usr/lib/jvm/default'
 
 ## FLUTTER development
 export CHROME_EXECUTABLE=`which google-chrome-stable`
-export PATH="/opt/android-sdk/emulator:$PATH"
 
 ## Locations
 export dots="/home/dburian/Documents/dotfiles"

@@ -1,57 +1,68 @@
-@import "colors"
+/* @import "colors" */
+
+* {
+  background-color: #000000;
+  text-color: #ffffff;
+
+  placeholder-color: #777777;
+
+  active: #00ffff;
+  accent: #ffff00;
+}
 
 window {
     font:             "JetBrains Mono NL Medium 10";
-    padding:          10;
-    background-color: var(background);
     transparency:     "screenshot";
     fullscreen:       false;
+    location: west;
+    anchor: west;
+    orientation: horizontal;
+    height: 80%;
+    width: 300px;
+
+    background-color: @background;
+    padding: 0 0 0 20;
 }
+
 inputbar {
-    padding:    10;
-    spacing:    0px ;
-    text-color: var(normal-foreground);
+    padding:    5;
+    spacing:    0px;
     children:   [entry];
 }
 entry {
-    padding:           0;
-    text-color:        var(normal-foreground);
+    padding: 0 0 0 15;
+    border: 0 0 0 5;
+    border-color: @accent;
     spacing:           0;
-    placeholder-color: rgba ( 128, 128, 128, 100 % );
     placeholder:       "Type to filter";
     blink: false;
+
 }
 listview {
-    padding:      10;
+    padding:      5;
     columns:      1;
     fixed-columns: false;
     scrollbar:    false;
-    border-color: var(separatorcolor);
-    spacing:      10;
+    spacing:      3;
     fixed-height: 0;
 }
 
 element {
-    padding: 5;
-    border:  0;
+    padding: 0 0 0 20;
 }
-element normal.normal {
-    background-color: var(normal-background);
-    text-color:       var(normal-foreground);
-}
+
 element normal.urgent {
-    background-color: var(urgent-background);
     text-color:       var(urgent-foreground);
 }
 element normal.active {
-    background-color: var(normal-background);
-    text-color:       var(normal-foreground);
+    border: 1 0 2px 1;
+    border-color: @active;
 }
-element selected {
-}
+
 element selected.normal {
-    background-color: var(selected-normal-background);
-    text-color:       var(selected-normal-foreground);
+    border: 0 0 0 5;
+    padding: 0 0 0 15;
+    border-color: @active;
 }
 element selected.urgent {
     background-color: var(selected-urgent-background);
@@ -61,21 +72,12 @@ element selected.active {
     background-color: var(selected-normal-background);
     text-color:       var(selected-normal-foreground);
 }
-element alternate.normal {
-    background-color: var(normal-background);
-    text-color:       var(normal-foreground);
-}
-element alternate.urgent {
-    background-color: var(urgent-background);
-    text-color:       var(urgent-foreground);
-}
 element alternate.active {
     background-color: var(normal-background);
     text-color:       var(normal-foreground);
 }
 element-text {
-    background-color: rgba ( 0, 0, 0, 0 % );
-    highlight:        inherit;
+    highlight:        None;
     text-color:       inherit;
 }
 

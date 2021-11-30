@@ -20,8 +20,6 @@ export KEYTIMEOUT=1 #For -v recommended
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-export PATH="$PATH:/home/dburian/.cache/cabal/bin"
-
 # Autocomplete
 autoload -Uz compinit
 zstyle ':completion:*' menu select

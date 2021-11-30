@@ -18,7 +18,7 @@ function m.on_attach(_, bufnr)
   bfk('i', '<leader>h', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
 
   bfk('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-  bfk('n', '<leader>ca', "<cmd>lua require'telescope.builtin'.code_actions()<cr>")
+  bfk('n', '<leader>ca', "<cmd>lua require'telescope.builtin'.lsp_code_actions()<cr>")
   bfk('n', '<leader>fs', "<cmd>lua require'telescope.builtin'.lsp_document_symbols()<cr>")
 
   bfk('n', '<leader>[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
