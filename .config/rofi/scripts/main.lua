@@ -187,6 +187,20 @@ function funcs.android_emulator(selection)
     }
   }}
 end
+function funcs.spotify(selection)
+  if selection then
+    lib.execute_cmd('spotify', true)
+
+    return nil
+  end
+
+  return {{
+    text = 'spotify',
+    options = {
+      info = 'spotify',
+    }
+  }}
+end
 
 function funcs.power(selection)
   if selection == 'shutdown' then
@@ -194,6 +208,9 @@ function funcs.power(selection)
     return nil
   elseif selection == 'reboot' then
     lib.execute_cmd('shutdown -r now', true)
+    return nil
+  elseif selection == 'hibernate' then
+    lib.execute_cmd('systemctl hibernate', true)
     return nil
   end
 
@@ -206,6 +223,12 @@ function funcs.power(selection)
     },
     {
       text = 'reboot',
+      options = {
+        info = 'power',
+      }
+    },
+    {
+      text = 'hibernate',
       options = {
         info = 'power',
       }
@@ -238,6 +261,7 @@ local initial_func = function()
     funcs.slack,
     funcs.android_emulator,
     funcs.power,
+    funcs.spotify,
   }
 
   local rows = {}

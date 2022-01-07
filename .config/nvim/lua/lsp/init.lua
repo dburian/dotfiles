@@ -24,7 +24,7 @@ function m.on_attach(_, bufnr)
   bfk('n', '<leader>[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
   bfk('n', '<leader>]d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
   bfk('n', '<leader>dl', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
-  bfk('n', '<leader>fo', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+  bfk('n', '<leader>fo', '<cmd>lua vim.lsp.buf.formatting_sync()<CR>')
 end
 
 return m

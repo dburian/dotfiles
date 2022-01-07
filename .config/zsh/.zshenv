@@ -40,6 +40,7 @@ export userconfig="$XDG_DATA_HOME"/npm
 
 ## JAVA
 export JAVA_HOME='/usr/lib/jvm/default'
+# export CLASSPATH="$XDG_CACHE_HOME/maven/repository/"
 
 ## FLUTTER development
 export CHROME_EXECUTABLE=`which google-chrome-stable`
@@ -51,6 +52,7 @@ export dots="/home/dburian/Documents/dotfiles"
 alias l="ls -lah"
 alias v="nvim"
 alias z="zathura --fork"
+alias view="feh -Tview"
 alias activate="activate_virtual_environment"
 alias d="directory"
 alias f="edit-file"
@@ -60,5 +62,4 @@ alias clipmenu="clipmenu -dmenu -p Clipmenu"
 alias rofi="rofi -show combi"
 alias ssh="TERM=xterm-color ssh"
 alias pip="pip3"
-
-
+alias mvn='mvn -gs "$XDG_CONFIG_HOME"/maven/settings.xml'
