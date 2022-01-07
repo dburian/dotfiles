@@ -187,6 +187,20 @@ function funcs.android_emulator(selection)
     }
   }}
 end
+function funcs.gimp(selection)
+  if selection then
+    lib.execute_cmd('gimp', true)
+
+    return nil
+  end
+
+  return {{
+    text = 'gimp',
+    options = {
+      info = 'gimp',
+    }
+  }}
+end
 
 function funcs.power(selection)
   if selection == 'shutdown' then
@@ -236,6 +250,7 @@ local initial_func = function()
     funcs.blender,
     funcs.postman,
     funcs.slack,
+    funcs.gimp,
     funcs.android_emulator,
     funcs.power,
   }
