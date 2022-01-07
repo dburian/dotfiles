@@ -190,7 +190,6 @@ end
 function funcs.spotify(selection)
   if selection then
     lib.execute_cmd('spotify', true)
-
     return nil
   end
 
@@ -198,6 +197,19 @@ function funcs.spotify(selection)
     text = 'spotify',
     options = {
       info = 'spotify',
+    }
+  }}
+end
+function funcs.gimp(selection)
+  if selection then
+    lib.execute_cmd('gimp', true)
+    return nil
+  end
+
+  return {{
+    text = 'gimp',
+    options = {
+      info = 'gimp',
     }
   }}
 end
@@ -259,6 +271,7 @@ local initial_func = function()
     funcs.blender,
     funcs.postman,
     funcs.slack,
+    funcs.gimp,
     funcs.android_emulator,
     funcs.power,
     funcs.spotify,
