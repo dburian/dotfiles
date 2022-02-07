@@ -11,7 +11,7 @@ configuration {
 
   disable-history: true;
 
-  theme: "~/.config/rofi/theme.rasi";
+
 
   kb-cancel: "Super+space";
   kb-accept-entry: "Return,KP_Enter";
@@ -20,3 +20,4 @@ configuration {
   kb-row-down: "Control+j";
 
 }
+@theme "~/.config/rofi/theme.rasi"

@@ -213,6 +213,19 @@ function funcs.gimp(selection)
     }
   }}
 end
+function funcs.mailspring(selection)
+  if selection then
+    lib.execute_cmd('mailspring', true)
+    return nil
+  end
+
+  return {{
+    text = 'mailspring',
+    options = {
+      info = 'mailspring',
+    }
+  }}
+end
 
 function funcs.power(selection)
   if selection == 'shutdown' then
@@ -272,6 +285,7 @@ local initial_func = function()
     funcs.postman,
     funcs.slack,
     funcs.gimp,
+    funcs.mailspring,
     funcs.android_emulator,
     funcs.power,
     funcs.spotify,
