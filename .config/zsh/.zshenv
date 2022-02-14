@@ -34,9 +34,12 @@ export CABAL_DIR="$XDG_CACHE_HOME"/cabal
 export CM_LAUNCHER="rofi"
 export CM_HISTLENGTH=10
 
+## Lua
+alias luamake=/home/dburian/.local/src/lua-language-server/3rd/luamake/luamake
+
 ## NPM
-export npm_config_prefix="$XDG_DATA_HOME"/node_modules
-export userconfig="$XDG_DATA_HOME"/npm
+export NVM_DIR="$HOME/.config/nvm"
+# export npm_config_prefix="$XDG_DATA_HOME"/node_modules
 
 ## JAVA
 export JAVA_HOME='/usr/lib/jvm/default'
