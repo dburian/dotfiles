@@ -1,3 +1,11 @@
+-- My neovim configuration
+--
+-- - lua/db - my configuration of plugins
+-- - plugin/ - my other files configuring core nvim
+-- TODO: maybe *slightly* rethink this
+
+
+
 -- Plugins
 vim.cmd('source ~/.config/nvim/plug.vim')
 
