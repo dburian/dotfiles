@@ -1,8 +1,8 @@
 
 local ls = require('luasnip')
 
-local lua_snippets = require('plugin.luasnip.lua')
-local dart_snippets = require('plugin.luasnip.dart')
+local lua_snippets = require('db.luasnip.ft.lua')
+local dart_snippets = require('db.luasnip.ft.dart')
 
 ls.snippets = {
   lua = lua_snippets,

@@ -28,10 +28,9 @@ function m.connect_to_qtconsole()
   buf_map(0, 'n', '[c', '?# %%$<cr>n:noh<cr>j', {silent = true, noremap = true})
 end
 
-
 vim.cmd[[
-  command! -nargs=1 JupyterQtConsole lua require'jupyter_integration'.start_qtconsole(<args>)
-  command! -nargs=0 JupyterConnect lua require'jupyter_integration'.connect_to_qtconsole()
+  command! -nargs=1 JupyterQtConsole lua require'db.jupyter_integration'.start_qtconsole(<args>)
+  command! -nargs=0 JupyterConnect lua require'db.jupyter_integration'.connect_to_qtconsole()
 ]]
 
 return m

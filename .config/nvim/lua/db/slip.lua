@@ -1,4 +1,4 @@
-config_require'slip'.setup{
+require'slip'.setup{
   slips = {
     main = {
       name = 'Main',
