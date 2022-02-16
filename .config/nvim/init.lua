@@ -16,7 +16,7 @@ require('db.globals')
 vim.g.mapleader = ','
 
 -- Lsp configuration
-config_require('db.lsp')
+config_require('db.lsp.init')
 
 -- Plugin configuration
 config_require('db.jupyter_integration')

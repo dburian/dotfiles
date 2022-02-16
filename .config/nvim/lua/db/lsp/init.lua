@@ -1,7 +1,7 @@
 local lsp_config = require('lspconfig')
 
-local updated_capabilites = vim.lsp.protocol.make_client_capabilities()
-updated_capabilites = require('cmp_nvim_lsp').update_capabilities(updated_capabilites)
+local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
+updated_capabilities = require('cmp_nvim_lsp').update_capabilities(updated_capabilities)
 
 local localSrcPath = vim.fn.expand'~/.local/src'
 
@@ -48,7 +48,7 @@ local servers = {
     },
   },
 
-  java = {
+  jdtls = {
     cmd = {
       'java',
       '-Declipse.application=org.eclipse.jdt.ls.core.id1',
@@ -85,12 +85,15 @@ local servers = {
       },
     },
   },
+
+  tsserver = {},
 }
 
 
-function custom_attach(_, bufnr)
+local custom_attach = function(_, bufnr)
   local opts = {noremap = true, silent = true}
 
+  --TODO: change to new-style mapping
   local bfk = function(mode, lhs, rhs)
     vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
   end
@@ -119,7 +122,7 @@ function custom_attach(_, bufnr)
 end
 
 
-function setup_server(server, config)
+local setup_server = function(server, config)
   config = vim.tbl_deep_extend("force", {
     on_attach = custom_attach,
     capabilities = updated_capabilities,
@@ -128,9 +131,14 @@ function setup_server(server, config)
     },
   }, config)
 
-  lsp_config[server].setup(config)
+  if lsp_config[server] == nil then
+    print("Error in lsp config: config for server " .. server .. " cannot be found")
+  else
+    lsp_config[server].setup(config)
+  end
 end
 
+for server, config in pairs(servers) do
+  setup_server(server, config)
+end
 
-
-return m
