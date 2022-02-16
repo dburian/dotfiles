@@ -39,7 +39,6 @@ alias luamake=/home/dburian/.local/src/lua-language-server/3rd/luamake/luamake
 
 ## NPM
 export NVM_DIR="$HOME/.config/nvm"
-# export npm_config_prefix="$XDG_DATA_HOME"/node_modules
 
 ## JAVA
 export JAVA_HOME='/usr/lib/jvm/default'

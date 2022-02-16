@@ -55,3 +55,9 @@ edit-file() {
 
   nvim $file
 }
+activate-nvm() {
+  #
+  # Loads nvm, node, npm and all other node-based programs.
+  #
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+}
