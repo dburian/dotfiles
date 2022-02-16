@@ -87,6 +87,7 @@ local servers = {
   },
 
   tsserver = {},
+  svelte = {},
 }
 
 
