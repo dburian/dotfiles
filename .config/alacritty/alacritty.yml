@@ -175,48 +175,48 @@ font:
 #draw_bold_text_with_bright_colors: false
 
 # Start flavours
-# Base16 Nord 256 - alacritty color config
-# arcticicestudio
+# Base16 One Light 256 - alacritty color config
+# Daniel Pfeifer (http://github.com/purpleKarrot)
 colors:
   # Default colors
   primary:
-    background: '0x2E3440'
-    foreground: '0xE5E9F0'
+    background: '0xfafafa'
+    foreground: '0x383a42'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x2E3440'
-    cursor: '0xE5E9F0'
+    text: '0xfafafa'
+    cursor: '0x383a42'
 
   # Normal colors
   normal:
-    black:   '0x2E3440'
-    red:     '0xBF616A'
-    green:   '0xA3BE8C'
-    yellow:  '0xEBCB8B'
-    blue:    '0x81A1C1'
-    magenta: '0xB48EAD'
-    cyan:    '0x88C0D0'
-    white:   '0xE5E9F0'
+    black:   '0xfafafa'
+    red:     '0xca1243'
+    green:   '0x50a14f'
+    yellow:  '0xc18401'
+    blue:    '0x4078f2'
+    magenta: '0xa626a4'
+    cyan:    '0x0184bc'
+    white:   '0x383a42'
 
   # Bright colors
   bright:
-    black:   '0x4C566A'
-    red:     '0xBF616A'
-    green:   '0xA3BE8C'
-    yellow:  '0xEBCB8B'
-    blue:    '0x81A1C1'
-    magenta: '0xB48EAD'
-    cyan:    '0x88C0D0'
-    white:   '0x8FBCBB'
+    black:   '0xa0a1a7'
+    red:     '0xca1243'
+    green:   '0x50a14f'
+    yellow:  '0xc18401'
+    blue:    '0x4078f2'
+    magenta: '0xa626a4'
+    cyan:    '0x0184bc'
+    white:   '0x090a0b'
 
   indexed_colors:
-    - { index: 16, color: '0xD08770' }
-    - { index: 17, color: '0x5E81AC' }
-    - { index: 18, color: '0x3B4252' }
-    - { index: 19, color: '0x434C5E' }
-    - { index: 20, color: '0xD8DEE9' }
-    - { index: 21, color: '0xECEFF4' }
+    - { index: 16, color: '0xd75f00' }
+    - { index: 17, color: '0x986801' }
+    - { index: 18, color: '0xf0f0f1' }
+    - { index: 19, color: '0xe5e5e6' }
+    - { index: 20, color: '0x696c77' }
+    - { index: 21, color: '0x202227' }
 # End flavours
 
 # Bell

@@ -213,16 +213,16 @@ function funcs.gimp(selection)
     }
   }}
 end
-function funcs.mailspring(selection)
+function funcs.thunderbird(selection)
   if selection then
-    lib.execute_cmd('mailspring', true)
+    lib.execute_cmd('thunderbird', true)
     return nil
   end
 
   return {{
-    text = 'mailspring',
+    text = 'thunderbird',
     options = {
-      info = 'mailspring',
+      info = 'thunderbird',
     }
   }}
 end
@@ -285,7 +285,7 @@ local initial_func = function()
     funcs.postman,
     funcs.slack,
     funcs.gimp,
-    funcs.mailspring,
+    funcs.thunderbird,
     funcs.android_emulator,
     funcs.power,
     funcs.spotify,
