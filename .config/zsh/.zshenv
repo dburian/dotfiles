@@ -42,6 +42,7 @@ export NVM_DIR="$HOME/.config/nvm"
 
 ## JAVA
 export JAVA_HOME='/usr/lib/jvm/default'
+export _JAVA_AWT_WM_NONREPARENTING=1 #needed for Protege
 # export CLASSPATH="$XDG_CACHE_HOME/maven/repository/"
 
 ## FLUTTER development
@@ -51,7 +52,7 @@ export CHROME_EXECUTABLE=`which google-chrome-stable`
 export dots="/home/dburian/Documents/dotfiles"
 
 ## Shortcuts
-alias l="ls -lah"
+alias l="ls -lah --group-directories-first"
 alias v="nvim"
 alias z="zathura --fork"
 alias view="feh --draw-filename --draw-tinted --auto-zoom"
