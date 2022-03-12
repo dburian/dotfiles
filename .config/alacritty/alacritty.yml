@@ -149,7 +149,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 9.5
+  size: 7
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -175,48 +175,48 @@ font:
 #draw_bold_text_with_bright_colors: false
 
 # Start flavours
-# Base16 One Light 256 - alacritty color config
-# Daniel Pfeifer (http://github.com/purpleKarrot)
+# Base16 Equilibrium Light 256 - alacritty color config
+# Carlo Abelli
 colors:
   # Default colors
   primary:
-    background: '0xfafafa'
-    foreground: '0x383a42'
+    background: '0xf5f0e7'
+    foreground: '0x43474e'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0xfafafa'
-    cursor: '0x383a42'
+    text: '0xf5f0e7'
+    cursor: '0x43474e'
 
   # Normal colors
   normal:
-    black:   '0xfafafa'
-    red:     '0xca1243'
-    green:   '0x50a14f'
-    yellow:  '0xc18401'
-    blue:    '0x4078f2'
-    magenta: '0xa626a4'
-    cyan:    '0x0184bc'
-    white:   '0x383a42'
+    black:   '0xf5f0e7'
+    red:     '0xd02023'
+    green:   '0x637200'
+    yellow:  '0x9d6f00'
+    blue:    '0x0073b5'
+    magenta: '0x4e66b6'
+    cyan:    '0x007a72'
+    white:   '0x43474e'
 
   # Bright colors
   bright:
-    black:   '0xa0a1a7'
-    red:     '0xca1243'
-    green:   '0x50a14f'
-    yellow:  '0xc18401'
-    blue:    '0x4078f2'
-    magenta: '0xa626a4'
-    cyan:    '0x0184bc'
-    white:   '0x090a0b'
+    black:   '0x73777f'
+    red:     '0xd02023'
+    green:   '0x637200'
+    yellow:  '0x9d6f00'
+    blue:    '0x0073b5'
+    magenta: '0x4e66b6'
+    cyan:    '0x007a72'
+    white:   '0x181c22'
 
   indexed_colors:
-    - { index: 16, color: '0xd75f00' }
-    - { index: 17, color: '0x986801' }
-    - { index: 18, color: '0xf0f0f1' }
-    - { index: 19, color: '0xe5e5e6' }
-    - { index: 20, color: '0x696c77' }
-    - { index: 21, color: '0x202227' }
+    - { index: 16, color: '0xbf3e05' }
+    - { index: 17, color: '0xc42775' }
+    - { index: 18, color: '0xe7e2d9' }
+    - { index: 19, color: '0xd8d4cb' }
+    - { index: 20, color: '0x5a5f66' }
+    - { index: 21, color: '0x2c3138' }
 # End flavours
 
 # Bell

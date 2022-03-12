@@ -20,7 +20,7 @@ myXmobar = "xmobar ~/.config/xmobar/xmobarrc"
 myKeys :: [(String, X ())]
 myKeys =
     [ ("M-<Space>", spawn myDmenu)
-    , ("M-<Return>", spawn (myTerminal))
+    , ("M-<Return>", spawn myTerminal)
     , ("M-S-<Return>", promote)
     , ("M-C-.", sendMessage NextLayout)
     ]
@@ -64,6 +64,7 @@ myXmobarPP = def
     lowWhite = xmobarColor "#bbbbbb" ""
 
 myXmobarProp = withEasySB (statusBarProp myXmobar (pure myXmobarPP)) defToggleStrutsKey
+
 
 main :: IO()
 main = xmonad

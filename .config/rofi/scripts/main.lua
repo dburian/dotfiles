@@ -226,6 +226,32 @@ function funcs.thunderbird(selection)
     }
   }}
 end
+function funcs.protege(selection)
+  if selection then
+    lib.execute_cmd('protege', true)
+    return nil
+  end
+
+  return {{
+    text = 'protege',
+    options = {
+      info = 'protege',
+    }
+  }}
+end
+function funcs.zeal(selection)
+  if selection then
+    lib.execute_cmd('zeal', true)
+    return nil
+  end
+
+  return {{
+    text = 'zeal',
+    options = {
+      info = 'zeal',
+    }
+  }}
+end
 
 function funcs.power(selection)
   if selection == 'shutdown' then
@@ -286,6 +312,8 @@ local initial_func = function()
     funcs.slack,
     funcs.gimp,
     funcs.thunderbird,
+    funcs.protege,
+    funcs.zeal,
     funcs.android_emulator,
     funcs.power,
     funcs.spotify,
