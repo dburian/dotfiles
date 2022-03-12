@@ -4,7 +4,7 @@ local opt = vim.opt
 -- Messages
 opt.shortmess:remove('A')
 --- Tab completion
-opt.wildmode = 'list:full' --on Tab complete with the last buffer used
+opt.wildmode = 'list:longest' --on Tab complete to longest matching substring and list all items
 
 --- Search
 opt.ignorecase = true  --case-insensitive search
