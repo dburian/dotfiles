@@ -4,7 +4,9 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Util.Loggers
+import XMonad.Util.Brightness (increase, decrease)
 import XMonad.Actions.Promote
+import XMonad.Actions.Volume
 import XMonad.Hooks.EwmhDesktops
 
 -- Variable definitions
@@ -23,6 +25,11 @@ myKeys =
     , ("M-<Return>", spawn myTerminal)
     , ("M-S-<Return>", promote)
     , ("M-C-.", sendMessage NextLayout)
+    , ("<XF86AudioMute>", toggleMute >> return ())
+    , ("<XF86AudioRaiseVolume>", raiseVolume 10 >> return ())
+    , ("<XF86AudioLowerVolume>", lowerVolume 10 >> return ())
+    , ("<XF86MonBrightnessUp>", increase)
+    , ("<XF86MonBrightnessDown>", decrease)
     ]
 
 myConfig = def

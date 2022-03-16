@@ -2,25 +2,22 @@ Config { overrideRedirect = False
        , font     = "xft:DejaVu-10"
        , bgColor  = "#020202"
        , fgColor  = "#ffffff"
-       , position = TopW L 100
-       , commands = [ Run Cpu
-                        [ "-L", "3"
-                        , "-H", "50"
-                        , "--high"  , "red"
-                        , "--normal", "green"
-                        ] 10
-                    , Run Alsa "default" "Master"
-                        [ "--template", "<volumestatus>"
-                        , "--suffix"  , "True"
-                        , "--"
-                        , "--on", ""
-                        ]
-                    , Run Memory ["--template", "Mem: <usedratio>%"] 10
-                    , Run Swap [] 10
-                    , Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
+       , position = TopW C 100
+       , commands = [ Run Cpu ["-t", "cpu: <total>%"] 10
+                    , Run Memory ["--template", "mem: <usedratio>%"] 10
+                    , Run Swap ["-t", "[<usedratio>%]"] 60
+                    , Run Date "%H:%M %Y-%m-%d" "date" 30
                     , Run XMonadLog
-                    ]
+                    , Run Brightness ["-t", "brigh: <percent>%", "--", "-D", "intel_backlight" ] 10
+                    , Run Volume "default" "Master" ["-t", "vol: <volume>%"] 10
+                    , Run BatteryP ["BAT1"] [ "-t"
+                      , "batt: <left>%"
+                      , "--"
+                      , "-O", "charging" ] 120
+                    , Run Kbd [("us", "us"), ("cz(qwerty)", "cs")]
+                    , Run Wireless "wlp3s0" ["-t", "<ssid> <quality>%"] 10
+            ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "%XMonadLog% }{ %alsa:default:Master% | %cpu% | %memory% * %swap% | %date% "
+       , template = "%XMonadLog% }{ %kbd% | %default:Master% %bright% | %wlp3s0wi% | %battery% | %cpu% %memory%%swap% | %date% "
        }
