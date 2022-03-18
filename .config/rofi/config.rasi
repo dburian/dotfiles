@@ -13,11 +13,11 @@ configuration {
 
 
 
-  kb-cancel: "Super+space";
+  kb-cancel: "Escape,Super+space";
   kb-accept-entry: "Return,KP_Enter";
   kb-remove-to-eol: "";
-  kb-row-up: "Control+k";
-  kb-row-down: "Control+j";
+  kb-row-up: "Control+k,Up";
+  kb-row-down: "Control+j,Down";
 
 }
 @theme "~/.config/rofi/theme.rasi"

@@ -5,9 +5,9 @@ activate_virtual_environment() {
   # Activates virtual environment in the cwd
   #
 
-  activate_path=`find . -maxdepth 3 -path "*/bin/activate" -type f`
+  activate_path="/home/dburian/.local/share/python-venvs/$1/bin/activate"
 
-  [ "$activate_path" = '' ] && echo 'No environment to activate.' && return 1
+  [ ! -e "$activate_path" ] && echo "Environment \"$1\" was not found." && return 1
 
   source $activate_path
   return 0
