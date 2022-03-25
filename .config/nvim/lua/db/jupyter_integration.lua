@@ -12,7 +12,11 @@ local m = {}
 
 function m.start_qtconsole(used_kernel)
   -- Starts up jupyter qtconsole accepting remote input with specified kernel
-   vim.fn.jobstart('jupyter qtconsole --kernel ' .. used_kernel .. ' --ConsoleWidget.include_other_output "True"')
+  if used_kernel ~= nil then
+    vim.fn.jobstart('jupyter qtconsole --kernel ' .. used_kernel .. ' --ConsoleWidget.include_other_output "True"')
+  else
+    vim.fn.jobstart('jupyter qtconsole --ConsoleWidget.include_other_output "True"')
+  end
 end
 
 function m.connect_to_qtconsole()
@@ -29,7 +33,7 @@ function m.connect_to_qtconsole()
 end
 
 vim.cmd[[
-  command! -nargs=1 JupyterQtConsole lua require'db.jupyter_integration'.start_qtconsole(<args>)
+  command! -nargs=? JupyterQtConsole lua require'db.jupyter_integration'.start_qtconsole(<args>)
   command! -nargs=0 JupyterConnect lua require'db.jupyter_integration'.connect_to_qtconsole()
 ]]
 
