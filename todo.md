@@ -2,7 +2,7 @@
 
 ## Functional
   [ ] nvim
-    [ ] status line
+    [x] status line
     [-] project starter (at least something pretty)
     [x] LSP
     [x] fuzzy file
@@ -15,10 +15,10 @@
     [x] python LSP
     [x] jupyter
   [ ] tmux
-    [ ] colors
-    [ ] nice nice
-    [ ] key bindings
-    [ ] .tmux in projects
+    [x] colors
+    [x] nice nice
+    [x] key bindings
+    [x] .tmux in projects
   [ ] rofi
     [ ] projects script - find .tmux
     [ ] bluetooth script
@@ -38,6 +38,7 @@
   [x] awesome
     [x] config
     [x] themes
+  [x] xmonad
   [x] brightness
     [x] keymap
     [-] notification

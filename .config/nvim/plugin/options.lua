@@ -32,6 +32,11 @@ opt.relativenumber = true  --number lines relative to current line
 opt.mouse = 'nv' --enable mouse for normal and visual mode
 opt.timeoutlen = 500 --timeout for key sequences
 
+opt.laststatus = 3 -- have only global status line for all splits
+opt.foldmethod = 'marker' -- only marked folds
+
+
+
 opt.clipboard:append('unnamedplus')
 
 vim.cmd[[syntax on]]
@@ -39,4 +44,7 @@ vim.cmd[[syntax on]]
 -- Configure pythons for remote plugins
 --- Colors
 vim.g.base16colorspace = 256
-vim.cmd('source ~/.config/nvim/theme.vim')
+vim.cmd[[
+  source ~/.config/nvim/theme.vim
+  highlight WinSeparator guibg=None
+]]
