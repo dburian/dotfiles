@@ -16,7 +16,7 @@
 
 [alias]
   c = commit
-[pull]
-	ff = only
 [init]
 	defaultBranch = main
+[pull]
+	rebase = false

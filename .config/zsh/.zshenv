@@ -52,7 +52,7 @@ export CHROME_EXECUTABLE=`which google-chrome-stable`
 export dots="/home/dburian/Documents/dotfiles"
 
 ## Shortcuts
-alias l="ls -lah --group-directories-first"
+alias l="ls -lah --group-directories-first --color=always"
 alias v="nvim"
 alias z="zathura --fork"
 alias view="feh --draw-filename --draw-tinted --auto-zoom"

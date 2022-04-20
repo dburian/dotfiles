@@ -226,16 +226,16 @@ function funcs.thunderbird(selection)
     }
   }}
 end
-function funcs.protege(selection)
+function funcs.configure_wacom(selection)
   if selection then
-    lib.execute_cmd('protege', true)
+    lib.execute_cmd('config_wacom', true)
     return nil
   end
 
   return {{
-    text = 'protege',
+    text = 'configure wacom',
     options = {
-      info = 'protege',
+      info = 'configure_wacom',
     }
   }}
 end
@@ -312,7 +312,7 @@ local initial_func = function()
     funcs.slack,
     funcs.gimp,
     funcs.thunderbird,
-    funcs.protege,
+    funcs.configure_wacom,
     funcs.zeal,
     funcs.android_emulator,
     funcs.power,
