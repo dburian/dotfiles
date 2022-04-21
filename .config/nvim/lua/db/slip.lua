@@ -12,6 +12,8 @@ require'slip'.setup{
   default_slip = 'main',
 }
 
+-- TODO: lets start from scratch, only implement the things i need in this file
+
 vim.api.nvim_set_keymap(
   'n',
   '<leader>np',
