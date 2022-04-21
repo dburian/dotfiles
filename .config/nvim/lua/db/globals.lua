@@ -1,6 +1,10 @@
 -- Anythink I would like to have at hand anytime in nvim
 --
 
+function P(args)
+  print(vim.inspect(args))
+end
+
 function unload_module(module_name)
   local matcher = function (loaded_module)
     return string.find(loaded_module, module_name, 1, true)

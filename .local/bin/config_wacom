@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Mapping to 1920x1080 screen
+
+pad="Wacom Intuos Pro M Pad pad"
+stylus="Wacom Intuos Pro M Pen stylus"
+eraser="Wacom Intuos Pro M Pen eraser"
+touch="Wacom Intuos Pro M Finger touch"
+
+xsetwacom set "$stylus" MapToOutput 1920x1080+0+0
+xsetwacom set "$eraser" MapToOutput 1920x1080+0+0
+xsetwacom set "$pad" MapToOutput 1920x1080+0+0
+xsetwacom set "$touch" MapToOutput 1920x1080+0+0
+
+# Set correct aspect ratio
+
+xsetwacom set "$stylus" Area 0 0 44800 25200
+xsetwacom set "$eraser" Area 0 0 44800 25200
+xsetwacom set "$touch" Area 0 0 8960 5040
+
+
+

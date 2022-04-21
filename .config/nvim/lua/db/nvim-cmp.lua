@@ -62,7 +62,8 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },
-    { name = 'buffer'}
+    { name = 'buffer'},
+    -- { name = 'slip' },
   },
   formatting = {
     format = lspkind.cmp_format {
