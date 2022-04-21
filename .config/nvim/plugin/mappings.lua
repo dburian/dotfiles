@@ -40,10 +40,14 @@ map('v', '<Up>', ":m '<-2<cr>gv=gv", {noremap = true})
 map('v', '<Down>', ":m '>+1<cr>gv=gv", {noremap = true})
 
 -- Accessing files
--- TODO: reload all lua modules
+
+-- Develop
 map(
   'n',
   '<leader>sc',
   ':lua reload_config()<cr>',
   {noremap = true, silent = true}
 )
+
+map('n', '<leader><leader>s', ':w<cr>:source %<cr>', {noremap = true})
+
