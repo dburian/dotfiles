@@ -175,48 +175,48 @@ font:
 #draw_bold_text_with_bright_colors: false
 
 # Start flavours
-# Base16 Equilibrium Light 256 - alacritty color config
-# Carlo Abelli
+# Base16 Helios 256 - alacritty color config
+# Alex Meyer (https://github.com/reyemxela)
 colors:
   # Default colors
   primary:
-    background: '0xf5f0e7'
-    foreground: '0x43474e'
+    background: '0x1d2021'
+    foreground: '0xd5d5d5'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0xf5f0e7'
-    cursor: '0x43474e'
+    text: '0x1d2021'
+    cursor: '0xd5d5d5'
 
   # Normal colors
   normal:
-    black:   '0xf5f0e7'
-    red:     '0xd02023'
-    green:   '0x637200'
-    yellow:  '0x9d6f00'
-    blue:    '0x0073b5'
-    magenta: '0x4e66b6'
-    cyan:    '0x007a72'
-    white:   '0x43474e'
+    black:   '0x1d2021'
+    red:     '0xd72638'
+    green:   '0x88b92d'
+    yellow:  '0xf19d1a'
+    blue:    '0x1e8bac'
+    magenta: '0xbe4264'
+    cyan:    '0x1ba595'
+    white:   '0xd5d5d5'
 
   # Bright colors
   bright:
-    black:   '0x73777f'
-    red:     '0xd02023'
-    green:   '0x637200'
-    yellow:  '0x9d6f00'
-    blue:    '0x0073b5'
-    magenta: '0x4e66b6'
-    cyan:    '0x007a72'
-    white:   '0x181c22'
+    black:   '0x6f7579'
+    red:     '0xd72638'
+    green:   '0x88b92d'
+    yellow:  '0xf19d1a'
+    blue:    '0x1e8bac'
+    magenta: '0xbe4264'
+    cyan:    '0x1ba595'
+    white:   '0xe5e5e5'
 
   indexed_colors:
-    - { index: 16, color: '0xbf3e05' }
-    - { index: 17, color: '0xc42775' }
-    - { index: 18, color: '0xe7e2d9' }
-    - { index: 19, color: '0xd8d4cb' }
-    - { index: 20, color: '0x5a5f66' }
-    - { index: 21, color: '0x2c3138' }
+    - { index: 16, color: '0xeb8413' }
+    - { index: 17, color: '0xc85e0d' }
+    - { index: 18, color: '0x383c3e' }
+    - { index: 19, color: '0x53585b' }
+    - { index: 20, color: '0xcdcdcd' }
+    - { index: 21, color: '0xdddddd' }
 # End flavours
 
 # Bell

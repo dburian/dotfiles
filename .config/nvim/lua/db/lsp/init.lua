@@ -19,6 +19,8 @@ local server_install_dir = localSrcPath .. '/eclipse.jdt.ls/org.eclipse.jdt.ls.p
 local flutter_sdk_path = '/opt/flutter/'
 
 local servers = {
+  texlab = {},
+  -- ltex = {}, -- Could not get it to work :(
   pyright = {
     settings = {
       python = {
@@ -26,7 +28,7 @@ local servers = {
         analysis = {
           autoSearchPaths = true,
           diagnosticMode = "workspace",
-          useLibraryCodeForTypes = true
+          -- useLibraryCodeForTypes = true
         }
       }
     }
