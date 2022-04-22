@@ -5,6 +5,7 @@ local luasnip = require'luasnip'
 
 vim.opt.completeopt = "menuone,noselect"
 
+
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
@@ -18,27 +19,31 @@ cmp.setup {
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<leader>e'] = cmp.mapping.close(),
-    ['<c-j>'] = cmp.mapping.select_next_item(),
-    ['<c-k>'] = cmp.mapping.select_prev_item(),
-    ['<c-l>'] = cmp.mapping(function (fallback)
-      if luasnip.expand_or_jumpable() then
-        return luasnip.expand_or_jump()
-      elseif cmp.visible() then
-        return cmp.confirm({
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = true,
-        })
-      end
+    ['<c-l>'] = cmp.mapping(
+      cmp.mapping.confirm {
+        behavior = cmp.ConfirmBehavior.Insert,
+        select = true,
+    }, { "i", "c" }),
+    ['<c-n>'] = cmp.mapping.select_next_item(),
+    ['<c-p>'] = cmp.mapping.select_prev_item(),
+    -- ['<c-y>'] = cmp.mapping(function (fallback)
+    --   if luasnip.expand_or_jumpable() then
+    --     return luasnip.expand_or_jump()
+    --   elseif cmp.visible() then
+    --     return cmp.confirm({
+    --       behavior = cmp.ConfirmBehavior.Replace,
+    --       select = true,
+    --     })
+    --   end
+    --   fallback()
+    -- end, {'i', 'c'}),
+    -- ['<c-h>'] = cmp.mapping(function (fallback)
+    --   if luasnip.jumpable(-1) then
+    --     return luasnip.jump(-1)
+    --   end
 
-      fallback()
-    end, {'i', 'c'}),
-    ['<c-h>'] = cmp.mapping(function (fallback)
-      if luasnip.jumpable(-1) then
-        return luasnip.jump(-1)
-      end
-
-      fallback()
-    end, {'i', 'c'}),
+    --   fallback()
+    -- end, {'i', 'c'}),
     -- ['<c-l>'] = cmp.mapping.confirm {
     --   behavior = cmp.ConfirmBehavior.Replace,
     --   select = true,
