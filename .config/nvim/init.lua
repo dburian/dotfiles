@@ -5,7 +5,6 @@
 -- TODO: maybe *slightly* rethink this
 
 
-
 -- Plugins
 vim.cmd('source ~/.config/nvim/plug.vim')
 
