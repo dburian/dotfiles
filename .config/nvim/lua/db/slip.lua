@@ -1,3 +1,6 @@
+local scandir = require('plenary.scandir')
+local Path = require('plenary.path')
+
 local c = {
   slips = {
     main = {
@@ -12,6 +15,7 @@ local c = {
   default_slip = 'main',
 }
 
+-- TODO: separate file exporting source
 -- Helper functions
 local function curr_slip()
   local dirpath = vim.loop.fs_realpath(vim.fn.expand'%:p:h')
@@ -23,6 +27,42 @@ local function curr_slip()
   end
 
   return nil
+end
+
+local function get_notes(slip_name)
+  local slip_path = c.slips[slip_name].path
+  local paths = scandir.scan_dir(slip_path, {
+    add_dirs = false,
+    hidden = false,
+    depth = 5, --TODO: in config later
+    search_pattern = '.*%.md',
+  })
+
+  local notes = {}
+  for _, path in ipairs(paths) do
+    local rel_path = Path.new(path):make_relative(slip_path)
+    table.insert(notes, {
+      path = path,
+      rel_path = rel_path,
+      id = vim.fn.fnamemodify(Path.new(rel_path):shorten(), ':r'),
+      contents = Path.new(path):read()
+    })
+  end
+
+  return notes
+end
+
+local function get_buf_links(buffer)
+  local buf_lines = vim.api.nvim_buf_get_lines(buffer, 0, -1, false)
+  local lines = {}
+  for _, line in ipairs(buf_lines) do
+    local note_id, note_rel_path = string.match(line, '%[([^]]*)%]:%s*(.*%.md)$')
+    if note_id and note_rel_path then
+      lines[note_rel_path] = note_id
+    end
+  end
+
+  return lines
 end
 
 -- nvim-cmp source
@@ -45,18 +85,70 @@ function link_cmp_source:is_available()
   )
 end
 
-function link_cmp_source:get_keyword_pattern()
-  return [=[\v\[[^\]]+\]\[]=]
-end
-
-function link_cmp_source:get_trigger_characters()
+function link_cmp_source.get_trigger_characters()
   return {'['}
 end
 
-function link_cmp_source:complete(_, callback)
-  callback({
-    {label = 'ahoj'},
-  })
+function link_cmp_source:complete(params, callback)
+
+  -- TODO: Configure if in text or separate
+  -- Only display entries for link targets
+  if not vim.endswith(params.context.cursor_before_line, '][') then
+    return callback()
+  end
+
+  local slip_name = curr_slip()
+
+  if not slip_name then
+    return callback(nil)
+  end
+
+  local line_count = vim.api.nvim_buf_line_count(0)
+  local linked_notes = get_buf_links(0)
+
+  P(linked_notes)
+
+  local notes = get_notes(slip_name)
+
+  local entries = {}
+  for _, note in ipairs(notes) do
+    local link_ref = '[' .. note.id .. ']: ' .. note.rel_path
+
+    note.id = linked_notes[note.rel_path] or note.id
+
+    local entry = {
+      label = note.rel_path,
+      documentation = {
+        kind = 'markdown',
+        value = note.contents
+      },
+      detail = slip_name,
+      insertText = note.id .. ']'
+    }
+
+    if not linked_notes[note.rel_path] then
+      entry.additionalTextEdits = {
+        {
+          newText = link_ref,
+          --TODO: Configure begining of buffer or at end
+          range = {
+            start = {
+              line = line_count,
+              character = 0,
+            },
+            ['end'] = {
+              line = line_count,
+              character = string.len(link_ref)
+            }
+          }
+        },
+      }
+    end
+
+    table.insert(entries, entry)
+  end
+
+  callback(entries)
 end
 
 local src_id = nil
