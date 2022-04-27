@@ -68,7 +68,12 @@ cmp.setup {
     { name = 'luasnip' },
     { name = 'path' },
     { name = 'buffer'},
-    -- { name = 'slip' },
+    { name = 'markdown-link',
+      option = {
+        reference_link_location = 'top',
+        searched_depth = 0,
+      }
+    },
   },
   formatting = {
     format = lspkind.cmp_format {
@@ -79,6 +84,7 @@ cmp.setup {
         nvim_lua = "[api]",
         path = "[path]",
         luasnip = "[snip]",
+        ['markdown-link'] = '[link]'
       },
     },
   },

@@ -1,19 +1,17 @@
 
 local ls = require('luasnip')
 
-local lua_snippets = require('db.luasnip.ft.lua')
-local dart_snippets = require('db.luasnip.ft.dart')
-
-ls.config.set_config {
+ls.config.set_config({
   history = true,
-  update_events = 'TextChanged, TextChangedI',
-}
+  update_events = 'TextChanged,TextChangedI',
+})
 
-
+-- TODO: Make it so i can resource snippets (or better even files) on the go.
 
 ls.snippets = {
-  lua = lua_snippets,
-  dart = dart_snippets,
+  lua = require'db.luasnip.ft.lua',
+  dart = require'db.luasnip.ft.dart',
+  python = require'db.luasnip.ft.python',
 }
 
 local map = vim.keymap.set
