@@ -1,7 +1,8 @@
 [[item]]
-file = '~/.config/alacritty/alacritty.yml'
+file = '~/.config/alacritty/theme.yml'
 template = 'alacritty'
 subtemplate = 'default-256'
+rewrite = true
 
 [[item]]
 file = '~/.config/nvim/theme.vim'

@@ -1,1 +1,7 @@
+# Ignoring theme files
 .config/nvim/theme.vim
+.config/alacritty/theme.yml
+
+# Ingoring system-dependent files
+.config/alacritty/notebook.yml
+.config/alacritty/pc.yml
