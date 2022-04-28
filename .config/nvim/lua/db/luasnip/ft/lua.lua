@@ -1,21 +1,35 @@
 local ls = require('luasnip')
 
 local s = ls.snippet
-local t = ls.text_node
 local i = ls.insert_node
+local f = ls.function_node
+
+local fmt = require'luasnip.extras.fmt'.fmt
+
+local function extract_last_import_name(args)
+  local parts = vim.split(args[1][1], '.', {plain = true})
+  return parts[#parts] or ''
+end
 
 local lua_snippets = {
-  s({
-    trig = 'req',
-    namr = 'require',
-    dscr = "local <variable> = require('<package>')",
-  }, {
-    t('local '),
-    i(1),
-    t(' = require(\''),
-    i(0),
-    t('\')')
-  }),
+  s(
+    {
+      trig = 'req',
+      dscr = 'require a packageeee'
+    },
+    fmt('local {} = require\'{}\'', {
+      f(extract_last_import_name, {1}),
+      i(1, 'package'),
+    })
+  ),
+
+  s(
+    {
+      trig = 'todo',
+      namr = 'TODO',
+    },
+    fmt('-- TODO: {}', {i(0, 'I need to ...')})
+  ),
 }
 
 return lua_snippets

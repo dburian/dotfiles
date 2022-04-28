@@ -26,8 +26,8 @@ myKeys =
     , ("M-S-<Return>", promote)
     , ("M-C-.", sendMessage NextLayout)
     , ("<XF86AudioMute>", toggleMute >> return ())
-    , ("<XF86AudioRaiseVolume>", raiseVolume 10 >> return ())
-    , ("<XF86AudioLowerVolume>", lowerVolume 10 >> return ())
+    , ("<XF86AudioRaiseVolume>", raiseVolume 5 >> return ())
+    , ("<XF86AudioLowerVolume>", lowerVolume 5 >> return ())
     , ("<XF86MonBrightnessUp>", increase)
     , ("<XF86MonBrightnessDown>", decrease)
     ]
