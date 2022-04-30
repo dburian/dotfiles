@@ -8,13 +8,14 @@
 #
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
-#import:
-#  - /path/to/alacritty.yml
+import:
+  - ~/.config/alacritty/notebook.yml
+  - ~/.config/alacritty/theme.yml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+# env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
@@ -148,8 +149,8 @@ font:
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
 
-  # Point size
-  size: 9.5
+  # Point size - defined per system
+  # size: 6.5
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -173,51 +174,6 @@ font:
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
-
-# Start flavours
-# Base16 One Light 256 - alacritty color config
-# Daniel Pfeifer (http://github.com/purpleKarrot)
-colors:
-  # Default colors
-  primary:
-    background: '0xfafafa'
-    foreground: '0x383a42'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0xfafafa'
-    cursor: '0x383a42'
-
-  # Normal colors
-  normal:
-    black:   '0xfafafa'
-    red:     '0xca1243'
-    green:   '0x50a14f'
-    yellow:  '0xc18401'
-    blue:    '0x4078f2'
-    magenta: '0xa626a4'
-    cyan:    '0x0184bc'
-    white:   '0x383a42'
-
-  # Bright colors
-  bright:
-    black:   '0xa0a1a7'
-    red:     '0xca1243'
-    green:   '0x50a14f'
-    yellow:  '0xc18401'
-    blue:    '0x4078f2'
-    magenta: '0xa626a4'
-    cyan:    '0x0184bc'
-    white:   '0x090a0b'
-
-  indexed_colors:
-    - { index: 16, color: '0xd75f00' }
-    - { index: 17, color: '0x986801' }
-    - { index: 18, color: '0xf0f0f1' }
-    - { index: 19, color: '0xe5e5e6' }
-    - { index: 20, color: '0x696c77' }
-    - { index: 21, color: '0x202227' }
-# End flavours
 
 # Bell
 #
