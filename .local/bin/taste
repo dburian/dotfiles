@@ -1,0 +1,75 @@
+#!/bin/python3
+#
+# Script for trying out new "flavours"
+#
+
+import argparse
+import os
+import subprocess
+import random
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--light", action='store_true', help="Cycle only light themes.")
+parser.add_argument("--dark", action='store_true', help="Cycle only dark themes.")
+
+DARK_THEME_THRESHOLD = 324
+random.seed(42)
+
+def get_cmd_output(cmd):
+    return subprocess.check_output(cmd, shell=True, encoding='utf-8')[:-1]
+
+
+def hex_to_int(hex_str):
+    sum = 0
+    for i in [0, 2, 4]:
+        sum += int(hex_str[i:i+2], 16)
+
+    return sum
+
+
+def set_theme(theme):
+    os.system(f'flavours apply {theme}')
+
+def curr_theme():
+    return get_cmd_output('flavours current')
+
+
+def get_all_themes():
+    all_thems = get_cmd_output('flavours list')
+    return all_thems.split(' ')
+
+def cycle_colors(args):
+    def check_theme(theme):
+        main_color_hex = get_cmd_output(
+            f'flavours info {theme} -r | head -n 3 | tail -n 1 | cut -d"#" -f 2'
+        )
+        main_color_int = hex_to_int(main_color_hex)
+
+        if (args.light and main_color_int < DARK_THEME_THRESHOLD) or \
+                (args.dark and main_color_int > DARK_THEME_THRESHOLD):
+            return False
+
+        return True
+
+    themes = get_all_themes()
+    old_theme = curr_theme()
+    theme_ind = 0
+    for i, t in enumerate(themes):
+        if t == old_theme: theme_ind = i
+
+    print(f'Old theme: {old_theme}')
+    print('Cycling themes using \'flavours\' command:')
+
+    end = False
+    while not end:
+        theme_ind = (theme_ind + 1) % len(themes)
+        while not check_theme(themes[theme_ind]): theme_ind = (theme_ind + 1) % len(themes)
+
+        set_theme(themes[theme_ind])
+        print(f'Current theme: {themes[theme_ind]}')
+        end = input('Again [y]/n: ') == 'n'
+
+
+if __name__ == '__main__':
+  args = parser.parse_args()
+  cycle_colors(args)
