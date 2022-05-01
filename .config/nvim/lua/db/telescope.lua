@@ -1,6 +1,5 @@
 -- Configuration of telescope plugin
 
-
 local fb_actions = require "telescope".extensions.file_browser.actions
 
 require('telescope').setup {
@@ -25,40 +24,60 @@ require('telescope').setup {
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('file_browser')
 
-vim.api.nvim_set_keymap(
+vim.keymap.set(
   'n',
   '<leader>fd',
-  ':lua require("telescope.builtin").git_files({cwd = "~/Documents/dotfiles", prompt_title = "Dotfiles"})<CR>',
+  function()
+    require("telescope.builtin").git_files({
+      cwd = "~/Documents/dotfiles",
+      prompt_title = "Dotfiles",
+    })
+  end,
   {noremap = true, silent = true}
 )
-vim.api.nvim_set_keymap(
+vim.keymap.set(
   'n',
   '<leader>fg',
-  ':lua require("telescope.builtin").git_files()<cr>',
+  -- TODO: If there is no git repo, just find files in current directory
+  require("telescope.builtin").git_files,
   {noremap = true, silent = true}
 )
 
-vim.api.nvim_set_keymap(
+vim.keymap.set(
   'n',
   '<leader>fb',
-  ':lua require("telescope.builtin").buffers()<cr>',
+  require("telescope.builtin").buffers,
   {noremap = true, silent = true}
 )
-vim.api.nvim_set_keymap(
+vim.keymap.set(
   'n',
   '<leader>fl',
-  ':lua require("telescope.builtin").live_grep()<cr>',
+  require("telescope.builtin").live_grep,
   {noremap = true, silent = true}
 )
-vim.api.nvim_set_keymap(
+vim.keymap.set(
   'n',
   '<leader>ft',
-  ':lua require("telescope").extensions.file_browser.file_browser({path = vim.fn.expand("%:p:h")})<cr>',
+  function ()
+    require("telescope").extensions.file_browser.file_browser({
+      path = vim.fn.expand("%:p:h")
+    })
+  end,
   {noremap = true, silent = true}
 )
-vim.api.nvim_set_keymap(
+vim.keymap.set(
+  'n',
+  '<leader>fp',
+  function ()
+    require('telescope.builtin').find_files{
+      cwd = '~/.local/share/nvim/bundle/'
+    }
+  end,
+  {noremap = true, silent = true}
+)
+vim.keymap.set(
   'n',
   '<leader>fh',
-  ':lua require("telescope.builtin").help_tags()<cr>',
+  require("telescope.builtin").help_tags,
   {noremap = true, silent = true}
 )
