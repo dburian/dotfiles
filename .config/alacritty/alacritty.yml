@@ -9,6 +9,7 @@
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
 import:
+  # These cannot go through a symlink for alacritty to register their change
   - ~/.config/alacritty/system.yml
   - ~/.config/alacritty/theme.yml
 
