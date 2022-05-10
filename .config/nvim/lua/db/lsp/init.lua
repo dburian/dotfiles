@@ -19,7 +19,7 @@ local server_install_dir = localSrcPath .. '/eclipse.jdt.ls/org.eclipse.jdt.ls.p
 local flutter_sdk_path = '/opt/flutter/'
 
 local servers = {
-  texlab = {},
+  -- texlab = {}, -- I don't need this, got luasnip
   -- ltex = {}, -- Could not get it to work :(
   pyright = {
     settings = {

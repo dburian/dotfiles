@@ -11,7 +11,7 @@ local function extract_last_import_name(args)
   return parts[#parts] or ''
 end
 
-local lua_snippets = {
+local snippets = {
   s(
     {
       trig = 'req',
@@ -32,4 +32,5 @@ local lua_snippets = {
   ),
 }
 
-return lua_snippets
+
+ls.add_snippets('lua', snippets, { key = 'lua' })

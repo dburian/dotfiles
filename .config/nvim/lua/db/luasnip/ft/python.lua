@@ -10,4 +10,4 @@ local snippets = {
   )
 }
 
-return snippets
+ls.add_snippets('python', snippets, { key = 'python' })

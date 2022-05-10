@@ -66,4 +66,5 @@ local dart_snippets = {
   })
 }
 
-return dart_snippets
+ls.add_snippets('dart', dart_snippets, { key = 'dart' })
+

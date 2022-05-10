@@ -1,3 +1,9 @@
+-- Luasnip config entrypoint
+--
+-- Place for:
+--  * mappings
+--  * helper functions
+
 
 local ls = require('luasnip')
 
@@ -6,13 +12,12 @@ ls.config.set_config({
   update_events = 'TextChanged,TextChangedI',
 })
 
--- TODO: Make it so i can resource snippets (or better even files) on the go.
+-- Loading all filetype specific snippets
+local snippet_files = vim.api.nvim_get_runtime_file("lua/db/luasnip/ft/*.lua", true)
+for _, ft_path in ipairs(snippet_files) do
+  loadfile(ft_path)()
+end
 
-ls.snippets = {
-  lua = require'db.luasnip.ft.lua',
-  dart = require'db.luasnip.ft.dart',
-  python = require'db.luasnip.ft.python',
-}
 
 local map = vim.keymap.set
 
