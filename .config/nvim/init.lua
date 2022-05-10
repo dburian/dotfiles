@@ -2,7 +2,12 @@
 --
 -- - lua/db - my configuration of plugins
 -- - plugin/ - my other files configuring core nvim
--- TODO: maybe *slightly* rethink this
+--
+-- Slowly tranistion to:
+--
+--  - lua/db - lua files that export the functionality
+--  - after/plugin - configuration of plugins (possibly using lua/db/..)
+--  - plugin/ - files that should be loaded automatically ASAP
 
 
 -- Plugins
