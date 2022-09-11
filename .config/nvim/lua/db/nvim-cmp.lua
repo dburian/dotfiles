@@ -71,7 +71,7 @@ cmp.setup {
     { name = 'markdown-link',
       option = {
         reference_link_location = 'top',
-        searched_depth = 0,
+        searched_depth = 2,
       }
     },
   },

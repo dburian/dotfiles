@@ -26,6 +26,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'dburian/telescope-markdown-links'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
@@ -33,6 +34,7 @@ Plug 'jose-elias-alvarez/null-ls.nvim'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-context' " display context in first line
 
 " Autocompletion
 Plug 'hrsh7th/nvim-cmp'
@@ -54,7 +56,8 @@ Plug 'goerz/jupytext.vim'
 Plug 'tjdevries/express_line.nvim'
 
 " My stuff
-Plug '~/Documents/Slip.nvim'
+" Plug '~/Documents/Slip.nvim'
+" Plug '~/Documents/telescope-markdown-links'
 
 " Automatically executes:
 "   filetype plugin indent on

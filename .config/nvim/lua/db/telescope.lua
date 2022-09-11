@@ -23,6 +23,7 @@ require('telescope').setup {
 
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('file_browser')
+require('telescope').load_extension('markdown-links')
 
 vim.keymap.set(
   'n',
@@ -51,7 +52,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   'n',
-  '<leader>fl',
+  '<leader>flg',
   require("telescope.builtin").live_grep,
   {noremap = true, silent = true}
 )
@@ -79,5 +80,17 @@ vim.keymap.set(
   'n',
   '<leader>fh',
   require("telescope.builtin").help_tags,
+  {noremap = true, silent = true}
+)
+vim.keymap.set(
+  'n',
+  '<leader>fl',
+  require'telescope'.extensions['markdown-links'].find_links,
+  {noremap = true, silent = true}
+)
+vim.keymap.set(
+  'n',
+  '<leader>fbl',
+  require'telescope'.extensions['markdown-links'].find_backlinks,
   {noremap = true, silent = true}
 )
