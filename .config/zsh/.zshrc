@@ -37,3 +37,5 @@ source /home/dburian/.config/zsh/funcs
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias luamake=/home/dburian/.local/src/lua-language-server/3rd/luamake/luamake

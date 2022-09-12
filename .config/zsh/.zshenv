@@ -5,6 +5,7 @@ export EDITOR="nvim"
 ## PATH
 export PATH="$PATH:/usr/lib/jvm/default/bin"
 export PATH="$PATH:/home/dburian/.cache/cabal/bin"
+export PATH="$PATH:$XDG_DATA_HOME/go/bin"
 
 export ANDROID_SDK_ROOT='/opt/android-sdk'
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
@@ -29,6 +30,7 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export GHCUP_USE_XDG_DIRS='yes'
 export CABAL_CONFIG="$XDG_CONFIG_HOME"/cabal/config
 export CABAL_DIR="$XDG_CACHE_HOME"/cabal
+export GOPATH="$XDG_DATA_HOME"/go
 
 ## Clipboard manager - clipmenu
 export CM_LAUNCHER="rofi"
