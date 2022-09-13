@@ -164,9 +164,9 @@ local custom_attach = function(_, _)
     require 'telescope.builtin'.lsp_document_symbols()
   end, opts })
 
-  nmap({ '[d', vim.lsp.diagnostic.goto_prev, opts })
-  nmap({ ']d', vim.lsp.diagnostic.goto_next, opts })
-  nmap({ '<leader>dl', vim.lsp.diagnostic.set_loclist, opts })
+  nmap({ '[d', vim.diagnostic.goto_prev, opts })
+  nmap({ ']d', vim.diagnostic.goto_next, opts })
+  nmap({ '<leader>dl', vim.diagnostic.setloclist, opts })
   nmap({ '<leader>fo', vim.lsp.buf.format, opts })
 
 
