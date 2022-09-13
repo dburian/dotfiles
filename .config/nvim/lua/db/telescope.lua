@@ -12,7 +12,11 @@ require('telescope').setup {
   pickers = {
     git_files = {
       show_untracked = true,
-    }
+    },
+    find_files = {
+      hidden = true,
+      no_ignore = false,
+    },
   },
   extensions = {
     file_browser = {
@@ -45,12 +49,11 @@ nmap({
 })
 
 nmap({
-  '<leader>fg',
-  -- TODO: If there is no git repo, just find files in current directory
+  '<leader>ff',
   function()
     local cwd = vim.loop.cwd()
-    local in_worktree = utils.get_os_command_output({ 'git', 'rev_parse', '--is-inside-work-tree' }, cwd)
-    if in_worktree ~= 'true' then
+    local in_worktree = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' }, cwd)
+    if in_worktree[1] ~= 'true' then
       return builtin.find_files()
     else
       return builtin.git_files()
@@ -66,7 +69,7 @@ nmap({
 })
 
 nmap({
-  '<leader>flg',
+  '<leader>fg',
   builtin.live_grep,
   { noremap = true, silent = true }
 })
