@@ -1,19 +1,27 @@
 -- Configuration of telescope plugin
 
+local keymap = require 'db.keymap'
+local nmap = keymap.nmap
+
 local fb_actions = require "telescope".extensions.file_browser.actions
+local utils = require 'telescope.utils'
+local builtin = require 'telescope.builtin'
 
 require('telescope').setup {
-  defaults = require'telescope.themes'.get_ivy(),
+  -- defaults = require'telescope.themes'.get_ivy(),
   pickers = {
+    git_files = {
+      show_untracked = true,
+    }
   },
   extensions = {
     file_browser = {
       mappings = {
         ["n"] = {
-          ["<leader>n"] = fb_actions.create,
-          ["<leader>c"] = fb_actions.copy,
-          ["<leader>m"] = fb_actions.rename,
-          ["<leader>d"] = fb_actions.remove,
+          ["n"] = fb_actions.create,
+          ["yy"] = fb_actions.copy,
+          ["cc"] = fb_actions.rename,
+          ["dd"] = fb_actions.remove,
           ["-"] = fb_actions.goto_parent_dir,
         },
       },
@@ -25,72 +33,64 @@ require('telescope').load_extension('fzf')
 require('telescope').load_extension('file_browser')
 require('telescope').load_extension('markdown-links')
 
-vim.keymap.set(
-  'n',
+nmap({
   '<leader>fd',
   function()
-    require("telescope.builtin").git_files({
+    builtin.git_files({
       cwd = "~/Documents/dotfiles",
       prompt_title = "Dotfiles",
     })
   end,
-  {noremap = true, silent = true}
-)
-vim.keymap.set(
-  'n',
+  { noremap = true, silent = true }
+})
+
+nmap({
   '<leader>fg',
   -- TODO: If there is no git repo, just find files in current directory
-  require("telescope.builtin").git_files,
-  {noremap = true, silent = true}
-)
+  function()
+    local cwd = vim.loop.cwd()
+    local in_worktree = utils.get_os_command_output({ 'git', 'rev_parse', '--is-inside-work-tree' }, cwd)
+    if in_worktree ~= 'true' then
+      return builtin.find_files()
+    else
+      return builtin.git_files()
+    end
+  end,
+  { noremap = true, silent = true }
+})
 
-vim.keymap.set(
-  'n',
+nmap({
   '<leader>fb',
-  require("telescope.builtin").buffers,
-  {noremap = true, silent = true}
-)
-vim.keymap.set(
-  'n',
+  builtin.buffers,
+  { noremap = true, silent = true }
+})
+
+nmap({
   '<leader>flg',
-  require("telescope.builtin").live_grep,
-  {noremap = true, silent = true}
-)
-vim.keymap.set(
-  'n',
+  builtin.live_grep,
+  { noremap = true, silent = true }
+})
+
+nmap({
   '<leader>ft',
-  function ()
+  function()
     require("telescope").extensions.file_browser.file_browser({
       path = vim.fn.expand("%:p:h")
     })
   end,
-  {noremap = true, silent = true}
-)
-vim.keymap.set(
-  'n',
+  { noremap = true, silent = true }
+})
+nmap({
   '<leader>fp',
-  function ()
-    require('telescope.builtin').find_files{
+  function()
+    builtin.find_files {
       cwd = '~/.local/share/nvim/bundle/'
     }
   end,
-  {noremap = true, silent = true}
-)
-vim.keymap.set(
-  'n',
+  { noremap = true, silent = true }
+})
+nmap({
   '<leader>fh',
-  require("telescope.builtin").help_tags,
-  {noremap = true, silent = true}
-)
-vim.keymap.set(
-  'n',
-  '<leader>fl',
-  require'telescope'.extensions['markdown-links'].find_links,
-  {noremap = true, silent = true}
-)
-vim.keymap.set(
-  'n',
-  '<leader>fbl',
-  require'telescope'.extensions['markdown-links'].find_backlinks,
-  {noremap = true, silent = true}
-)
+  builtin.help_tags,
+  { noremap = true, silent = true }
+})

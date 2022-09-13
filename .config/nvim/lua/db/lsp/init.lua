@@ -1,4 +1,6 @@
 local lsp_config = require('lspconfig')
+local nmap = require 'db.keymap'.nmap
+local imap = require 'db.keymap'.imap
 
 local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
 updated_capabilities = require('cmp_nvim_lsp').update_capabilities(updated_capabilities)
@@ -141,32 +143,31 @@ local servers = {
 }
 
 
-local custom_attach = function(_, bufnr)
-  local opts = { noremap = true, silent = true }
+local custom_attach = function(_, _)
+  local opts = { noremap = true, silent = true, buffer = 0 }
 
-  -- TODO: Global key-mapping helpers. Strings suck.
-  local bfk = function(mode, lhs, rhs)
-    vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
-  end
+  nmap({ 'gd', vim.lsp.buf.definition, opts })
+  nmap({ 'gD', vim.lsp.buf.declaration, opts })
+  nmap({ 'gT', vim.lsp.buf.type_definition, opts })
 
-  bfk('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-  bfk('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-  bfk('n', 'gT', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+  nmap({ '<leader>gr', vim.lsp.buf.references, opts })
+  nmap({ '<leader>gi', vim.lsp.buf.implementation, opts })
 
-  bfk('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-  bfk('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+  nmap({ 'K', vim.lsp.buf.hover, opts })
+  imap({ '<leader>s', vim.lsp.buf.signature_help, opts })
 
-  bfk('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
-  bfk('i', '<leader>s', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  nmap({ '<leader>rn', vim.lsp.buf.rename, opts })
+  nmap({ '<leader>ca', function ()
+    require 'telescope.builtin'.lsp_code_actions()
+  end, opts })
+  nmap({ '<leader>fs', function ()
+    require 'telescope.builtin'.lsp_document_symbols()
+  end, opts })
 
-  bfk('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-  bfk('n', '<leader>ca', "<cmd>lua require'telescope.builtin'.lsp_code_actions()<cr>")
-  bfk('n', '<leader>fs', "<cmd>lua require'telescope.builtin'.lsp_document_symbols()<cr>")
-
-  bfk('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-  bfk('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
-  bfk('n', '<leader>dl', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
-  bfk('n', '<leader>fo', '<cmd>lua vim.lsp.buf.format()<CR>')
+  nmap({ '[d', vim.lsp.diagnostic.goto_prev, opts })
+  nmap({ ']d', vim.lsp.diagnostic.goto_next, opts })
+  nmap({ '<leader>dl', vim.lsp.diagnostic.set_loclist, opts })
+  nmap({ '<leader>fo', vim.lsp.buf.format, opts })
 
 
   local filetype = vim.api.nvim_buf_get_option(0, 'filetype')
