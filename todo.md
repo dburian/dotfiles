@@ -3,7 +3,6 @@
 ## Functional
   [ ] nvim
     [x] status line
-    [-] project starter (at least something pretty)
     [x] LSP
     [x] fuzzy file
     [x] autocompletion
@@ -11,19 +10,17 @@
     [x] treesitter
     [x] fix ftdetect
     [x] fix clipboard
-    [x] fix easy-motion
-    [x] python LSP
     [x] jupyter
+    [ ] python LSP - including venvs
   [ ] tmux
     [x] colors
     [x] nice nice
     [x] key bindings
     [x] .tmux in projects
+    [ ] rewrite .tmux w/ funcs
   [ ] rofi
-    [ ] projects script - find .tmux
     [ ] bluetooth script
-    [ ] programs script
-    [ ] clean work desktops
+    [x] programs script
     [ ] flash disks
     [ ] connected screens
     [x] colours
@@ -32,16 +29,17 @@
   [ ] battery
     [x] display
     [ ] notification
-  [x] broot
-    [x] colours
-    [-] PR to base16
-  [x] awesome
-    [x] config
-    [x] themes
   [x] xmonad
+    [ ] system-dependent bar
   [x] brightness
     [x] keymap
-    [-] notification
   [x] volume
     [x] keymap
-    [-] notification
+  [ ] terminal
+    [x] find files
+    [ ] find files whitelist -- too much crap listed
+    [ ] find files to recognize extension (zathura for pdf, feh for pictures,
+    nvim for anything else)
+    [ ] find projects - find .git, if .tmux execute it
+    [x] find directories
+    [ ] find directories whitelist -- too much crap listed
