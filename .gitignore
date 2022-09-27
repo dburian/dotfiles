@@ -4,3 +4,4 @@
 
 # Ingoring system-dependent files
 .config/alacritty/system.yml
+.config/zsh/.zcompdump
