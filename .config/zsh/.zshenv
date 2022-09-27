@@ -51,7 +51,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1 #needed for Protege
 export CHROME_EXECUTABLE=`which google-chrome-stable`
 
 ## Locations
-export dots="/home/dburian/Documents/dotfiles"
+export dots="/home/dburian/docs/dotfiles"
 
 ## Shortcuts
 alias l="ls -lah --group-directories-first --color=always"
