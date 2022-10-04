@@ -1,15 +1,21 @@
--- Luasnip config entrypoint
---
 -- Place for:
 --  * mappings
 --  * helper functions
 
 
 local ls = require('luasnip')
+local types = require 'luasnip.util.types'
 
 ls.config.set_config({
   history = true,
   update_events = 'TextChanged,TextChangedI',
+  ext_opts = {
+    [types.choiceNode] = {
+      active = {
+        virt_text = { { " « Choice", 'Comment' } },
+      },
+    },
+  },
 })
 
 -- Loading all filetype specific snippets
