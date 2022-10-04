@@ -23,11 +23,9 @@ tmux() {
   # Wraps tmux
   #
 
-  # If there is a .tmux file, reconstruct the project's tmux session or create a
-  # new one
+  # If there is a .tmux file, run it
   if [ -x .tmux ]; then
-    echo "running tmux fiule"
-    FPATH=~/.config/tmux/funcs:"$FPATH" ./.tmux "$@"
+    ./.tmux "$@"
     return
   fi
 
