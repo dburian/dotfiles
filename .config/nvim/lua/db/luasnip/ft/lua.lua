@@ -4,10 +4,10 @@ local s = ls.snippet
 local i = ls.insert_node
 local f = ls.function_node
 
-local fmt = require'luasnip.extras.fmt'.fmt
+local fmt = require 'luasnip.extras.fmt'.fmt
 
 local function extract_last_import_name(args)
-  local parts = vim.split(args[1][1], '.', {plain = true})
+  local parts = vim.split(args[1][1], '.', { plain = true })
   return parts[#parts] or ''
 end
 
@@ -15,10 +15,10 @@ local snippets = {
   s(
     {
       trig = 'req',
-      dscr = 'require a packageeee'
+      dscr = 'require a package'
     },
     fmt('local {} = require\'{}\'', {
-      f(extract_last_import_name, {1}),
+      f(extract_last_import_name, { 1 }),
       i(1, 'package'),
     })
   ),
@@ -28,7 +28,7 @@ local snippets = {
       trig = 'todo',
       namr = 'TODO',
     },
-    fmt('-- TODO: {}', {i(0, 'I need to ...')})
+    fmt('-- TODO: {}', { i(0, 'I need to ...') })
   ),
 }
 

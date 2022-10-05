@@ -4,6 +4,7 @@
 
 [core]
   editor = nvim
+  excludesFile = ~/.config/git/global_gitignore
 
 [color]
   ui = auto
@@ -17,6 +18,6 @@
 [alias]
   c = commit
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [pull]
-	rebase = false
+  rebase = false
