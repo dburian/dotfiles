@@ -1,4 +1,4 @@
--- Place for:
+-- Place for:-- Place for:-- Place for:-- Place for:
 --  * mappings
 --  * helper functions
 
@@ -39,17 +39,8 @@ map('n', '<c-k>', function()
   end
 end, { silent = true })
 
-map("i", "<c-l>", function()
+map({ 'i', 's' }, '<c-l>', function()
   if ls.choice_active() then
     ls.change_choice(1)
   end
 end, { silent = true })
-
-
--- vim.cmd [[
---   inoremap <silent> <c-k> <cmd>lua require('luasnip').jump(-1)<CR>
---   imap <silent><expr> <c-j> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<c-j>'
-
---   snoremap <silent> <c-k> <cmd>lua require('luasnip').jump(-1)<CR>
---   snoremap <silent> <c-j> <cmd>lua require('luasnip').jump(1)<CR>
--- ]]
