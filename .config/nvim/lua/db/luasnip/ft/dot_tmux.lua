@@ -96,7 +96,7 @@ local function tmpfile_creation(args)
     t({
       '# tmpfile.md initialization',
       'tmux new-window -n "' .. sess_name .. '" -n tmpfile',
-      'tmux send-keys -t "' .. sess_name .. '":tmpfile "v tmpfile.md Enter"',
+      'tmux send-keys -t "' .. sess_name .. '":tmpfile "v tmpfile.md" Enter',
     }),
   })
 end
@@ -140,7 +140,7 @@ tmux attach -t "{sess}":"{def_win}"
     fmt('tmux send-keys -t "{}":"{}" "{}"', {
       d(1, default_or_new_session_name, {}),
       d(2, created_or_new_window, {}),
-      i(3, 'keys to send')
+      i(3, 'keys to send'),
     })
   )
 }
