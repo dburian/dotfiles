@@ -94,46 +94,41 @@ local function tmpfile_creation(args)
   return sn(nil, {
     i(1),
     t({
-      '# tmpfile init',
+      '# tmpfile.md initialization',
       'tmux new-window -n "' .. sess_name .. '" -n tmpfile',
       'tmux send-keys -t "' .. sess_name .. '":tmpfile "v tmpfile.md Enter"',
-      '',
     }),
   })
 end
 
 local snippets = {
   s({ trig = 'project', dscr = 'Initialize .tmux file for new project.' },
-    {
-      t({
-        '#!/bin/sh',
-        '',
-        '',
-      }),
-      t('if tmux has-session -t "'), i(1, 'session_name'),
-      t({ '" 2>/dev/null; then', '' }),
-      t('  tmux attach -t "'), f(utils.same, { 1 }),
-      t({
-        '"',
-        '  exit',
-        'fi',
-        '',
-        '',
-      }),
-      t('tmux new-session -d -s "'), f(utils.same, { 1 }),
-      t('" -n "'), i(2, 'default_window_name'),
-      t('" -x $(tput cols) -y $(tput lines)'),
-      t({ '', '', '' }),
-      i(3, '# window setup'),
-      t({ '', '', '' }),
-      c(4, {
-        t({ '# No tmpfile for this project.', '' }),
+    fmt(
+      [[#!/bin/sh
+
+if tmux has-session -t "{input_sess}" 2>/dev/null; then
+  tmux attach -t "{sess}"
+  exit
+fi
+
+tmux new-session -d -s "{sess}" -n "{input_def_win}" -x $(tput cols) -y $(tput lines)
+
+{window_setup}
+
+{tmpfile}
+
+tmux attach -t "{sess}":"{def_win}"
+]]     , {
+      input_sess = i(1, 'session_name'),
+      sess = f(utils.same, { 1 }),
+      input_def_win = i(2, 'default_window_name'),
+      window_setup = i(3, '# window setup'),
+      tmpfile = c(4, {
+        t({ '# No tmpfile for this project.' }),
         d(nil, tmpfile_creation, { 1 })
       }),
-      t({ '', 'tmux attach -t "' }), f(utils.same, { 1 }),
-      t('":"'), f(utils.same, { 2 }),
-      t({ '"' }),
-    }
+      def_win = f(utils.same, { 2 })
+    })
   ),
   s({ trig = 'new-window', dscr = 'Create new tmux window.' },
     fmt('tmux new-window -t "{}" -n "{}"', {
