@@ -86,7 +86,7 @@ local servers = {
           path = lua_runtime_path,
         },
         diagnostics = {
-          globals = { 'vim' },
+          globals = { 'vim', 'P', },
         },
         workspace = {
           -- Make the server aware of Neovim runtime files
@@ -157,10 +157,10 @@ local custom_attach = function(_, _)
   imap({ '<leader>s', vim.lsp.buf.signature_help, opts })
 
   nmap({ '<leader>rn', vim.lsp.buf.rename, opts })
-  nmap({ '<leader>ca', function ()
+  nmap({ '<leader>ca', function()
     require 'telescope.builtin'.lsp_code_actions()
   end, opts })
-  nmap({ '<leader>fs', function ()
+  nmap({ '<leader>fs', function()
     require 'telescope.builtin'.lsp_document_symbols()
   end, opts })
 

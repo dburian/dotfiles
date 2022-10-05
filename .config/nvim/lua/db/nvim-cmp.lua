@@ -1,7 +1,7 @@
 -- Configuration of nvim-compe
 
-local lspkind = require'lspkind'
-local luasnip = require'luasnip'
+local lspkind = require 'lspkind'
+local luasnip = require 'luasnip'
 
 vim.opt.completeopt = "menuone,noselect"
 
@@ -23,7 +23,7 @@ cmp.setup {
       cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Insert,
         select = true,
-    }, { "i", "c" }),
+      }, { "i", "c" }),
     ['<c-n>'] = cmp.mapping.select_next_item(),
     ['<c-p>'] = cmp.mapping.select_prev_item(),
     -- ['<c-y>'] = cmp.mapping(function (fallback)
@@ -67,11 +67,12 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },
-    { name = 'buffer'},
+    { name = 'buffer' },
     { name = 'markdown-link',
       option = {
         reference_link_location = 'top',
         searched_depth = 2,
+        searched_dirs = { '~/docs/wiki', }
       }
     },
   },

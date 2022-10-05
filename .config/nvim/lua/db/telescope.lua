@@ -87,7 +87,7 @@ nmap({
   '<leader>fp',
   function()
     builtin.find_files {
-      cwd = '~/.local/share/nvim/bundle/'
+      cwd = '~/.local/share/nvim/bundle/',
     }
   end,
   { noremap = true, silent = true }
