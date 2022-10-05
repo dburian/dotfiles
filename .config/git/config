@@ -4,7 +4,7 @@
 
 [core]
   editor = nvim
-  excludesfile = ~/.config/git/global_gitignore
+  excludesFile = ~/.config/git/global_gitignore
 
 [color]
   ui = auto

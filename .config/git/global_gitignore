@@ -1,5 +1,5 @@
 # Ignoring my env. setup
-./.tmux
+/.tmux
 
 # Ignoring my temproary scratch files
-./tmpfile.md
+/tmpfile.md
