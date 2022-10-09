@@ -142,8 +142,9 @@ local servers = {
   svelte = {},
 }
 
+local M = {}
 
-local custom_attach = function(_, _)
+M.custom_attach = function(_, _)
   local opts = { noremap = true, silent = true, buffer = 0 }
 
   nmap({ 'gd', vim.lsp.buf.definition, opts })
@@ -194,3 +195,5 @@ end
 for server, config in pairs(servers) do
   setup_server(server, config)
 end
+
+return M

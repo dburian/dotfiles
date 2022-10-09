@@ -71,8 +71,8 @@ cmp.setup {
     { name = 'markdown-link',
       option = {
         reference_link_location = 'top',
-        searched_depth = 2,
-        searched_dirs = { '~/docs/wiki', }
+        searched_depth = 4,
+        searched_dirs = { '~/docs/wiki', '%:h' }
       }
     },
   },

@@ -41,7 +41,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
 Plug 'saadparwaiz1/cmp_luasnip'
-" Plug 'dburian/cmp-markdown-link'
+Plug 'dburian/cmp-markdown-link'
 
 Plug 'onsails/lspkind-nvim' " nice icons in autocomplete menu
 
@@ -56,7 +56,7 @@ Plug 'goerz/jupytext.vim'
 Plug 'tjdevries/express_line.nvim'
 
 " My stuff
-Plug '~/docs/cmp-markdown-link'
+" Plug '~/docs/cmp-markdown-link'
 
 " Automatically executes:
 "   filetype plugin indent on
