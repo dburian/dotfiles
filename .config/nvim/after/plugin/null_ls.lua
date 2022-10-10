@@ -11,7 +11,22 @@ null_ls.setup {
     -- Diagnostics
     null_ls.builtins.diagnostics.eslint_d,
     null_ls.builtins.diagnostics.pylint.with({
-      extra_args = { '--rcfile', '~/.config/pylint/config.toml' }
+      diagnostics_postprocess = function(diagnostic)
+        diagnostic.code = diagnostic.message_id
+      end,
+      extra_args = function()
+        -- Set by 'activating' the virtual environment
+        local venv = vim.env.VIRTUAL_ENV
+        local site_packages_path = vim.fn.glob(venv .. '/lib/*/site-packages/')
+
+        -- Pylint runs in different process (I guess) so it does not know about
+        -- activated virtual environments as nvim does. Adding site-packages to
+        -- path overcomes this issue.
+        return {
+          '--rcfile', '~/.config/pylint/config.toml',
+          '--init-hook', 'import sys; sys.path.append("' .. site_packages_path .. '");',
+        }
+      end
     })
   }
 }

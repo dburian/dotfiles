@@ -56,9 +56,12 @@ local filetype_attach = setmetatable({
 
 local servers = {
   pyright = {
+    cmd = { "pyright-langserver", "--stdio", "--verbose" },
     settings = {
       python = {
-        venvPath = "/home/dburian/.local/share/python-venvs",
+        -- venvPath = "/home/dburian/.local/share/python-venvs",
+        -- venv = venv,
+        -- pythonPath =  "/home/dburian/.local/share/python-venvs/" .. venv .. '/bin/python',
         analysis = {
           autoSearchPaths = true,
           diagnosticMode = "workspace",
@@ -67,7 +70,6 @@ local servers = {
       }
     }
   },
-
   sumneko_lua = {
     cmd = {
       localSrcPath .. '/lua-language-server/bin/lua-language-server',
@@ -177,8 +179,12 @@ end
 
 
 local setup_server = function(server, config)
+  if type(config) == "function" then
+    config = config()
+  end
+
   config = vim.tbl_deep_extend("force", {
-    on_attach = custom_attach,
+    on_attach = M.custom_attach,
     capabilities = updated_capabilities,
     flags = {
       debounce_text_changes = nil,
@@ -187,9 +193,10 @@ local setup_server = function(server, config)
 
   if lsp_config[server] == nil then
     print("Error in lsp config: config for server " .. server .. " cannot be found")
-  else
-    lsp_config[server].setup(config)
+    return
   end
+
+  lsp_config[server].setup(config)
 end
 
 for server, config in pairs(servers) do
