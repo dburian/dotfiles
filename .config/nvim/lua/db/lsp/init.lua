@@ -56,12 +56,8 @@ local filetype_attach = setmetatable({
 
 local servers = {
   pyright = {
-    cmd = { "pyright-langserver", "--stdio", "--verbose" },
     settings = {
       python = {
-        -- venvPath = "/home/dburian/.local/share/python-venvs",
-        -- venv = venv,
-        -- pythonPath =  "/home/dburian/.local/share/python-venvs/" .. venv .. '/bin/python',
         analysis = {
           autoSearchPaths = true,
           diagnosticMode = "workspace",
@@ -169,7 +165,7 @@ M.custom_attach = function(_, _)
 
   nmap({ '[d', vim.diagnostic.goto_prev, opts })
   nmap({ ']d', vim.diagnostic.goto_next, opts })
-  nmap({ '<leader>dl', vim.diagnostic.setloclist, opts })
+  nmap({ '<leader>dl', vim.diagnostic.setqflist, opts })
   nmap({ '<leader>fo', vim.lsp.buf.format, opts })
 
 

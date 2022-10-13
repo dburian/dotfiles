@@ -23,15 +23,15 @@ tmux() {
   # Wraps tmux
   #
 
-  # If there is a .tmux file, run it
-  if [ -x .tmux ]; then
-    ./.tmux "$@"
-    return
-  fi
-
   # If called with args, continue straight to tmux
   if [[ -n "$@" ]]; then
     command tmux "$@"
+    return
+  fi
+
+  # If there is a .tmux file, run it
+  if [ -x .tmux ]; then
+    ./.tmux "$@"
     return
   fi
 
