@@ -7,6 +7,7 @@ null_ls.setup {
     -- Formatting
     -- null_ls.builtins.formatting.autopep8,
     null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.isort,
 
     -- Diagnostics
     null_ls.builtins.diagnostics.eslint_d,

@@ -39,7 +39,8 @@ map('n', '<c-k>', function()
   end
 end, { silent = true })
 
-map({ 'i', 's' }, '<c-l>', function()
+-- <c-l> is for choosing
+map({ 'i', 's' }, '<c-h>', function()
   if ls.choice_active() then
     ls.change_choice(1)
   end
