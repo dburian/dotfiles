@@ -51,9 +51,6 @@ element {
     padding: 0 0 0 20;
 }
 
-element normal.urgent {
-    text-color:       var(urgent-foreground);
-}
 element normal.active {
     border: 1 0 2px 1;
     border-color: @active;
@@ -64,18 +61,6 @@ element selected.normal {
     padding: 0 0 0 15;
     border-color: @active;
 }
-element selected.urgent {
-    background-color: var(selected-urgent-background);
-    text-color:       var(selected-urgent-foreground);
-}
-element selected.active {
-    background-color: var(selected-normal-background);
-    text-color:       var(selected-normal-foreground);
-}
-element alternate.active {
-    background-color: var(normal-background);
-    text-color:       var(normal-foreground);
-}
 element-text {
     highlight:        None;
     text-color:       inherit;
@@ -84,12 +69,4 @@ element-text {
 mainbox {
     padding: 0;
     border:  0;
-}
-message {
-    padding:      1px ;
-    border-color: var(separatorcolor);
-    border:       2px dash 0px 0px ;
-}
-textbox {
-    text-color: var(foreground);
 }
