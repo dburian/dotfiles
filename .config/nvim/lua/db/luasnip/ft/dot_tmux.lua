@@ -8,7 +8,6 @@ local t = ls.text_node
 local c = ls.choice_node
 local d = ls.dynamic_node
 local sn = ls.snippet_node
-local ins = ls.indent_snippet_node
 
 local fmt = require 'luasnip.extras.fmt'.fmt
 
@@ -21,6 +20,11 @@ local window_patts = {
   'tmux [-_%w "]*%-n ?"([^"]+)"',
   'tmux [-_%w "]*%-n ?([^ "]+)',
 }
+
+local all_windows_str = [[for win in `tmux list-windows -F \#W -t "{}"`; do
+  {}
+done
+]]
 
 local function match_patts(str, patts, return_all)
   local matches = {}
@@ -41,7 +45,7 @@ local function match_patts(str, patts, return_all)
   end
 end
 
-local function default_or_new_session_name()
+local function select_session()
   local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
   local default_sess_name = nil
   for _, line in ipairs(lines) do
@@ -64,19 +68,18 @@ local function default_or_new_session_name()
   end
 end
 
-local function created_or_new_window()
+local function select_window()
   local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
   local window_names = {}
   for _, line in ipairs(lines) do
     table.insert(window_names, match_patts(line, window_patts, true))
   end
-  P(window_names)
   window_names = vim.tbl_flatten(window_names)
 
   local choice_nodes = vim.tbl_map(function(win_name)
     return t(win_name)
   end, window_names)
-  P(window_names)
+  table.insert(choice_nodes, t('$win'))
   table.insert(choice_nodes, i(1, 'window_name'))
 
   if #choice_nodes == 1 then
@@ -132,17 +135,23 @@ tmux attach -t "{sess}":"{def_win}"
   ),
   s({ trig = 'new-window', dscr = 'Create new tmux window.' },
     fmt('tmux new-window -t "{}" -n "{}"', {
-      d(1, default_or_new_session_name, {}),
+      d(1, select_session, {}),
       i(2, 'window_name')
     })
   ),
   s({ trig = 'send-keys', dscr = 'Send keys to tmux window' },
     fmt('tmux send-keys -t "{}":"{}" "{}"', {
-      d(1, default_or_new_session_name, {}),
-      d(2, created_or_new_window, {}),
+      d(1, select_session, {}),
+      d(2, select_window, {}),
       i(3, 'keys to send'),
     })
-  )
+  ),
+  s({ trig = 'all-windows', dscr = 'Do cmd for all windows' },
+    fmt(all_windows_str, {
+      d(1, select_session, {}),
+      i(2, '# do something here'),
+    })
+  ),
 }
 
 ls.add_snippets('dot_tmux', snippets, { key = 'dot_tmux' })
