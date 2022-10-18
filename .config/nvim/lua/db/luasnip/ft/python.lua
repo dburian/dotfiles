@@ -34,7 +34,7 @@ local snippets = {
     }),
     i(3, 'pass'),
   })),
-  s({ tring = 'main', dscr = 'Main section' }, fmt(if_main_str, {
+  s({ trig = 'main', dscr = 'Main section' }, fmt(if_main_str, {
     i(1, 'pass'),
   })),
 }
