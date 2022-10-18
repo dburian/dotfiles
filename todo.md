@@ -11,13 +11,12 @@
     [x] fix ftdetect
     [x] fix clipboard
     [x] jupyter
-    [ ] python LSP - including venvs
+    [x] python LSP - including venvs
   [ ] tmux
     [x] colors
     [x] nice nice
     [x] key bindings
     [x] .tmux in projects
-    [ ] rewrite .tmux w/ funcs
   [ ] rofi
     [ ] bluetooth script
     [x] programs script
@@ -30,7 +29,8 @@
     [x] display
     [ ] notification
   [x] xmonad
-    [ ] system-dependent bar
+    [ ] system-dependent bar, dynamic
+    [ ] bluetoothctl indication
   [x] brightness
     [x] keymap
   [x] volume
