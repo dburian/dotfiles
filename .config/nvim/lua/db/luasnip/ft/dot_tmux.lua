@@ -91,19 +91,6 @@ local function select_window()
   })
 end
 
-local function tmpfile_creation(args)
-  local sess_name = args[1][1]
-
-  return sn(nil, {
-    i(1),
-    t({
-      '# tmpfile.md initialization',
-      'tmux new-window -n "' .. sess_name .. '" -n tmpfile',
-      'tmux send-keys -t "' .. sess_name .. '":tmpfile "v tmpfile.md" Enter',
-    }),
-  })
-end
-
 local snippets = {
   s({ trig = 'project', dscr = 'Initialize .tmux file for new project.' },
     fmt(
@@ -118,19 +105,22 @@ tmux new-session -d -s "{sess}" -n "{input_def_win}" -x $(tput cols) -y $(tput l
 
 {window_setup}
 
-{tmpfile}
-
 tmux attach -t "{sess}":"{def_win}"
 ]]     , {
       input_sess = i(1, 'session_name'),
       sess = f(utils.same, { 1 }),
       input_def_win = i(2, 'default_window_name'),
       window_setup = i(3, '# window setup'),
-      tmpfile = c(4, {
-        t({ '# No tmpfile for this project.' }),
-        d(nil, tmpfile_creation, { 1 })
-      }),
       def_win = f(utils.same, { 2 })
+    })
+  ),
+  s({ trig = 'tmp file', dsrc = 'Create temp file in new window.' },
+    fmt([[# tmpfile.md initialization
+tmux new-window -n "{}" -n tmpfile
+tmux send-keys -t "{}":tmpfile "v tmpfile.md" Enter
+      ]], {
+      d(1, select_session, {}),
+      f(utils.same, { 1 }),
     })
   ),
   s({ trig = 'new-window', dscr = 'Create new tmux window.' },
