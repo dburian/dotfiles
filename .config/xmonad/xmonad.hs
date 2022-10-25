@@ -8,6 +8,7 @@ import XMonad.Util.Brightness (increase, decrease)
 import XMonad.Actions.Promote
 import XMonad.Actions.Volume
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Util.Ungrab
 
 -- Variable definitions
 myModMask = mod4Mask
@@ -19,12 +20,17 @@ myDmenu = "rofi -config ~/.config/rofi/config.rasi -show"
 myXmobar :: String
 myXmobar = "xmobar ~/.config/xmobar/xmobarrc"
 
+myScreenShotArgs :: String
+myScreenShotArgs = "-e 'mv $f ~/downloads/'"
+
 myKeys :: [(String, X ())]
 myKeys =
     [ ("M-<Space>", spawn myDmenu)
     , ("M-<Return>", spawn myTerminal)
     , ("M-S-<Return>", promote)
-    , ("M-C-.", sendMessage NextLayout)
+    , ("M-k", sendMessage NextLayout)
+    , ("M-S-s", unGrab *> spawn ("scrot -s " ++ myScreenShotArgs))
+    , ("M-s", unGrab *> spawn ("scrot " ++ myScreenShotArgs))
     , ("<XF86AudioMute>", toggleMute >> return ())
     , ("<XF86AudioRaiseVolume>", raiseVolume 5 >> return ())
     , ("<XF86AudioLowerVolume>", lowerVolume 5 >> return ())
@@ -50,7 +56,7 @@ myXmobarPP = def
     , ppHidden          = white . wrap " " ""
     , ppHiddenNoWindows = lowWhite . wrap " " ""
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
-    , ppOrder           = \[ws, l, _, wins] -> [ws, l]
+    , ppOrder           = \[ws, l, _, _] -> [ws, l]
     , ppExtras          = [logTitles formatFocused formatUnfocused]
     }
   where
