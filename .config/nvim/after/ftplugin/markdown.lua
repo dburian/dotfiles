@@ -1,6 +1,7 @@
 -- Markdown nvim settings-- Markdown nvim settings-- Markdown nvim settings-- Markdown nvim settings
 local nmap = require 'db.keymap'.nmap
 vim.opt.textwidth = 80
+vim.tabstop = 4
 
 vim.cmd [[
   syntax on
