@@ -4,22 +4,25 @@
 ## TODO
 
 - rofi
-    [ ] bluetooth script
-    [ ] flash disks
-    [ ] connected screens
+    - bluetooth script
+    - flash disks
+    - connected screens
 - battery
-    [ ] notification
+    - notification
 - xmonad
-    [ ] system-dependent bar, dynamic
-    [ ] xmobar haskell config like [here](https://codeberg.org/xmobar/xmobar/src/branch/master/etc/xmobar.hs)
-    [ ] my dynamic plugin
-    [ ] bluetoothctl indication
+    - cabal xmonad install
+    - xmonad man page
+    - sticky windows [discussion](https://mail.haskell.org/pipermail/xmonad/2007-May/000319.html)
+    - xmobar haskell config like [here](https://codeberg.org/xmobar/xmobar/src/branch/master/etc/xmobar.hs)
+    - system-dependent bar, dynamic
+    - my dynamic plugin
+    - bluetoothctl indication
 - terminal
-    [ ] find files whitelist -- too much crap listed
-    [ ] find files to recognize extension (zathura for pdf, feh for pictures,
+    - find files whitelist -- too much crap listed
+    - find files to recognize extension (zathura for pdf, feh for pictures,
     nvim for anything else)
-    [ ] find projects - find .git, if .tmux execute it
-    [ ] find directories whitelist -- too much crap listed
+    - find projects - find .git, if .tmux execute it
+    - find directories whitelist -- too much crap listed
 
 
 ## Undocumented changes
