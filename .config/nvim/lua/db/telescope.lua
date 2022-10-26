@@ -56,7 +56,7 @@ nmap({
     if in_worktree[1] ~= 'true' then
       return builtin.find_files()
     else
-      return builtin.git_files()
+      return builtin.git_files({ show_untracked = true })
     end
   end,
   { noremap = true, silent = true }
