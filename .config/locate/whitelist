@@ -1,0 +1,6 @@
+^./.config
+^./.cache
+^./.local
+^./docs
+^./downloads
+^./.xinitrc

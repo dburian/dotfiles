@@ -59,8 +59,7 @@ alias v="nvim"
 alias z="zathura --fork"
 alias view="feh --draw-filename --draw-tinted --auto-zoom"
 alias activate="activate_virtual_environment"
-alias d="directory"
-alias f="edit-file"
+alias loc="locate"
 
 ## Always with these flags
 alias clipmenu="clipmenu -dmenu -p Clipmenu"

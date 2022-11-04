@@ -40,27 +40,41 @@ tmux() {
   command tmux new-session -A -s "$session_name"
 }
 
-directory() {
+locate() {
   #
-  # Quickly navigate to a folder with fzf
-  #
-
-  cd $(find . -type d 2>/dev/null | fzf)
-}
-
-edit-file() {
-  #
-  # Quickly edit a file with fzf
+  # My go to command for searching my filesystem.
   #
 
-  file=$(find . -type f 2>/dev/null | fzf )
+  whitelist="$XDG_CONFIG_HOME/locate/whitelist"
+  blacklist="$XDG_CONFIG_HOME/locate/blacklist"
 
-  if [ -z "$file" ] ; then
+  sel=$(find . 2>/dev/null | grep -f "$whitelist" | grep -v -f "$blacklist" | fzf)
+
+  if [ -z "$sel" ] ; then
+    return
+  fi
+  if [ -d "$sel" ] ; then
+    cd $sel
+    return
+  fi
+  ext="${sel##*.}"
+
+  if [ $ext = 'tmux' -a -x $sel ] ; then
+    $sel
+    return
+  fi
+  if [ $ext = 'jpg' -o $ext = 'jpeg' -o $ext = 'png' ] ; then
+    feh "$sel"
+    return
+  fi
+  if [ $ext = 'pdf' ] ; then
+    z "$sel"
     return
   fi
 
-  nvim $file
+  nvim "$sel"
 }
+
 activate-nvm() {
   #
   # Loads nvm, node, npm and all other node-based programs.
