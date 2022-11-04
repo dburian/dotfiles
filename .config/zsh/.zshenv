@@ -60,6 +60,7 @@ alias z="zathura --fork"
 alias view="feh --draw-filename --draw-tinted --auto-zoom"
 alias activate="activate_virtual_environment"
 alias loc="locate"
+alias edit="locate-edit"
 
 ## Always with these flags
 alias clipmenu="clipmenu -dmenu -p Clipmenu"

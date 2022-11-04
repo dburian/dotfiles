@@ -57,6 +57,30 @@ locate() {
     cd $sel
     return
   fi
+
+  dir=$(dirname "$sel")
+  export file=$(basename "$sel")
+  cd "$dir"
+}
+
+locate-edit() {
+  #
+  # Find and edit files
+  #
+
+  whitelist="$XDG_CONFIG_HOME/locate/whitelist"
+  blacklist="$XDG_CONFIG_HOME/locate/blacklist"
+
+  sel=$(find . 2>/dev/null | grep -f "$whitelist" | grep -v -f "$blacklist" | fzf)
+
+  if [ -z "$sel" ] ; then
+    return
+  fi
+  if [ -d "$sel" ] ; then
+    cd $sel
+    return
+  fi
+
   ext="${sel##*.}"
 
   if [ $ext = 'tmux' -a -x $sel ] ; then
