@@ -1,0 +1,8 @@
+scroll_left h Left
+scroll_right l Right
+scroll_up k Up
+scroll_down j Down
+zoom_in C-k C-Up
+zoom_out C-j C-Down
+action_0
+zoom_fit 0
