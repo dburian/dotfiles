@@ -35,6 +35,14 @@ opt.timeoutlen = 500 --timeout for key sequences
 opt.laststatus = 3 -- have only global status line for all splits
 opt.foldmethod = 'marker' -- only marked folds
 
+opt.listchars = {
+  trail = '·',
+  nbsp = '␣',
+  tab = '» ',
+  extends = '<',
+  precedes = '>',
+  conceal = '┊',
+}
 
 
 opt.clipboard:append('unnamedplus')
