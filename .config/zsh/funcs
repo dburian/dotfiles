@@ -45,10 +45,9 @@ locate() {
   # My go to command for searching my filesystem.
   #
 
-  whitelist="$XDG_CONFIG_HOME/locate/whitelist"
   blacklist="$XDG_CONFIG_HOME/locate/blacklist"
 
-  sel=$(find . 2>/dev/null | grep -f "$whitelist" | grep -v -f "$blacklist" | fzf)
+  sel=$(find . 2>/dev/null | grep -v -f "$blacklist" | fzf)
 
   if [ -z "$sel" ] ; then
     return
@@ -67,11 +66,9 @@ locate-edit() {
   #
   # Find and edit files
   #
-
-  whitelist="$XDG_CONFIG_HOME/locate/whitelist"
   blacklist="$XDG_CONFIG_HOME/locate/blacklist"
 
-  sel=$(find . 2>/dev/null | grep -f "$whitelist" | grep -v -f "$blacklist" | fzf)
+  sel=$(find . 2>/dev/null | grep -v -f "$blacklist" | fzf)
 
   if [ -z "$sel" ] ; then
     return
