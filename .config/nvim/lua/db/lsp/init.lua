@@ -55,6 +55,7 @@ local filetype_attach = setmetatable({
 })
 
 local servers = {
+  hls = {},
   pyright = {
     settings = {
       python = {

@@ -40,6 +40,7 @@ Plug 'nvim-treesitter/nvim-treesitter-context' " display context in first line
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-buffer'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'dburian/cmp-markdown-link'
 
