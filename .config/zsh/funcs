@@ -106,3 +106,24 @@ activate-nvm() {
 activate-conda() {
   eval "$(/home/dburian/.cache/miniconda3/bin/conda shell.zsh hook)"
 }
+
+install-jupyter_ascending() {
+
+  if [ -z "$VIRTUAL_ENV" ] ; then
+    echo "Attempting to install jupyter_ascending without virtual environment. Aborting..."
+    return 1
+  fi
+
+  pip install jupyter_ascending && \
+  jupyter nbextension    install jupyter_ascending --sys-prefix --py && \
+  jupyter nbextension     enable jupyter_ascending --sys-prefix --py && \
+  jupyter serverextension enable jupyter_ascending --sys-prefix --py
+}
+
+create-notebook() {
+  #
+  # Creates pair of files, synced up with jupyter_ascending.
+  #
+
+  python -m jupyter_ascending.scripts.make_pair --base "$1"
+}

@@ -49,10 +49,6 @@ Plug 'onsails/lspkind-nvim' " nice icons in autocomplete menu
 " Snippets
 Plug 'L3MON4D3/LuaSnip'
 
-" Jupyter integration
-Plug 'bfredl/nvim-ipy'
-Plug 'goerz/jupytext.vim'
-
 " Status line
 Plug 'tjdevries/express_line.nvim'
 
