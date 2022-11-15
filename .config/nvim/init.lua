@@ -23,7 +23,6 @@ vim.g.mapleader = ','
 config_require('db.lsp.init')
 
 -- Plugin configuration
-config_require('db.jupyter_integration')
 config_require('db.jupyter_ascending')
 config_require('db.nvim-cmp')
 config_require('db.telescope')
