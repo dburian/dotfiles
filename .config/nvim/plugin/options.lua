@@ -49,6 +49,8 @@ opt.clipboard:append('unnamedplus')
 
 vim.cmd [[syntax on]]
 
+vim.g.tex_flavor = 'latex' --setting tex flavour for LS
+
 -- Configure pythons for remote plugins
 --- Colors
 vim.g.base16colorspace = 256
