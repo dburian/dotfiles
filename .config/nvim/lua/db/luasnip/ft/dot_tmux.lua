@@ -96,7 +96,7 @@ local snippets = {
     fmt(
       [[#!/bin/sh
 
-if tmux has-session -t "{input_sess}" 2>/dev/null; then
+if tmux has-session -t ="{input_sess}" 2>/dev/null; then
   tmux attach -t "{sess}"
   exit
 fi
