@@ -39,7 +39,7 @@ end
 
 
 require("el").setup {
-  generator = function(window, buffer)
+  generator = function(_, _)
     local mode = extensions.gen_mode { format_string = " %s " }
 
     local items = {
@@ -48,7 +48,7 @@ require("el").setup {
       { " " },
       { sections.split },
       { git_icon },
-      { sections.maximum_width(builtin.make_responsive_file(140, 90), 0.40) },
+      { sections.maximum_width(builtin.make_responsive_file(140, 90, true), 0.40) },
       { sections.collapse_builtin { { " " }, { builtin.modified_flag } } },
       { sections.split },
       { show_current_func },
