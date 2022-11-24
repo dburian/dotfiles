@@ -3,7 +3,7 @@ local nmap = require 'db.keymap'.nmap
 local imap = require 'db.keymap'.imap
 
 local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
-updated_capabilities = require('cmp_nvim_lsp').update_capabilities(updated_capabilities)
+updated_capabilities = require('cmp_nvim_lsp').default_capabilities(updated_capabilities)
 
 local localSrcPath = vim.fn.expand '~/.local/src'
 
@@ -55,17 +55,31 @@ local filetype_attach = setmetatable({
 })
 
 local servers = {
+  texlab = {},
   hls = {},
   pyright = {
+    root_dir = lsp_config.util.root_pattern({
+      'pyproject.toml',
+      'setup.py',
+      'setup.cfg',
+      'requirements.txt',
+      'Pipfile',
+      'pyrightconfig.json',
+      '.git',
+      --added by me, to be able to use scripts without creating a package with
+      --`python -m path.from.root.to.module.file` to run file.py inside
+      --path/from/root/to/module/file.py. Given file.py then can use scripts
+      --with imports like so:
+      --`from path.from.root.to.different_module.utils import super_useful_function`
+    }),
     settings = {
       python = {
         analysis = {
           autoSearchPaths = true,
           diagnosticMode = "workspace",
-          -- useLibraryCodeForTypes = true
         }
       }
-    }
+    },
   },
   sumneko_lua = {
     cmd = {

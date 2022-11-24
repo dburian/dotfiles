@@ -38,4 +38,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# Initializes pyenv so we can use local python versions
+# eval "$(pyenv init -)"
+
 alias luamake=/home/dburian/.local/src/lua-language-server/3rd/luamake/luamake

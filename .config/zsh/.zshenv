@@ -31,6 +31,7 @@ export GHCUP_USE_XDG_DIRS='yes'
 export CABAL_CONFIG="$XDG_CONFIG_HOME"/cabal/config
 export CABAL_DIR="$XDG_CACHE_HOME"/cabal
 export GOPATH="$XDG_DATA_HOME"/go
+export PYENV_ROOT="$XDG_DATA_HOME"/pyenv
 
 ## Clipboard manager - clipmenu
 export CM_LAUNCHER="rofi"
