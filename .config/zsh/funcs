@@ -79,9 +79,12 @@ locate-edit() {
   fi
 
   ext="${sel##*.}"
+  dir=$(dirname $sel)
+  base=$(basename $sel)
 
   if [ $ext = 'tmux' -a -x $sel ] ; then
-    $sel
+    cd $dir
+    ./$base
     return
   fi
   if [ $ext = 'jpg' -o $ext = 'jpeg' -o $ext = 'png' ] ; then
