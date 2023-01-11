@@ -11,14 +11,15 @@
 }
 
 window {
-    font:             "JetBrains Mono NL Medium 10";
+    font: "JetBrainsMono Nerd Font Medium 9";
     transparency:     "screenshot";
     fullscreen:       false;
     location: west;
     anchor: west;
-    orientation: horizontal;
-    height: 80%;
-    width: 300px;
+    /* orientation: horizontal; */
+    /* height: 80%; */
+    /* width: 300px; */
+    width: 100%;
 
     padding: 0 0 0 20;
 }
@@ -26,6 +27,7 @@ window {
 inputbar {
     padding:    5;
     spacing:    0px;
+    width: 20%;
     children:   [entry];
 }
 entry {
@@ -39,11 +41,12 @@ entry {
 }
 listview {
     padding:      5;
-    columns:      1;
-    fixed-columns: false;
+    /* columns:      1; */
+    /* fixed-columns: false; */
     scrollbar:    false;
     spacing:      3;
-    fixed-height: 0;
+    layout: horizontal;
+    /* fixed-height: 0; */
 }
 
 element {
@@ -68,4 +71,5 @@ element-text {
 mainbox {
     padding: 0;
     border:  0;
+    layout: horizontal;
 }
