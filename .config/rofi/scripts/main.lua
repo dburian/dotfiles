@@ -7,8 +7,56 @@ local OPT_PREFIX = '\0'
 local ROW_SEP = '\n'
 
 local DEF_GLOB_OPTIONS = {
-    ['no-custom'] = 'true',
-    ['markup-rows'] = 'true',
+  ['no-custom'] = 'true',
+  ['markup-rows'] = 'true',
+}
+
+local APPS = {
+  {
+    name = 'spotify',
+    command = 'spotify',
+  },
+  {
+    name = 'vivaldi',
+    command = 'vivaldi-stable',
+  },
+  {
+    name = 'blender',
+    command = 'bledner',
+  },
+  {
+    name = 'gimp',
+    command = 'gimp',
+  },
+  {
+    name = 'thunderbird',
+    command = 'thunderbird',
+  },
+  {
+    name = 'configure wacom',
+    command = 'config_wacom',
+  },
+  {
+    name = 'thunderbird',
+    command = 'thunderbird',
+  },
+  {
+    name = 'zeal',
+    command = 'zeal',
+  },
+  {
+    name = 'font manager',
+    command = 'font-manager',
+  },
+  {
+    name = 'inkscape',
+    command = 'inkscape',
+  },
+  {
+    name = 'clipmenu',
+    command = 'clipmenu -dmenu -p Clipmenu',
+  },
+
 }
 
 local lib = {}
@@ -22,6 +70,7 @@ function lib.string_split(str, sep)
 
   return segments
 end
+
 function lib.get_cmd_output(cmd, multiple_lines)
   local output_handle = io.popen(cmd)
 
@@ -36,6 +85,7 @@ function lib.get_cmd_output(cmd, multiple_lines)
 
   return output
 end
+
 function lib.execute_cmd(cmd, background)
 
   cmd = cmd .. ' < /dev/null > /dev/null 2>&1'
@@ -45,11 +95,36 @@ function lib.execute_cmd(cmd, background)
 
   os.execute(cmd)
 end
+
 function lib.get_wifi_state()
   return lib.get_cmd_output('nmcli -g WIFI general')
 end
 
 local funcs = {}
+
+function funcs.apps(selection)
+  if selection then
+    for _, app in ipairs(APPS) do
+      if app.name == selection then
+        lib.execute_cmd(app.command, true)
+        return nil
+      end
+    end
+  end
+
+  local rows = {}
+  for _, app in ipairs(APPS) do
+    table.insert(rows, {
+      text = app.name,
+      options = {
+        info = 'apps'
+      }
+    })
+  end
+
+  return rows
+
+end
 
 function funcs.wifi_menu()
   local wifi_state = lib.get_wifi_state()
@@ -63,6 +138,7 @@ function funcs.wifi_menu()
     }
   }
 end
+
 function funcs.wifi_list_connections()
   local available_SSIDs = lib.get_cmd_output('nmcli -g SSID,RATE,SIGNAL,SECURITY,IN-USE device wifi list', true)
   local wifi_state = lib.get_wifi_state()
@@ -106,6 +182,7 @@ function funcs.wifi_connect(selection)
 
   return nil
 end
+
 function funcs.wifi_toggle_state(selection)
   local onoff = selection == 'wifi off' and 'off' or 'on'
   lib.execute_cmd('nmcli radio wifi ' .. onoff, true)
@@ -115,142 +192,6 @@ function funcs.wifi_toggle_state(selection)
   end
 
   return nil
-end
-
-function funcs.vivaldi(selection)
-  if selection then
-    lib.execute_cmd('vivaldi-stable', true)
-
-    return nil
-  end
-
-  return {{
-    text = 'vivaldi',
-    options = {
-      info = 'vivaldi',
-    }
-  }}
-end
-function funcs.blender(selection)
-  if selection then
-    lib.execute_cmd('blender', true)
-
-    return nil
-  end
-
-  return {{
-    text = 'blender',
-    options = {
-      info = 'blender',
-    }
-  }}
-end
-function funcs.postman(selection)
-  if selection then
-    lib.execute_cmd('postman', true)
-
-    return nil
-  end
-
-  return {{
-    text = 'postman',
-    options = {
-      info = 'postman',
-    }
-  }}
-end
-function funcs.slack(selection)
-  if selection then
-    lib.execute_cmd('slack', true)
-
-    return nil
-  end
-
-  return {{
-    text = 'slack',
-    options = {
-      info = 'slack',
-    }
-  }}
-end
-function funcs.android_emulator(selection)
-  if selection then
-    lib.execute_cmd('flutter emulators --launch api_30', true)
-
-    return nil
-  end
-
-  return {{
-    text = 'android emulator',
-    options = {
-      info = 'android_emulator',
-    }
-  }}
-end
-function funcs.spotify(selection)
-  if selection then
-    lib.execute_cmd('spotify', true)
-    return nil
-  end
-
-  return {{
-    text = 'spotify',
-    options = {
-      info = 'spotify',
-    }
-  }}
-end
-function funcs.gimp(selection)
-  if selection then
-    lib.execute_cmd('gimp', true)
-    return nil
-  end
-
-  return {{
-    text = 'gimp',
-    options = {
-      info = 'gimp',
-    }
-  }}
-end
-function funcs.thunderbird(selection)
-  if selection then
-    lib.execute_cmd('thunderbird', true)
-    return nil
-  end
-
-  return {{
-    text = 'thunderbird',
-    options = {
-      info = 'thunderbird',
-    }
-  }}
-end
-function funcs.configure_wacom(selection)
-  if selection then
-    lib.execute_cmd('config_wacom', true)
-    return nil
-  end
-
-  return {{
-    text = 'configure wacom',
-    options = {
-      info = 'configure_wacom',
-    }
-  }}
-end
-function funcs.zeal(selection)
-  if selection then
-    lib.execute_cmd('zeal', true)
-    return nil
-  end
-
-  return {{
-    text = 'zeal',
-    options = {
-      info = 'zeal',
-    }
-  }}
 end
 
 function funcs.power(selection)
@@ -287,36 +228,11 @@ function funcs.power(selection)
   }
 end
 
-function funcs.clipboard(selection)
-  if selection then
-    lib.execute_cmd('clipmenu -dmenu -p Clipmenu', true)
-
-    return nil
-  end
-
-  return {{
-    text = 'clipmenu',
-    options = {
-      info = 'clipboard'
-    }
-  }}
-end
-
 local initial_func = function()
   local init_funcs = {
     funcs.wifi_menu,
-    funcs.clipboard,
-    funcs.vivaldi,
-    funcs.blender,
-    funcs.postman,
-    funcs.slack,
-    funcs.gimp,
-    funcs.thunderbird,
-    funcs.configure_wacom,
-    funcs.zeal,
-    funcs.android_emulator,
     funcs.power,
-    funcs.spotify,
+    funcs.apps,
   }
 
   local rows = {}
@@ -376,6 +292,7 @@ local format_rows = function(rows_spec)
 
   return str
 end
+
 local print_func = function(func, selection)
   local rows, global_options = func(selection)
 
