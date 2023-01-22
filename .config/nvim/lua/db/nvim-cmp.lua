@@ -72,7 +72,7 @@ cmp.setup {
       option = {
         reference_link_location = 'top',
         searched_depth = 4,
-        searched_dirs = { '~/docs/notes', '%:h' }
+        searched_dirs = { '~/docs/notes', '%:p:h' }
       }
     },
   },

@@ -7,11 +7,11 @@ export PATH="$PATH:/usr/lib/jvm/default/bin"
 export PATH="$PATH:/home/dburian/.cache/cabal/bin"
 export PATH="$PATH:$XDG_DATA_HOME/go/bin"
 
-export ANDROID_SDK_ROOT='/opt/android-sdk'
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin/
-export PATH=$PATH:$ANDROID_ROOT/emulator
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools/
+# export ANDROID_SDK_ROOT='/opt/android-sdk'
+# export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
+# export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin/
+# export PATH=$PATH:$ANDROID_ROOT/emulator
+# export PATH=$PATH:$ANDROID_SDK_ROOT/tools/
 
 ## Helpful constants
 export XDG_CONFIG_HOME="$HOME"/.config
@@ -46,7 +46,7 @@ export NVM_DIR="$HOME/.config/nvm"
 ## JAVA
 export JAVA_HOME='/usr/lib/jvm/default'
 export _JAVA_AWT_WM_NONREPARENTING=1 #needed for Protege
-# export CLASSPATH="$XDG_CACHE_HOME/maven/repository/"
+export CLASSPATH="$XDG_CACHE_HOME/maven/repository/"
 
 ## FLUTTER development
 export CHROME_EXECUTABLE=`which google-chrome-stable`

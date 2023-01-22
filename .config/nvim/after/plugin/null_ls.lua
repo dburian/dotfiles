@@ -32,8 +32,7 @@ null_ls.setup {
     null_ls.builtins.diagnostics.eslint_d,
     null_ls.builtins.diagnostics.pylint.with({
       diagnostics_postprocess = function(diagnostic)
-        diagnostic.code = diagnostic.message_id
-        diagnostic.message = '[' .. diagnostic.code .. ']: ' .. diagnostic.message
+        diagnostic.message = '[' .. diagnostic.symbol .. ']: ' .. diagnostic.message
       end,
       extra_args = function()
         -- Set by 'activating' the virtual environment

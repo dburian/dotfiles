@@ -39,7 +39,7 @@ function m.run_cell()
   local cmd = string.format(
     base_cmd .. ".execute --filename '%s' --linenumber '%s'",
     filename,
-    line_num - 3
+    line_num
   )
   vim.fn.jobstart(cmd)
 end

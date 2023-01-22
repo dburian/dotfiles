@@ -18,7 +18,7 @@ local dataDir = vim.env.XDG_CACHE_HOME .. '/jdtls/' .. project_name
 local server_install_dir = localSrcPath .. '/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository'
 
 -- Dart
-local flutter_sdk_path = '/opt/flutter/'
+-- local flutter_sdk_path = '/opt/flutter/'
 
 local augroup_format = vim.api.nvim_create_augroup('augroup_format', { clear = true })
 local function format_on_save(filter)
@@ -131,25 +131,25 @@ local servers = {
     }
   },
 
-  dartls = {
-    init_options = {
-      onlyAnalyzeProjectsWithOpenFiles = true,
-      suggestFromUnimportedLibraries = true,
-      closingLabels = true,
-      outline = true,
-      flutterOutline = true,
-    },
-    settings = {
-      dart = {
-        completeFunctionCalls = true,
-        showTodos = true,
-        analysisExcludedFolders = {
-          flutter_sdk_path .. "packages",
-          flutter_sdk_path .. ".pub-cache",
-        },
-      },
-    },
-  },
+  -- dartls = {
+  --   init_options = {
+  --     onlyAnalyzeProjectsWithOpenFiles = true,
+  --     suggestFromUnimportedLibraries = true,
+  --     closingLabels = true,
+  --     outline = true,
+  --     flutterOutline = true,
+  --   },
+  --   settings = {
+  --     dart = {
+  --       completeFunctionCalls = true,
+  --       showTodos = true,
+  --       analysisExcludedFolders = {
+  --         flutter_sdk_path .. "packages",
+  --         flutter_sdk_path .. ".pub-cache",
+  --       },
+  --     },
+  --   },
+  -- },
 
   tsserver = {},
   svelte = {},

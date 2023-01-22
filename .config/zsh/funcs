@@ -88,7 +88,7 @@ locate-edit() {
     return
   fi
   if [ $ext = 'jpg' -o $ext = 'jpeg' -o $ext = 'png' ] ; then
-    feh "$sel"
+    view "$sel"
     return
   fi
   if [ $ext = 'pdf' ] ; then
@@ -117,7 +117,7 @@ install-jupyter_ascending() {
     return 1
   fi
 
-  pip install jupyter_ascending && \
+  pip install jupyter notebook jupyter_ascending && \
   jupyter nbextension    install jupyter_ascending --sys-prefix --py && \
   jupyter nbextension     enable jupyter_ascending --sys-prefix --py && \
   jupyter serverextension enable jupyter_ascending --sys-prefix --py
