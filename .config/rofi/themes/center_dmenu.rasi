@@ -16,7 +16,7 @@ window {
     location: center;
     width: 100%;
 
-    padding: 5 30;
+    padding: 5 0 5 30;
     children: [mainbox];
 }
 
@@ -29,7 +29,7 @@ mainbox {
 }
 
 inputbar {
-    width: 15%;
+    width: 200;
     spacing:    0px;
     children:   [entry];
 }

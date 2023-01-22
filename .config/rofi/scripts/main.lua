@@ -1,16 +1,9 @@
 #!/bin/lua
 
+package.path = package.path .. ";/home/dburian/.config/rofi/scripts/lib.lua"
+local lib = require("lib")
+
 -- The one and only rofi script
-
-local OPT_SEP = '\x1f'
-local OPT_PREFIX = '\0'
-local ROW_SEP = '\n'
-
-local DEF_GLOB_OPTIONS = {
-  ['no-custom'] = 'true',
-  ['markup-rows'] = 'true',
-}
-
 local APPS = {
   {
     name = 'spotify',
@@ -56,78 +49,16 @@ local APPS = {
     name = 'clipmenu',
     command = 'clipmenu -dmenu -p Clipmenu',
   },
-
 }
 
-local lib = {}
-
-function lib.string_split(str, sep)
-  local segments = {}
-
-  for s in string.gmatch(str, '([^' .. sep .. ']+)') do
-    table.insert(segments, s)
-  end
-
-  return segments
-end
-
-function lib.get_cmd_output(cmd, multiple_lines)
-  local output_handle = io.popen(cmd)
-
-  local output
-  if multiple_lines then
-    output = lib.string_split(output_handle:lines('a')(), '\n')
-  else
-    output = output_handle:lines()()
-  end
-
-  output_handle:close()
-
-  return output
-end
-
-function lib.execute_cmd(cmd, background)
-
-  cmd = cmd .. ' < /dev/null > /dev/null 2>&1'
-  if background then
-    cmd = 'setsid ' .. cmd .. ' &'
-  end
-
-  os.execute(cmd)
-end
-
-function lib.get_wifi_state()
+local get_wifi_state = function()
   return lib.get_cmd_output('nmcli -g WIFI general')
 end
 
 local funcs = {}
 
-function funcs.apps(selection)
-  if selection then
-    for _, app in ipairs(APPS) do
-      if app.name == selection then
-        lib.execute_cmd(app.command, true)
-        return nil
-      end
-    end
-  end
-
-  local rows = {}
-  for _, app in ipairs(APPS) do
-    table.insert(rows, {
-      text = app.name,
-      options = {
-        info = 'apps'
-      }
-    })
-  end
-
-  return rows
-
-end
-
 function funcs.wifi_menu()
-  local wifi_state = lib.get_wifi_state()
+  local wifi_state = get_wifi_state()
 
   return {
     {
@@ -141,7 +72,7 @@ end
 
 function funcs.wifi_list_connections()
   local available_SSIDs = lib.get_cmd_output('nmcli -g SSID,RATE,SIGNAL,SECURITY,IN-USE device wifi list', true)
-  local wifi_state = lib.get_wifi_state()
+  local wifi_state = get_wifi_state()
   local toggle_wifi = wifi_state == 'enabled' and 'off' or 'on'
 
   local rows = {
@@ -194,6 +125,30 @@ function funcs.wifi_toggle_state(selection)
   return nil
 end
 
+function funcs.apps(selection)
+  if selection then
+    for _, app in ipairs(APPS) do
+      if app.name == selection then
+        lib.execute_cmd(app.command, true)
+        return nil
+      end
+    end
+  end
+
+  local rows = {}
+  for _, app in ipairs(APPS) do
+    table.insert(rows, {
+      text = app.name,
+      options = {
+        info = 'apps'
+      }
+    })
+  end
+
+  return rows
+
+end
+
 function funcs.power(selection)
   if selection == 'shutdown' then
     lib.execute_cmd('shutdown now', true)
@@ -228,93 +183,10 @@ function funcs.power(selection)
   }
 end
 
-local initial_func = function()
-  local init_funcs = {
-    funcs.wifi_menu,
-    funcs.power,
-    funcs.apps,
-  }
+local INIT_FUNCS = {
+  funcs.power,
+  funcs.apps,
+  funcs.wifi_menu,
+}
 
-  local rows = {}
-
-  local i = next(init_funcs)
-  while i do
-    local new_rows = init_funcs[i]()
-
-    for _, r in ipairs(new_rows) do
-      table.insert(rows, r)
-    end
-
-    i = next(init_funcs, i)
-  end
-
-  return rows
-end
-
-local format_global_options = function(global_options)
-  local str = ''
-  for k, v in pairs(global_options) do
-    str = str .. OPT_PREFIX .. k .. OPT_SEP .. v .. ROW_SEP
-  end
-
-  return str
-end
-local format_row = function(row)
-  local str = ''
-
-  if row.label then
-    str = str .. row.label .. ' '
-  end
-
-  str = str .. row.text
-
-  if row.options then
-
-    local opt_key = next(row.options)
-
-    str = str .. OPT_PREFIX .. opt_key .. OPT_SEP .. row.options[opt_key]
-
-    opt_key = next(row.options, opt_key)
-    while opt_key ~= nil do
-      str = str .. OPT_SEP .. opt_key .. OPT_SEP .. row.options[opt_key]
-      opt_key = next(row.options, opt_key)
-    end
-  end
-
-  return str .. ROW_SEP
-end
-local format_rows = function(rows_spec)
-  local str = ''
-
-  for _, r in ipairs(rows_spec) do
-    str = str .. format_row(r)
-  end
-
-  return str
-end
-
-local print_func = function(func, selection)
-  local rows, global_options = func(selection)
-
-  if not rows then
-    return
-  end
-
-  local str = format_global_options(global_options or DEF_GLOB_OPTIONS)
-  str = str .. format_rows(rows)
-
-  print(str)
-end
-
-if #arg > 0 then
-  local selected_info = os.getenv('ROFI_INFO')
-  local selected_row_text = string.match(arg[1], '(.+)')
-
-  for k, f in pairs(funcs) do
-    if k == selected_info then
-      print_func(f, selected_row_text)
-    end
-  end
-else
-  print_func(initial_func)
-end
+lib.main(INIT_FUNCS, funcs, arg)
