@@ -1,0 +1,8 @@
+[global]
+  origin = "top-right"
+  font = "JetBrainsMono Nerd Font Bold 9"
+  format = "%a: %s %b"
+  offset = "10x30"
+  frame_width = 0
+  background = "#000000"
+  foreground = "#ffffff"
