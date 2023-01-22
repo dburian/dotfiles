@@ -12,7 +12,7 @@
 
 # exec ghc --make ~/.config/xmonad/xmonad.hs -i -ilib -main-is main -fforce-recomp -v0 -o "$1"
 #
-cd ~/docs/xmonad_config
+cd ~/.local/src/xmonad_config
 
 out_dir=$(dirname $1)
 out_file=$(basename $1)

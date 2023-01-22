@@ -21,10 +21,19 @@ In case of any questions, feel free to raise an issue.
 
 ### TODO
 
+- nvim
+    - null-ls and lsp low workload setting
+    - unique mappings for telescope file explorer
+    - mapping for buffer deletion in telescope buffers
+    - perhaps https://github.com/nvim-telescope/telescope-ui-select.nvim
+    - jupyter ascending reliable cell identification
 - rofi
     - bluetooth script
     - flash disks -- mounting
     - connected screens -- xrandr
+    - colorpicker
+- zsh
+    - autocomplete for `activate-virtual-environment` function
 - battery
     - notification
 - xmonad
