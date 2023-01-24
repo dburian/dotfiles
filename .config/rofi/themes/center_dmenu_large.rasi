@@ -1,0 +1,69 @@
+* {
+  background-color: #000000;
+  text-color: #ffffff;
+
+  placeholder-color: #777777;
+
+  margin:     0px;
+  padding:    0px;
+  spacing:    0px;
+}
+
+window {
+    font: "JetBrainsMono Nerd Font Bold 9";
+    transparency:     "screenshot";
+    fullscreen:       false;
+    location: center;
+    width: 100%;
+
+    padding: 300 0 300 250;
+    children: [mainbox];
+}
+
+mainbox {
+    padding: 0;
+    border:  0;
+    orientation: horizontal;
+
+    children: [inputbar, listview];
+}
+
+inputbar {
+    width: 200;
+    spacing:    0px;
+    children:   [entry];
+}
+entry {
+    spacing:           0;
+    placeholder:       "Type to filter";
+    blink: true;
+}
+listview {
+    border: 0 0 0 2;
+    padding: 0 0 0 100;
+    border-color: white;
+    layout: horizontal;
+}
+
+element {
+    padding: 0 10;
+}
+
+element normal.active {
+    background-color: white;
+    text-color: #ffffff;
+}
+
+element selected {
+    text-color: black;
+}
+
+element selected.normal {
+    background-color: white;
+}
+element-text {
+    highlight:        None;
+    background-color: inherit;
+    text-color:       inherit;
+}
+

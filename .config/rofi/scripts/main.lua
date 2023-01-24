@@ -183,10 +183,81 @@ function funcs.power(selection)
   }
 end
 
+function funcs.bluetooth_menu()
+  local cmd_info = lib.get_cmd_output("bluetoothctl show | grep 'Powered: yes'", true)
+  local status = #cmd_info > 0 and 'powered' or 'off'
+
+
+
+  return { {
+    text = "bluetooth (" .. status .. ")",
+    options = {
+      info = "bluetooth_connections"
+    }
+  } }
+end
+
+function funcs.bluetooth_connections()
+  local devices = lib.get_cmd_output("bluetoothctl devices | cut -d ' ' -f 2-", true)
+
+  local btl_info = lib.get_cmd_output("bluetoothctl show | grep 'Powered: yes'", true)
+  local toggle_text = #btl_info > 0 and 'bluetooth off' or 'bluetooth on'
+
+  local entries = {
+    {
+      text = toggle_text,
+      options = {
+        info = 'bluetooth_toggle_state'
+      }
+    }
+  }
+  for _, device in ipairs(devices) do
+    local end_addr_ind = string.find(device, ' ')
+    local device_addr = string.sub(device, 1, end_addr_ind)
+    local device_name = string.sub(device, end_addr_ind + 1)
+    local device_connection_cmd = lib.get_cmd_output("bluetoothctl info " .. device_addr .. " | grep 'Connected: yes'",
+      true)
+    local connection_status = #device_connection_cmd > 0 and 'disconnect ' or 'connect '
+    table.insert(entries, {
+      text = connection_status .. device_name,
+      options = {
+        info = "bluetooth_connect",
+      }
+    })
+  end
+
+
+  return entries
+end
+
+function funcs.bluetooth_connect(selection)
+  if selection then
+    local end_ind_verb = string.find(selection, ' ')
+    local verb = string.sub(selection, 1, end_ind_verb)
+    local device_name = string.sub(selection, end_ind_verb + 1)
+    local device_addr = lib.get_cmd_output("bluetoothctl devices | grep '" .. device_name .. "' | cut -d ' ' -f 2")
+    if verb then
+      lib.execute_cmd("bluetoothctl " .. verb .. " " .. device_addr, true)
+    end
+    return nil
+  end
+end
+
+function funcs.bluetooth_toggle_state(selection)
+  local onoff = selection == 'bluetooth on' and 'on' or 'off'
+
+  lib.execute_cmd('bluetoothctl power ' .. onoff)
+
+  if onoff == 'on' then
+    return funcs.bluetooth_connections()
+  end
+end
+
 local INIT_FUNCS = {
   funcs.power,
   funcs.apps,
   funcs.wifi_menu,
+  funcs.bluetooth_menu,
 }
 
 lib.main(INIT_FUNCS, funcs, arg)

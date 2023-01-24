@@ -20,4 +20,4 @@ configuration {
   kb-row-down: "Control+j,Down";
 
 }
-@theme "~/.config/rofi/themes/center_dmenu.rasi"
+@theme "~/.config/rofi/themes/center_dmenu_large.rasi"
