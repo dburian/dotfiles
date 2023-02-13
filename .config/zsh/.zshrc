@@ -31,7 +31,7 @@ comp_options+=(globdots) #Autocomplete hidden files
 autoload zmv
 
 # Local definitions
-source /home/dburian/.config/zsh/.locals
+source /home/dburian/.config/zsh/local.sh
 
 # functions
 source /home/dburian/.config/zsh/funcs
