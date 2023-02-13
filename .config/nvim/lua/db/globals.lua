@@ -5,8 +5,21 @@ function P(args)
   print(vim.inspect(args))
 end
 
+db = {
+  opts = {
+    resources = 2,
+  }
+}
+
+if vim.env.NVIM_RESOURCES ~= nil then
+  db.opts.resources = tonumber(vim.env.NVIM_RESOURCES)
+end
+
+
+
+
 function unload_module(module_name)
-  local matcher = function (loaded_module)
+  local matcher = function(loaded_module)
     return string.find(loaded_module, module_name, 1, true)
   end
 

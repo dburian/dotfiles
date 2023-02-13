@@ -17,14 +17,15 @@ local find_project_root = require 'lspconfig'.util.root_pattern({
   --`from path.from.root.to.different_module.utils import super_useful_function`
 })
 
-null_ls.setup {
-  on_attach = lsp.custom_attach,
-  sources = {
+local sources = {
+  null_ls.builtins.formatting.black.with({
+    extra_args = { '--preview' } -- enable comment wrapping
+  }),
+}
+
+if db.opts.resources >= 2 then
+  local extra_sources = {
     -- Formatting
-    -- null_ls.builtins.formatting.autopep8,
-    null_ls.builtins.formatting.black.with({
-      extra_args = { '--preview' } -- enable comment wrapping
-    }),
     null_ls.builtins.formatting.isort,
     null_ls.builtins.formatting.latexindent,
 
@@ -62,4 +63,13 @@ null_ls.setup {
     }),
     null_ls.builtins.diagnostics.chktex
   }
+
+  for _, extra_source in ipairs(extra_sources) do
+    table.insert(sources, extra_source)
+  end
+end
+
+null_ls.setup {
+  on_attach = lsp.custom_attach,
+  sources = sources,
 }

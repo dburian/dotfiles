@@ -94,7 +94,7 @@ local servers = {
           path = lua_runtime_path,
         },
         diagnostics = {
-          globals = { 'vim', 'P', },
+          globals = { 'vim', 'P', 'db' },
         },
         workspace = {
           -- Make the server aware of Neovim runtime files

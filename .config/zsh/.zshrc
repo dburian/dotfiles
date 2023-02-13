@@ -30,6 +30,9 @@ comp_options+=(globdots) #Autocomplete hidden files
 # Batch rename
 autoload zmv
 
+# Local definitions
+source /home/dburian/.config/zsh/.locals
+
 # functions
 source /home/dburian/.config/zsh/funcs
 

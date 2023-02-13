@@ -23,6 +23,7 @@ require('telescope').setup {
   },
   extensions = {
     file_browser = {
+      hidden = true,
       mappings = {
         ["n"] = {
           ["n"] = fb_actions.create,
