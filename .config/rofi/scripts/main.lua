@@ -22,10 +22,6 @@ local APPS = {
     command = 'gimp',
   },
   {
-    name = 'thunderbird',
-    command = 'thunderbird',
-  },
-  {
     name = 'configure wacom',
     command = 'config_wacom',
   },
