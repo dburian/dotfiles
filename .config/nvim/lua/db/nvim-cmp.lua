@@ -26,42 +26,6 @@ cmp.setup {
       }, { "i", "c" }),
     ['<c-n>'] = cmp.mapping.select_next_item(),
     ['<c-p>'] = cmp.mapping.select_prev_item(),
-    -- ['<c-y>'] = cmp.mapping(function (fallback)
-    --   if luasnip.expand_or_jumpable() then
-    --     return luasnip.expand_or_jump()
-    --   elseif cmp.visible() then
-    --     return cmp.confirm({
-    --       behavior = cmp.ConfirmBehavior.Replace,
-    --       select = true,
-    --     })
-    --   end
-    --   fallback()
-    -- end, {'i', 'c'}),
-    -- ['<c-h>'] = cmp.mapping(function (fallback)
-    --   if luasnip.jumpable(-1) then
-    --     return luasnip.jump(-1)
-    --   end
-
-    --   fallback()
-    -- end, {'i', 'c'}),
-    -- ['<c-l>'] = cmp.mapping.confirm {
-    --   behavior = cmp.ConfirmBehavior.Replace,
-    --   select = true,
-    -- },
-    -- ['<Tab>'] = function(fallback)
-    --   if cmp.visible() then
-    --     cmp.select_next_item()
-    --   else
-    --     fallback()
-    --   end
-    -- end,
-    -- ['<S-Tab>'] = function(fallback)
-    --   if cmp.visible() then
-    --     cmp.select_prev_item()
-    --   else
-    --     fallback()
-    --   end
-    -- end,
   },
   sources = {
     { name = 'luasnip' },

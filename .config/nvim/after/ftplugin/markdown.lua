@@ -3,6 +3,7 @@ local nmap = require 'db.keymap'.nmap
 vim.opt.textwidth = 80
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.formatoptions = vim.opt.formatoptions + 't' -- Autowrap on
 
 vim.cmd [[
   syntax on

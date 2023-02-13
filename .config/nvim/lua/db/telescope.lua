@@ -17,6 +17,9 @@ require('telescope').setup {
       hidden = true,
       no_ignore = false,
     },
+    live_grep = {
+      additional_args = { "--hidden" }
+    },
   },
   extensions = {
     file_browser = {

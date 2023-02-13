@@ -73,12 +73,7 @@ local servers = {
       --`from path.from.root.to.different_module.utils import super_useful_function`
     }),
     settings = {
-      python = {
-        analysis = {
-          autoSearchPaths = true,
-          diagnosticMode = "workspace",
-        }
-      }
+      python = {}
     },
   },
   sumneko_lua = {
@@ -130,26 +125,6 @@ local servers = {
       '-data', dataDir
     }
   },
-
-  -- dartls = {
-  --   init_options = {
-  --     onlyAnalyzeProjectsWithOpenFiles = true,
-  --     suggestFromUnimportedLibraries = true,
-  --     closingLabels = true,
-  --     outline = true,
-  --     flutterOutline = true,
-  --   },
-  --   settings = {
-  --     dart = {
-  --       completeFunctionCalls = true,
-  --       showTodos = true,
-  --       analysisExcludedFolders = {
-  --         flutter_sdk_path .. "packages",
-  --         flutter_sdk_path .. ".pub-cache",
-  --       },
-  --     },
-  --   },
-  -- },
 
   tsserver = {},
   svelte = {},

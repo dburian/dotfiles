@@ -24,7 +24,17 @@ opt.shiftround = true --round to multiples of shiftwidth with '>' and '<'
 
 opt.textwidth = 0
 opt.colorcolumn = '80' --paints 80th column w/ different color
-opt.formatoptions = 'tcqj' --autoformatting options see :help fo-table
+opt.formatoptions = opt.formatoptions
+    - "a" -- Auto formatting is BAD.
+    - "t" -- Don't auto format my code. I got linters for that.
+    + "c" -- In general, I like it when comments respect textwidth
+    + "q" -- Allow formatting comments w/ gq
+    - "o" -- O and o, don't continue comments
+    + "r" -- But do continue when pressing enter.
+    + "n" -- Indent past the formatlistpat, not underneath it.
+    + "j" -- Auto-remove comments if possible.
+    - "2" -- I'm not in gradeschool anymore
+
 
 opt.number = true --display line numbers
 opt.relativenumber = true --number lines relative to current line

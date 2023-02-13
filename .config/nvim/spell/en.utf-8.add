@@ -64,3 +64,5 @@ lemmatization
 overfitting
 Doc2Vec
 Finetuning
+WLOG
+heldout

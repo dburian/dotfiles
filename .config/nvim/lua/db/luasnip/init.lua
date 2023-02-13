@@ -2,6 +2,8 @@
 --  * mappings
 --  * helper functions
 
+local smap = require 'db.keymap'.smap
+
 
 local ls = require('luasnip')
 local types = require 'luasnip.util.types'
@@ -45,3 +47,7 @@ map({ 'i', 's' }, '<c-h>', function()
     ls.change_choice(1)
   end
 end, { silent = true })
+
+
+-- Backspace in selection mode, deletes, goes to insert mode
+smap({ "<BS>", "<C-G>s" })
