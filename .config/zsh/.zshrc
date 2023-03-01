@@ -31,10 +31,10 @@ comp_options+=(globdots) #Autocomplete hidden files
 autoload zmv
 
 # Local definitions
-source /home/dburian/.config/zsh/local.sh
+[ -e $XDG_CONFIG_HOME/zsh/local.sh ] && source $XDG_CONFIG_HOME/zsh/local.sh
 
 # functions
-source /home/dburian/.config/zsh/funcs
+source $XDG_CONFIG_HOME/zsh/funcs
 
 # zsh-syntax-highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -43,5 +43,3 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # Initializes pyenv so we can use local python versions
 # eval "$(pyenv init -)"
-
-alias luamake=/home/dburian/.local/src/lua-language-server/3rd/luamake/luamake
