@@ -65,7 +65,7 @@ local servers = {
       'requirements.txt',
       'Pipfile',
       'pyrightconfig.json',
-      '.git',
+      -- '.git',
       --added by me, to be able to use scripts without creating a package with
       --`python -m path.from.root.to.module.file` to run file.py inside
       --path/from/root/to/module/file.py. Given file.py then can use scripts
