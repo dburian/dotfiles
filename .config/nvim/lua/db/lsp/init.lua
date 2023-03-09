@@ -55,6 +55,17 @@ local filetype_attach = setmetatable({
 })
 
 local servers = {
+  ccls = {
+    init_options = {
+      compilationDatabaseDirectory = "build",
+      index = {
+        threads = 1,
+      },
+      clang = {
+        excludeArgs = { "-frounding-math"},
+      },
+    },
+  },
   texlab = {},
   hls = {},
   pyright = {
