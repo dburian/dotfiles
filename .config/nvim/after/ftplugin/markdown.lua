@@ -4,6 +4,7 @@ vim.opt.textwidth = 80
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.formatoptions = vim.opt.formatoptions + 't' -- Autowrap on
+vim.opt.commentstring = '<!---%s--->'
 
 vim.cmd [[
   syntax on
@@ -18,12 +19,12 @@ vim.cmd [[
 ]]
 
 nmap({
-  '<leader>gd',
-  require 'telescope'.extensions['markdown-links'].find_links,
-  { noremap = true, silent = true, buffer = 0 }
+    '<leader>gd',
+    require 'telescope'.extensions['markdown-links'].find_links,
+    { noremap = true, silent = true, buffer = 0 }
 })
 nmap({
-  '<leader>gr',
-  require 'telescope'.extensions['markdown-links'].find_backlinks,
-  { noremap = true, silent = true, buffer = 0 }
+    '<leader>gr',
+    require 'telescope'.extensions['markdown-links'].find_backlinks,
+    { noremap = true, silent = true, buffer = 0 }
 })
