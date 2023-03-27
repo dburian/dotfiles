@@ -10,6 +10,7 @@ local problem_snippet = s({ trig = 'problem', dscr = "Create new problem." },
 
 - what: (problem_description)
 - why: (problem_importance)
+- timespan: (timespan)
 
 <!---{{{1--->
 ### solution
@@ -25,8 +26,9 @@ local problem_snippet = s({ trig = 'problem', dscr = "Create new problem." },
     problem_name = i(1, "<concise name>"),
     problem_description = i(2, "<description>"),
     problem_importance = i(3, "<why I need to solve it>"),
-    thought_process = i(4, "<document thought process>"),
-    implementation_solutions = i(5, "<implementation problems and solutions>")
+    timespan = i(4, "<time required>"),
+    thought_process = i(5, "<document thought process>"),
+    implementation_solutions = i(6, "<implementation problems and solutions>")
   }, {
     delimiters = "()"
   }))
