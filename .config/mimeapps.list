@@ -1,0 +1,15 @@
+[Default Applications]
+text/html=vivaldi.desktop
+x-scheme-handler/http=vivaldi.desktop
+x-scheme-handler/https=vivaldi.desktop
+x-scheme-handler/about=vivaldi.desktop
+x-scheme-handler/unknown=vivaldi.desktop
+x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-OIXNH1.desktop
+message/rfc822=userapp-Thunderbird-OIXNH1.desktop
+x-scheme-handler/mid=userapp-Thunderbird-OIXNH1.desktop
+x-www-browser=vivaldi.desktop
+
+[Added Associations]
+x-scheme-handler/mailto=userapp-Thunderbird-OIXNH1.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-OIXNH1.desktop;
