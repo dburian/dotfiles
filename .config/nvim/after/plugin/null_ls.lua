@@ -38,6 +38,10 @@ if db.opts.resources >= 2 then
       extra_args = function()
         -- Set by 'activating' the virtual environment
         local venv = vim.env.VIRTUAL_ENV
+        if venv == nil then
+          return {}
+        end
+
         local site_packages_path = vim.fn.glob(venv .. '/lib/*/site-packages/')
         local root_path = find_project_root(vim.fn.expand('%:p'))
 
