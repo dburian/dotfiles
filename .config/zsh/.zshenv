@@ -3,9 +3,12 @@
 export EDITOR="nvim"
 
 ## PATH
-export PATH="$PATH:/usr/lib/jvm/default/bin"
-export PATH="$PATH:/home/dburian/.cache/cabal/bin"
-export PATH="$PATH:$XDG_DATA_HOME/go/bin"
+#export PATH="$PATH:/usr/lib/jvm/default/bin"
+#export PATH="$PATH:/home/dburian/.cache/cabal/bin"
+#export PATH="$PATH:$XDG_DATA_HOME/go/bin"
+export PATH="$PATH:$HOME/Library/Python/3.9/bin"
+export PATH="$PATH:/opt/homebrew/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # export ANDROID_SDK_ROOT='/opt/android-sdk'
 # export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
@@ -52,10 +55,10 @@ export CLASSPATH="$XDG_CACHE_HOME/maven/repository/"
 export CHROME_EXECUTABLE=`which google-chrome-stable`
 
 ## Locations
-export dots="/home/dburian/docs/dotfiles"
+export dots="$HOME/Documents/dotfiles"
 
 ## Shortcuts
-alias l="ls -lah --group-directories-first --color=always"
+alias l="ls -lah --color=always"
 alias v="nvim"
 alias z="zathura --fork"
 alias view="setsid feh --draw-filename --draw-tinted --auto-zoom --auto-reload --scale-down"
@@ -69,3 +72,4 @@ alias rofi="rofi -show combi"
 alias ssh="TERM=xterm-color ssh"
 alias pip="pip3"
 alias mvn='mvn -gs "$XDG_CONFIG_HOME"/maven/settings.xml'
+alias flavours='flavours -c "$XDG_CONFIG_HOME"/flavours/config.toml'

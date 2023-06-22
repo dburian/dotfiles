@@ -62,7 +62,7 @@ local servers = {
         threads = 1,
       },
       clang = {
-        excludeArgs = { "-frounding-math"},
+        excludeArgs = { "-frounding-math" },
       },
     },
   },
@@ -87,10 +87,10 @@ local servers = {
       python = {}
     },
   },
-  sumneko_lua = {
-    cmd = {
-      localSrcPath .. '/lua-language-server/bin/lua-language-server',
-    },
+  lua_ls = {
+    -- cmd = {
+    --   localSrcPath .. '/lua-language-server/bin/lua-language-server',
+    -- },
     settings = {
       Lua = {
         format = {

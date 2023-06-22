@@ -45,7 +45,7 @@ nmap({
   '<leader>fd',
   function()
     builtin.git_files({
-      cwd = "~/docs/dotfiles",
+      cwd = "~/Documents/dotfiles",
       prompt_title = "Dotfiles",
     })
   end,

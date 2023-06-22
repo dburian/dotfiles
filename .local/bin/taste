@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/python3
 #
 # Script for trying out new "flavours"
 #
@@ -13,6 +13,7 @@ parser.add_argument("--light", action='store_true', help="Cycle only light theme
 parser.add_argument("--dark", action='store_true', help="Cycle only dark themes.")
 
 DARK_THEME_THRESHOLD = 324
+FLAVOURS_CMD = 'flavours --config ~/.config/flavours/config.toml'
 random.seed(42)
 
 def get_cmd_output(cmd):
@@ -28,20 +29,20 @@ def hex_to_int(hex_str):
 
 
 def set_theme(theme):
-    os.system(f'flavours apply {theme}')
+    os.system(f'{FLAVOURS_CMD} apply {theme}')
 
 def curr_theme():
-    return get_cmd_output('flavours current')
+    return get_cmd_output(f'{FLAVOURS_CMD} current')
 
 
 def get_all_themes():
-    all_thems = get_cmd_output('flavours list')
+    all_thems = get_cmd_output(f'{FLAVOURS_CMD} list')
     return all_thems.split(' ')
 
 def cycle_colors(args):
     def check_theme(theme):
         main_color_hex = get_cmd_output(
-            f'flavours info {theme} -r | head -n 3 | tail -n 1 | cut -d"#" -f 2'
+            f'{FLAVOURS_CMD} info {theme} -r | head -n 3 | tail -n 1 | cut -d"#" -f 2'
         )
         main_color_int = hex_to_int(main_color_hex)
 
