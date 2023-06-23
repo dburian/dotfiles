@@ -61,6 +61,7 @@ local source_configs = {
     end
   }) },
   { 'chktex', null_ls.builtins.diagnostics.chktex },
+  { 'mypy',   null_ls.builtins.diagnostics.mypy },
 }
 
 local sources = {}
