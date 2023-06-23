@@ -46,12 +46,12 @@ opt.laststatus = 3        -- have only global status line for all splits
 opt.foldmethod = 'marker' -- only marked folds
 
 opt.listchars = {
-  trail = '·',
-  nbsp = '␣',
-  tab = '» ',
-  extends = '<',
-  precedes = '>',
-  conceal = '┊',
+	trail = '·',
+	nbsp = '␣',
+	tab = '» ',
+	extends = '<',
+	precedes = '>',
+	conceal = '┊',
 }
 
 
@@ -64,8 +64,8 @@ vim.g.tex_flavor = 'latex' --setting tex flavour for LS
 -- Configure pythons for remote plugins
 --- Colors
 vim.g.base16colorspace = 256
-if vim.fn.filereadable("~/.config/nvim/theme.vim") ~= 0 then
-  vim.cmd [[
+if vim.fn.filereadable(vim.fn.expand("~/.config/nvim/theme.vim")) ~= 0 then
+	vim.cmd [[
     source ~/.config/nvim/theme.vim
     highlight WinSeparator guibg=None
   ]]
