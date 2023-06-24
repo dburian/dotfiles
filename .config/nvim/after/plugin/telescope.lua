@@ -8,7 +8,6 @@ local utils = require 'telescope.utils'
 local builtin = require 'telescope.builtin'
 
 require('telescope').setup {
-  -- defaults = require'telescope.themes'.get_ivy(),
   pickers = {
     git_files = {
       show_untracked = true,
@@ -22,14 +21,16 @@ require('telescope').setup {
     },
   },
   extensions = {
+    -- TODO: Buffers mappings
+    -- TODO: Is this the correct way how to do mappings?
     file_browser = {
       hidden = true,
       mappings = {
         ["n"] = {
-          ["n"] = fb_actions.create,
-          ["yy"] = fb_actions.copy,
-          ["cc"] = fb_actions.rename,
-          ["dd"] = fb_actions.remove,
+          ["<leader>n"] = fb_actions.create,
+          ["<leader>y"] = fb_actions.copy,
+          ["<leader>c"] = fb_actions.rename,
+          ["<leader>d"] = fb_actions.remove,
           ["-"] = fb_actions.goto_parent_dir,
         },
       },
@@ -45,6 +46,7 @@ nmap({
   '<leader>fd',
   function()
     builtin.git_files({
+      -- TODO: Find dotfiles automatically
       cwd = "~/docs/dotfiles",
       prompt_title = "Dotfiles",
     })
@@ -55,7 +57,7 @@ nmap({
 nmap({
   '<leader>ff',
   function()
-    local cwd = vim.loop.cwd()
+    local cwd = vim.uv.cwd()
     local in_worktree = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' }, cwd)
     if in_worktree[1] ~= 'true' then
       return builtin.find_files()

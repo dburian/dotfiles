@@ -20,12 +20,6 @@ ls.config.set_config({
   },
 })
 
--- Loading all filetype specific snippets
-local snippet_files = vim.api.nvim_get_runtime_file("lua/db/luasnip/ft/*.lua", true)
-for _, ft_path in ipairs(snippet_files) do
-  loadfile(ft_path)()
-end
-
 
 local map = vim.keymap.set
 

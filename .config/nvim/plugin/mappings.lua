@@ -42,13 +42,4 @@ nmap({ '<Down>', ':m +1<cr>==', { noremap = true } })
 vmap({ '<Up>', ":m '<-2<cr>gv=gv", { noremap = true } })
 vmap({ '<Down>', ":m '>+1<cr>gv=gv", { noremap = true } })
 
--- Accessing files
-
--- Develop
-nmap({
-  '<leader>sc',
-  reload_config,
-  { noremap = true, silent = true }
-})
-
 nmap({ '<leader><leader>s', ':w<cr>:source %<cr>', { noremap = true } })

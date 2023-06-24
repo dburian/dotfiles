@@ -50,7 +50,7 @@ Plug 'onsails/lspkind-nvim' " nice icons in autocomplete menu
 Plug 'L3MON4D3/LuaSnip'
 
 " Status line
-Plug 'tjdevries/express_line.nvim'
+Plug 'nvim-lualine/lualine.nvim'
 
 " My stuff
 Plug '~/docs/cmp-markdown-link'
