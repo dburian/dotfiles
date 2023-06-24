@@ -22,12 +22,12 @@ In case of any questions, feel free to raise an issue.
 ### TODO
 
 - nvim
-    - null-ls and lsp low workload setting -- done but I would prefer to have
-      start, stop functions with server name as argument
-    - unique mappings for telescope file explorer
-    - mapping for buffer deletion in telescope buffers
     - perhaps https://github.com/nvim-telescope/telescope-ui-select.nvim
     - treesitter markdown custom queries and highlighting
+    - packer/lua based plugin manager instead of plug
+    - mason plugin
+    - theprimagen mappings
+    - proper lualine configuration
 - rofi
     - bluetooth script
     - flash disks -- mounting
