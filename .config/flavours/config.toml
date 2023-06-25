@@ -5,7 +5,7 @@ subtemplate = 'default-256'
 rewrite = true
 
 [[item]]
-file = '~/.config/nvim/theme.vim'
+file = '~/.config/nvim/after/plugin/theme.vim'
 template = 'vim'
 rewrite = true
 

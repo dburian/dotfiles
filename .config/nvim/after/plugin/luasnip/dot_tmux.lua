@@ -1,5 +1,5 @@
 local ls = require 'luasnip'
-local utils = require 'db.luasnip.utils'
+local utils = require 'db.luasnip'
 
 local s = ls.snippet
 local i = ls.insert_node
