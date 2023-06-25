@@ -1,5 +1,5 @@
 # Ignoring theme files
-.config/nvim/theme.vim
+.config/nvim/after/plugin/theme.vim
 .config/alacritty/theme.yml
 
 # Ingoring system-dependent files
