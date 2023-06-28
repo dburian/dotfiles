@@ -6,8 +6,9 @@
 .config/alacritty/system.yml
 .config/zsh/.zcompdump
 
-# Automatically generated luarc
+# Automatically generated files
 .config/nvim/lua/.luarc.json
+.config/nvim/plugin/packer_compiled.lua
 
 # Ignoring some macos stuff
 .DS_Store

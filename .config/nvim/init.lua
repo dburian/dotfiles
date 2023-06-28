@@ -5,8 +5,8 @@
 --  - plugin/ - files that should be loaded automatically ASAP
 
 
--- Plugins
-vim.cmd('source ~/.config/nvim/plug.vim')
+-- Load plugins
+require('db.plugins')
 
 -- Globals
 require('db.globals')

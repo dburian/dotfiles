@@ -110,9 +110,7 @@ function install_dotfiles() {
 }
 
 function install_nvim_plugins() {
-  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  nvim -c "PlugInstall | qa"
+  nvim -c "PackerSync | qa"
 }
 
 function install_python_dev() {
@@ -139,5 +137,6 @@ install_nvim_plugins
 
 install_python_dev
 # TODO: Install pyright, null-ls, ...
+# TODO: Install rip-grep
 
 
