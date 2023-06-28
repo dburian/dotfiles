@@ -16,4 +16,8 @@ function M.smap(opts)
   vim.keymap.set('s', opts[1], opts[2], opts[3])
 end
 
+function M.xmap(opts)
+  vim.keymap.set('x', opts[1], opts[2], opts[3])
+end
+
 return M
