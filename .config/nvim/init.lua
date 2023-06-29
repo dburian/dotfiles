@@ -4,6 +4,8 @@
 --  - after/plugin - configuration of plugins (possibly using lua/db/..)
 --  - plugin/ - files that should be loaded automatically ASAP
 
+-- Leader
+vim.g.mapleader = ','
 
 -- Load plugins
 require('db.plugins')

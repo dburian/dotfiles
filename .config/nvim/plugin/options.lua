@@ -13,8 +13,14 @@ opt.smartcase = true --but case-sensitive if expression contains a capital lette
 --- Buffers
 opt.hidden = true --can abandoned buffers are not unloaded but hidden
 
+--- Swaps, Backups and undos
+opt.swapfile = false
+opt.backup = false
+opt.undodir = vim.fn.stdpath('cache') .. '/nvim/undodir'
+opt.undofile = true
+
 --- Editor
-opt.scrolloff = 3 --show 3 lines of context around cursor
+opt.scrolloff = 8 --show 8 lines of context around cursor
 opt.list = true --show invisible characters
 
 opt.expandtab = true --use spaces instead of tabs

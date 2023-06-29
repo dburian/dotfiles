@@ -1,10 +1,5 @@
 #!/bin/sh
 
-some_func() {
-  echo 'calling some func'
-  return
-}
-
 activate_virtual_environment() {
   #
   # Activates python virtual environment stored in ~/.local/share/python-venvs/
