@@ -77,6 +77,7 @@ require('telescope').setup {
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('file_browser')
 require('telescope').load_extension('markdown-links')
+require("telescope").load_extension("ui-select")
 
 nmap({
   '<leader>fd',
@@ -129,7 +130,7 @@ nmap({
   '<leader>fp',
   function()
     builtin.find_files {
-      cwd = '~/.local/share/nvim/bundle/',
+      cwd = '~/.local/share/nvim/site/pack/packer/',
     }
   end,
   { noremap = true, silent = true }

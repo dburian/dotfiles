@@ -1,5 +1,5 @@
 require 'nvim-treesitter.configs'.setup {
-  ensure_installed = { "lua", "python", "help", "bash", "markdown", "markdown_inline" },
+  ensure_installed = { "lua", "python", "bash", "markdown", "markdown_inline" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,

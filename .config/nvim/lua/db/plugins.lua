@@ -12,7 +12,6 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
-  --TODO: go through this, adjusts dependencies
   use 'wbthomason/packer.nvim'
 
   -- Verbs
@@ -40,6 +39,7 @@ return require('packer').startup(function(use)
   use 'nvim-telescope/telescope-file-browser.nvim'
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use 'dburian/telescope-markdown-links'
+  use 'nvim-telescope/telescope-ui-select.nvim'
 
   -- LSP
   use 'neovim/nvim-lspconfig'
@@ -56,6 +56,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-buffer'
   use 'saadparwaiz1/cmp_luasnip'
   use 'dburian/cmp-markdown-link'
+  use 'quangnguyen30192/cmp-nvim-tags'
 
   use 'onsails/lspkind-nvim' -- nice icons in autocomplete menu
 
