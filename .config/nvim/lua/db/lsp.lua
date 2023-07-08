@@ -43,11 +43,16 @@ function M.custom_ctags_attach()
   vim.notify("Using ctags for current buffer.", vim.log.levels.INFO)
   local opts = { noremap = true, silent = true, buffer = 0 }
 
-  nmap({ 'gd', '<C-]>', opts })
-  nmap({ 'gD', 'g<C-]>', opts })
+  nmap({
+    'gd',
+    function()
+      require 'db.telescope'.telescope_tag_select({ search_cword = true, fname_width = 40 })
+    end,
+    opts
+  })
 
   nmap({ 'gr', function()
-    require 'telescope.builtin'.tags()
+    require 'telescope.builtin'.grep_string()
   end, opts })
 
   -- Clever substitute

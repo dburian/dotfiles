@@ -131,6 +131,7 @@ local telescope_tag_select_rg = function(opts)
 
   opts.entry_maker = vim.F.if_nil(opts.entry_maker, make_entry.gen_from_ctags(opts))
 
+  -- TODO: Ideally we would know we have one/zero matches before we run telescope UI
   pickers
       .new(opts, {
         prompt_title = tagname and "Tags matching '" .. tagname .. "'" or "Tags",
@@ -184,6 +185,12 @@ local telescope_tag_select_rg = function(opts)
       :find()
 end
 
-nmap({ '<leader>gd', telescope_tag_select, { noremap = true } })
-nmap({ '<leader>fv', function() telescope_tag_select_rg({ search_cword = true, fname_width = 40 }) end,
-  { noremap = true } })
+-- nmap({ '<leader>gd', telescope_tag_select, { noremap = true } })
+-- nmap({ '<leader>fv', function() telescope_tag_select_rg({ search_cword = true, fname_width = 40 }) end,
+--   { noremap = true } })
+
+local M = {
+  telescope_tag_select = telescope_tag_select_rg,
+}
+
+return M
