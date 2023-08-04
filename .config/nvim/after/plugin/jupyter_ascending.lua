@@ -30,8 +30,8 @@ function m.run_cell()
 
   local line_num = vim.fn.line(".")
   local cell_start_regex = vim.regex('^# %%')
-  local match = cell_start_regex:match_line(0, line_num - 1)
-  while match == nil and line_num >= 0 do
+  local match = cell_start_regex:match_line(0, line_num)
+  while match == nil and line_num > 0 do
     line_num = line_num - 1
     match = cell_start_regex:match_line(0, line_num - 1)
   end
