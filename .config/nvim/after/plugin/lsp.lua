@@ -86,8 +86,9 @@ local servers = {
       },
     }
   },
-  texlab = {ctags_fallback = true},
+  texlab = { ctags_fallback = true },
   hls = {},
+  marksman = {},
 }
 
 for server, spec in pairs(servers) do
