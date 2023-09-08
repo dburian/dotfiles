@@ -24,8 +24,7 @@ In case of any questions, feel free to raise an issue.
 - nvim
     - perhaps https://github.com/nvim-telescope/telescope-ui-select.nvim
     - treesitter markdown custom queries and highlighting
-    - packer/lua based plugin manager instead of plug
-    - theprimagen mappings
+    - mapping to yank the cwd into clipboard
 - rofi
     - bluetooth script
     - flash disks -- mounting
@@ -38,6 +37,8 @@ In case of any questions, feel free to raise an issue.
         - env. vars only for login shells, get inherited by non-login shells
 - battery
     - notification
+- tmux
+    - keyboard shortcut to set synchronize panes on
 - xmonad
     - cabal xmonad install
     - xmonad man page

@@ -8,19 +8,31 @@
 #   - git
 #   - gcc or clang, make --- required by fzf extension
 #
+XDG_CONFIG_HOME="$HOME/.config"
+XDG_DATA_HOME="$HOME/.local/share"
+
+SRC_INSTALL_DIR="$HOME/.local/src"
+BIN_INSTALL_DIR="$HOME/.local/bin"
+
+
+
 BASHRC_DIR="$HOME"
 ZSHRC_DIR="$HOME"
 
 FZF_BIN="https://github.com/junegunn/fzf/releases/download/0.42.0/fzf-0.42.0-linux_amd64.tar.gz"
 FZF_INSTALL_DIR="$HOME/.local/bin"
 
-NVIM_INSTALL_DIR="$HOME/.local/src"
+RG_URL="https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz"
+RG_INSTALL_DIR=$SRC_INSTALL_DIR
+
+NVIM_INSTALL_DIR=$SRC_INSTALL_DIR
 NVIM_BIN="https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
 
-DOTFILES_INSTALL_DIR="$HOME/.local/src"
+DOTFILES_INSTALL_DIR=$SRC_INSTALL_DIR
 
-XDG_CONFIG_HOME="$HOME/.config"
-XDG_DATA_HOME="$HOME/.local/share"
+CTAGS_URL="https://github.com/universal-ctags/ctags-nightly-build/releases/download/2023.07.31%2B9db5222814c5c2c4fc3ba00bd4bc8ee2ae54b497/uctags-2023.07.31-linux-x86_64.tar.xz"
+
+
 
 function setup_bash() {
   rm -f "$HOME"/.bashrc "$HOME"/.profile
@@ -79,6 +91,19 @@ function install_fzf() {
   rm $tarfile
 }
 
+function install_rg() {
+  mkdir -p $RG_INSTALL_DIR
+  cd $RG_INSTALL_DIR
+
+  curl -OL $RG_URL
+  tarfile=`basename $RG_URL`
+  tar zxvf $tarfile
+  rg_dir=${tarfile%%.tar.gz}
+  ln -s $RG_INSTALL_DIR/$rg_dir/rg $BIN_INSTALL_DIR
+
+  rm $tarfile
+}
+
 function install_nvim() {
   # Moving to install location
   mkdir -p $NVIM_INSTALL_DIR
@@ -107,6 +132,7 @@ function install_dotfiles() {
 
   mkdir -p $XDG_CONFIG_HOME
   ln -s $DOTFILES_INSTALL_DIR/dotfiles/.config/nvim $XDG_CONFIG_HOME
+  ln -s $DOTFILES_INSTALL_DIR/dotfiles/.config/git $XDG_CONFIG_HOME
 }
 
 function install_nvim_plugins() {
@@ -114,9 +140,22 @@ function install_nvim_plugins() {
 }
 
 function install_python_dev() {
-  #TODO: null-ls is going to complain pylint is not there
   #TODO: no config for mypy
   pip install pyright black isort git+https://github.com/pre-commit/mirrors-mypy
+}
+
+function install_ctags() {
+  mkdir -p $SRC_INSTALL_DIR
+  cd $SRC_INSTALL_DIR
+
+  curl -OL $CTAGS_URL
+  tarfile=`basename $CTAGS_URL`
+
+  tar xvf $tarfile
+  ctags_dir=${tarfile%%.tar.xz}
+  ln -s $SRC_INSTALL_DIR/$ctags_dir/bin/ctags $BIN_INSTALL_DIR
+
+  rm $tarfile
 }
 
 # I am not installing bashrc and zshrc from dotfiles because they requrie too much dependencies
@@ -129,14 +168,12 @@ else
 fi
 
 install_fzf
+install_rg
 
 install_nvim
 install_dotfiles
+
 install_nvim_plugins
 
-
+install_ctags
 install_python_dev
-# TODO: Install pyright, null-ls, ...
-# TODO: Install rip-grep
-
-
