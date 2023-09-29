@@ -35,9 +35,13 @@ CTAGS_URL="https://github.com/universal-ctags/ctags-nightly-build/releases/downl
 
 
 function setup_bash() {
-  rm -f "$HOME"/.bashrc "$HOME"/.profile
   mkdir -p "$BASHRC_DIR"
-  cat  > "$BASHRC_DIR"/.bashrc <<EOT
+  bashrc="$BASHRC_DIR"/.bashrc
+  if [ -e $bashrc ]; then
+    echo "Appending new lines to ${bashrc}. Check them."
+  fi
+  echo "Creating new bashrc at ${bashrc}."
+  cat  >> $bashrc <<EOT
 #ENV vars
 export XDG_CONFIG_HOME="\$HOME"/.config
 export XDG_CACHE_HOME="\$HOME"/.cache
@@ -50,34 +54,20 @@ export EDITOR="nvim"
 alias l="ls -lah --color=always"
 alias v="nvim"
 EOT
-  cat > "$BASHRC_DIR"/.profile <<EOT
+  bashprofile="$BASHRC_DIR"/.profile
+  if [ -e $bashprofile ]; then
+    echo "Appending new lines to ${bashprofile}. Check them."
+  fi
+  cat >> $bashprofile <<EOT
 if [ "\$BASH" ]; then
-  if [ -f "$BASHRC_DIR"/.bashrc ]; then
-    . "$BASHRC_DIR"/.bashrc
+  if [ -f $bashrc ]; then
+    . $bashrc
   fi
 fi
 
 mesg n 2> /dev/null || true
 EOT
-  source $BASHRC_DIR/.bashrc
-}
-
-function setup_zsh() {
-  mkdir -p "$ZSHRC_DIR"
-  cat > "$ZSHRC_DIR"/.zshrc <<EOT
-#ENV vars
-export XDG_CONFIG_HOME="\$HOME"/.config
-export XDG_CACHE_HOME="\$HOME"/.cache
-export XDG_DATA_HOME="\$HOME"/.local/share
-
-export PATH="\$PATH":"\$HOME"/.local/bin
-export EDITOR="nvim"
-
-#Aliases
-alias l="ls -lah --color=always"
-alias v="nvim"
-EOT
-  source $ZSHRC_DIR/.zshrc
+  source $bashrc
 }
 
 function install_fzf() {
@@ -158,14 +148,7 @@ function install_ctags() {
   rm $tarfile
 }
 
-# I am not installing bashrc and zshrc from dotfiles because they requrie too much dependencies
-# TODO: have a minimal branch
-if [ -x "/bin/zsh" ] ; then
-  #Not tested
-  setup_zsh
-else
-  setup_bash
-fi
+setup_bash
 
 install_fzf
 install_rg
