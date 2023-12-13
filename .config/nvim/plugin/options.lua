@@ -60,6 +60,8 @@ opt.listchars = {
   conceal = '┊',
 }
 
+opt.tags = './tags;$HOME'
+
 
 opt.clipboard:append('unnamedplus')
 

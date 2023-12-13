@@ -140,3 +140,8 @@ nmap({
   builtin.help_tags,
   { noremap = true, silent = true }
 })
+nmap({
+  '<leader>fv',
+  builtin.tags,
+  { noremap = true, silent = true }
+})
