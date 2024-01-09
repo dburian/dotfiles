@@ -101,7 +101,6 @@ local buf_enter_ft = vim.api.nvim_create_augroup('buf_enter_ft', { clear = true 
 local function set_ctags_mappings_on_buf_enter(fts)
   vim.api.nvim_clear_autocmds { buffer = 0, group = buf_enter_ft }
   vim.api.nvim_create_autocmd("FileType", {
-    buffer = 0,
     pattern = fts,
     callback = M.custom_ctags_attach,
   })
@@ -140,7 +139,8 @@ function M.setup_language_server(server, spec)
   end
 
   if vim.fn.executable(cmd_no_args) == 0 and spec.ctags_fallback then
-    set_ctags_mappings_on_buf_enter(lsp_config[server].filetypes)
+    local server_filetypes = lsp_config[server].document_config.default_config.filetypes
+    set_ctags_mappings_on_buf_enter(server_filetypes)
   else
     lsp_config[server].setup(config)
   end
