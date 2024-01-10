@@ -34,13 +34,13 @@ cmp.setup {
     { name = 'tags' },
     { name = 'path' },
     { name = 'buffer' },
-    { name = 'markdown-link',
-      option = {
-        reference_link_location = 'top',
-        searched_depth = 4,
-        searched_dirs = { '~/docs/notes', '%:p:h' }
-      }
-    },
+    -- { name = 'markdown-link',
+    --   option = {
+    --     reference_link_location = 'top',
+    --     searched_depth = 4,
+    --     searched_dirs = { '~/docs/notes', '%:p:h' }
+    --   }
+    -- },
   },
   formatting = {
     format = lspkind.cmp_format {
