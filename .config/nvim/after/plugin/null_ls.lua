@@ -28,10 +28,10 @@ local source_configs = {
   { 'latexindent', null_ls.builtins.formatting.latexindent },
   { 'eslint_d', null_ls.builtins.diagnostics.eslint_d },
   {
-    -- Adjusted ruff format source
+    -- Adjusted ruff to replace black
     'ruff',
     helpers.make_builtin({
-      name = "ruff",
+      name = "ruff(replacing black)",
       meta = {
         url = "https://github.com/charliermarsh/ruff/",
         description = "An extremely fast Python linter, written in Rust.",
@@ -40,13 +40,13 @@ local source_configs = {
       filetypes = { "python" },
       generator_opts = {
         command = "ruff",
-        -- args = { "--fix", "-e", "-n", "--stdin-filename", "$FILENAME", "-" },
         args = { "format", "--respect-gitignore", "--stdin-filename", "$FILENAME", "-" },
         to_stdin = true,
       },
       factory = helpers.formatter_factory,
     })
   },
+  { 'ruff', null_ls.builtins.formatting.ruff },
   { 'ruff', null_ls.builtins.diagnostics.ruff },
   { 'chktex', null_ls.builtins.diagnostics.chktex },
   { 'mypy', null_ls.builtins.diagnostics.mypy },
