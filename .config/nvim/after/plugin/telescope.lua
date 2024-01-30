@@ -10,6 +10,19 @@ local utils = require 'telescope.utils'
 local builtin = require 'telescope.builtin'
 
 require('telescope').setup {
+  defaults = {
+    mappings = {
+      i = {
+        -- using ctrl+s instead of meta+s
+        ["<M-q>"] = false,
+        ["<C-s>"] = actions.send_selected_to_qflist + actions.open_qflist,
+      },
+      n = {
+        ["<M-q>"] = false,
+        ["<C-s>"] = actions.send_selected_to_qflist + actions.open_qflist,
+      },
+    },
+  },
   pickers = {
     git_files = {
       show_untracked = true,
@@ -143,5 +156,16 @@ nmap({
 nmap({
   '<leader>fv',
   builtin.tags,
+  { noremap = true, silent = true }
+})
+
+nmap({
+  '<leader>fn',
+  function()
+    builtin.find_files({
+      search_dirs = { '~/docs/notes', '~/docs/private_notes', '~/docs/tde/dev/notes', '~/docs/tde/dev/log' },
+      hidden = false,
+    })
+  end,
   { noremap = true, silent = true }
 })
