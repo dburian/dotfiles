@@ -1,5 +1,5 @@
 [[item]]
-file = '~/.config/alacritty/theme.yml'
+file = '~/.config/alacritty/theme.toml'
 template = 'alacritty'
 subtemplate = 'default-256'
 rewrite = true
