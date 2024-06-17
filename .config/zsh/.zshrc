@@ -1,6 +1,8 @@
 # Enable colors
 autoload -U colors && colors
 
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
+
 # Pure prompt
 autoload -U promptinit; promptinit
 PURE_PROMPT_SYMBOL='$'
@@ -37,7 +39,7 @@ autoload zmv
 source $XDG_CONFIG_HOME/zsh/funcs
 
 # zsh-syntax-highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 

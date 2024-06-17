@@ -97,7 +97,7 @@ nmap({
   function()
     builtin.git_files({
       -- TODO: Find dotfiles automatically
-      cwd = "~/docs/dotfiles",
+      cwd = "~/repos/dotfiles",
       prompt_title = "Dotfiles",
     })
   end,

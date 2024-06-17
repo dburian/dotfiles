@@ -1,0 +1,49 @@
+import = ["/Users/david.burian@rossum.ai/.config/alacritty/system.yml", "/Users/david.burian@rossum.ai/.config/alacritty/theme.yml"]
+
+[cursor]
+unfocused_hollow = true
+vi_mode_style = "Beam"
+
+[cursor.style]
+shape = "Block"
+
+[env]
+TERM = "xterm-256color"
+
+[font.bold]
+style = "Bold"
+
+[font.bold_italic]
+style = "Bold Italic"
+
+[font.italic]
+style = "Italic"
+
+[font.normal]
+family = "Menlo"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Escape"
+mods = "Alt"
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 10000
+
+[selection]
+save_to_clipboard = true
+
+[window]
+dynamic_padding = true
+
+[window.padding]
+x = 5
+y = 5

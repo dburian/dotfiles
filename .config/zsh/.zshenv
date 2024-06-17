@@ -3,6 +3,8 @@
 export EDITOR="nvim"
 
 ## PATH
+export PATH="$PATH:/Applications/Alacritty.app/Contents/MacOS/alacritty" #Add alacritty to binary
+export PATH="$PATH:/opt/homebrew/bin" #Add homebrew
 export PATH="$PATH:/usr/lib/jvm/default/bin"
 export PATH="$PATH:/home/dburian/.cache/cabal/bin"
 export PATH="$PATH:$XDG_DATA_HOME/go/bin"
@@ -55,7 +57,7 @@ export CHROME_EXECUTABLE=`which google-chrome-stable`
 export dots="/home/dburian/docs/dotfiles"
 
 ## Shortcuts
-alias l="ls -lah --group-directories-first --color=always"
+alias l="ls -lah --color=always"
 alias v="nvim"
 alias z="zathura --fork"
 alias view="setsid feh --draw-filename --draw-tinted --auto-zoom --auto-reload --scale-down"
