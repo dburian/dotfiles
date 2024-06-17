@@ -1,6 +1,9 @@
 # Enable colors
 autoload -U colors && colors
 
+# Adding stuff from nix to FPATH
+[ -d ~/.nix-profile ] && export FPATH=~/.nix-profile/share/zsh/site-functions:$FPATH
+
 # Pure prompt
 autoload -U promptinit; promptinit
 PURE_PROMPT_SYMBOL='$'
@@ -37,7 +40,7 @@ autoload zmv
 source $XDG_CONFIG_HOME/zsh/funcs
 
 # zsh-syntax-highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -d ~/.nix-profile ] && source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 

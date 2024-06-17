@@ -5,6 +5,7 @@ export EDITOR="nvim"
 ## PATH
 export PATH="$PATH:/usr/lib/jvm/default/bin"
 export PATH="$PATH:/home/dburian/.cache/cabal/bin"
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$XDG_DATA_HOME/go/bin"
 
 # export ANDROID_SDK_ROOT='/opt/android-sdk'
@@ -41,7 +42,10 @@ export CM_HISTLENGTH=10
 alias luamake=/home/dburian/.local/src/lua-language-server/3rd/luamake/luamake
 
 ## NPM
-export NVM_DIR="$HOME/.config/nvm"
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/.npmrc
+export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
+export PATH="$HOME/.npm_packages/bin":$PATH
+export NODE_PATH="$HOME/.npm_packages/lib/node_modules"
 
 ## JAVA
 export JAVA_HOME='/usr/lib/jvm/default'
@@ -52,7 +56,7 @@ export CLASSPATH="$XDG_CACHE_HOME/maven/repository/"
 export CHROME_EXECUTABLE=`which google-chrome-stable`
 
 ## Locations
-export dots="/home/dburian/docs/dotfiles"
+export dots=~/repos/dotfiles
 
 ## Shortcuts
 alias l="ls -lah --group-directories-first --color=always"
