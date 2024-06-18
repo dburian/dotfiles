@@ -1,7 +1,11 @@
 # Enable colors
 autoload -U colors && colors
 
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
+# Adding brewed zsh pure prompt to FPATH
+brew --version > /dev/null 2&>1 && fpath+=("$(brew --prefix)/share/zsh/site-functions")
+
+# Adding stuff from nix to FPATH
+[ -d ~/.nix-profile ] && export FPATH=~/.nix-profile/share/zsh/site-functions:$FPATH
 
 # Pure prompt
 autoload -U promptinit; promptinit
@@ -39,7 +43,8 @@ autoload zmv
 source $XDG_CONFIG_HOME/zsh/funcs
 
 # zsh-syntax-highlighting
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -d /opt/homebrew ] && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -d ~/.nix-profile ] && source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 

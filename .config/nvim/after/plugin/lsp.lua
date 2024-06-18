@@ -55,9 +55,6 @@ local servers = {
   },
   lua_ls = {
     config = {
-      cmd = {
-        localSrcPath .. '/lua-language-server/bin/lua-language-server',
-      },
       settings = {
         Lua = {
           format = {
@@ -89,6 +86,8 @@ local servers = {
   texlab = { ctags_fallback = true },
   hls = {},
   marksman = {},
+  astro = {},
+  tailwindcss = {},
 }
 
 for server, spec in pairs(servers) do

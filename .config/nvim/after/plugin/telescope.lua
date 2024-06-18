@@ -95,9 +95,18 @@ require("telescope").load_extension("ui-select")
 nmap({
   '<leader>fd',
   function()
+    local nvim_conf_dir_path = utils.get_os_command_output(
+      { 'readlink', '.config/nvim' },
+      vim.env.HOME
+    )[1]
+
+    local dots_dir = utils.get_os_command_output(
+      { 'git', 'rev-parse', '--show-toplevel' },
+      nvim_conf_dir_path
+    )[1]
+
     builtin.git_files({
-      -- TODO: Find dotfiles automatically
-      cwd = "~/repos/dotfiles",
+      cwd = dots_dir,
       prompt_title = "Dotfiles",
     })
   end,

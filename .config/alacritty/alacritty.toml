@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import = ["/Users/david.burian@rossum.ai/.config/alacritty/system.yml", "/Users/david.burian@rossum.ai/.config/alacritty/theme.yml"]
+=======
+import = ["/home/dburian/.config/alacritty/system.toml", "/home/dburian/.config/alacritty/theme.toml"]
+>>>>>>> master
 
 [cursor]
 unfocused_hollow = true
@@ -42,6 +46,7 @@ history = 10000
 save_to_clipboard = true
 
 [window]
+decorations = "none"
 dynamic_padding = true
 
 [window.padding]

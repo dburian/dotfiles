@@ -52,12 +52,12 @@ opt.laststatus = 3 -- have only global status line for all splits
 opt.foldmethod = 'marker' -- only marked folds
 
 opt.listchars = {
-  trail = '·',
-  nbsp = '␣',
-  tab = '» ',
-  extends = '<',
-  precedes = '>',
-  conceal = '┊',
+    trail = '·',
+    nbsp = '␣',
+    tab = '» ',
+    extends = '<',
+    precedes = '>',
+    conceal = '┊',
 }
 
 opt.tags = './tags;$HOME'
