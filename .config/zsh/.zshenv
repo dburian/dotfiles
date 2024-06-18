@@ -3,7 +3,7 @@
 export EDITOR="nvim"
 
 ## PATH
-export PATH="$PATH:/Applications/Alacritty.app/Contents/MacOS/alacritty" #Add alacritty to binary
+export PATH="$PATH:/Applications/Alacritty.app/Contents/MacOS" #Add alacritty to binary
 export PATH="$PATH:/opt/homebrew/bin" #Add homebrew
 export PATH="$PATH:/usr/lib/jvm/default/bin"
 export PATH="$PATH:/home/dburian/.cache/cabal/bin"
@@ -35,6 +35,7 @@ export CABAL_CONFIG="$XDG_CONFIG_HOME"/cabal/config
 export CABAL_DIR="$XDG_CACHE_HOME"/cabal
 export GOPATH="$XDG_DATA_HOME"/go
 export PYENV_ROOT="$XDG_DATA_HOME"/pyenv
+export FLAVOURS_CONFIG_FILE="$XDG_CONFIG_HOME/flavours/config.toml"
 
 ## Clipboard manager - clipmenu
 export CM_LAUNCHER="rofi"
@@ -58,7 +59,7 @@ export CLASSPATH="$XDG_CACHE_HOME/maven/repository/"
 export CHROME_EXECUTABLE=`which google-chrome-stable`
 
 ## Locations
-export dots=~/repos/dotfiles
+export dots="$HOME/repos/dotfiles"
 
 ## Shortcuts
 alias l="ls -lah --color=always"
