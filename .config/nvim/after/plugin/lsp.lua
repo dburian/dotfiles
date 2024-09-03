@@ -1,6 +1,14 @@
 local db_lsp = require 'db.lsp'
 local lsp_config = require('lspconfig')
 
+local util = require 'lspconfig.util'
+
+local root_files = {
+  'pyrightconfig.json',
+  '.git',
+}
+
+
 local localSrcPath = vim.fn.expand '~/.local/src'
 
 -- Java
@@ -52,6 +60,11 @@ local servers = {
   tsserver = {},
   pyright = {
     ctags_fallback = true,
+    config = {
+      root_dir = function(fname)
+        return util.root_pattern(unpack(root_files))(fname)
+      end,
+    }
   },
   lua_ls = {
     config = {
