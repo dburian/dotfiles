@@ -129,11 +129,6 @@ function install_nvim_plugins() {
   nvim -c "PackerSync | qa"
 }
 
-function install_python_dev() {
-  #TODO: no config for mypy
-  pip install pyright black isort git+https://github.com/pre-commit/mirrors-mypy
-}
-
 function install_ctags() {
   mkdir -p $SRC_INSTALL_DIR
   cd $SRC_INSTALL_DIR
@@ -159,4 +154,3 @@ install_dotfiles
 install_nvim_plugins
 
 install_ctags
-install_python_dev
