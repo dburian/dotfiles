@@ -34,6 +34,7 @@ cmp.setup {
     { name = 'tags' },
     { name = 'path' },
     { name = 'buffer' },
+    { name = 'emoji' },
     -- { name = 'markdown-link',
     --   option = {
     --     reference_link_location = 'top',
