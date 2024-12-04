@@ -28,9 +28,12 @@ RG_INSTALL_DIR=$SRC_INSTALL_DIR
 NVIM_INSTALL_DIR=$SRC_INSTALL_DIR
 NVIM_BIN="https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
 
-DOTFILES_INSTALL_DIR=$SRC_INSTALL_DIR
+DOTFILES_INSTALL_DIR=$(dirname $(dirname $(dirname $(dirname $(readlink -fn -- "$0")))))
 
-CTAGS_URL="https://github.com/universal-ctags/ctags-nightly-build/releases/download/2023.07.31%2B9db5222814c5c2c4fc3ba00bd4bc8ee2ae54b497/uctags-2023.07.31-linux-x86_64.tar.xz"
+echo $DOTFILES_INSTALL_DIR
+exit
+
+CTAGS_URL="https://github.com/universal-ctags/ctags/releases/download/v6.1.0/universal-ctags-6.1.0.tar.gz"
 
 
 
@@ -118,15 +121,10 @@ function install_nvim() {
 
 function install_dotfiles() {
   cd $DOTFILES_INSTALL_DIR
-  git clone https://github.com/dburian/dotfiles.git
 
   mkdir -p $XDG_CONFIG_HOME
   ln -s $DOTFILES_INSTALL_DIR/dotfiles/.config/nvim $XDG_CONFIG_HOME
   ln -s $DOTFILES_INSTALL_DIR/dotfiles/.config/git $XDG_CONFIG_HOME
-}
-
-function install_nvim_plugins() {
-  nvim -c "PackerSync | qa"
 }
 
 function install_ctags() {
@@ -150,7 +148,5 @@ install_rg
 
 install_nvim
 install_dotfiles
-
-install_nvim_plugins
 
 install_ctags
