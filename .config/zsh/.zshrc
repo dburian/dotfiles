@@ -40,6 +40,7 @@ autoload zmv
 source $XDG_CONFIG_HOME/zsh/funcs
 
 # zsh-syntax-highlighting
+[ -d /usr/share/zsh/plugins/zsh-syntax-highlighting ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -d ~/.nix-profile ] && source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

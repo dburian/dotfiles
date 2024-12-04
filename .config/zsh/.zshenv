@@ -46,6 +46,7 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/.npmrc
 export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 export PATH="$HOME/.npm_packages/bin":$PATH
 export NODE_PATH="$HOME/.npm_packages/lib/node_modules"
+export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 
 ## JAVA
 export JAVA_HOME='/usr/lib/jvm/default'
