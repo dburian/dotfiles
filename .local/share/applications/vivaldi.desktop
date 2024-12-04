@@ -9,8 +9,7 @@ Version=1.0
 Name=Vivaldi
 
 # The executable of the application, possibly with arguments.
-Exec=vivaldi-stable
-#--no-sandbox
+Exec=vivaldi-stable --no-sandbox
 
 
 # Describes whether this application needs to be run in a terminal or not
