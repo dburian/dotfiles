@@ -7,6 +7,8 @@ export PATH="$PATH:/usr/lib/jvm/default/bin"
 export PATH="$PATH:/home/dburian/.cache/cabal/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$XDG_DATA_HOME/go/bin"
+export PATH="/home/dburian/.local/share/cargo/bin:$PATH"
+export PATH="$PATH:$HOME/.local/src/lua-language-server/bin"
 
 # export ANDROID_SDK_ROOT='/opt/android-sdk'
 # export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
@@ -35,7 +37,6 @@ export GOPATH="$XDG_DATA_HOME"/go
 export PYENV_ROOT="$XDG_DATA_HOME"/pyenv
 
 ## Clipboard manager - clipmenu
-export CM_LAUNCHER="rofi"
 export CM_HISTLENGTH=10
 
 ## Lua
@@ -53,8 +54,6 @@ export JAVA_HOME='/usr/lib/jvm/default'
 export _JAVA_AWT_WM_NONREPARENTING=1 #needed for Protege
 export CLASSPATH="$XDG_CACHE_HOME/maven/repository/"
 
-## FLUTTER development
-export CHROME_EXECUTABLE=`which google-chrome-stable`
 
 ## Locations
 export dots=~/repos/dotfiles
@@ -69,7 +68,6 @@ alias loc="locate"
 alias edit="locate-edit"
 
 ## Always with these flags
-alias clipmenu="clipmenu -dmenu -p Clipmenu"
 alias rofi="rofi -show combi"
 alias ssh="TERM=xterm-color ssh"
 alias pip="pip3"
