@@ -17,7 +17,6 @@ BIN_INSTALL_DIR="$HOME/.local/bin"
 
 
 BASHRC_DIR="$HOME"
-ZSHRC_DIR="$HOME"
 
 FZF_BIN="https://github.com/junegunn/fzf/releases/download/0.42.0/fzf-0.42.0-linux_amd64.tar.gz"
 FZF_INSTALL_DIR="$HOME/.local/bin"
@@ -30,11 +29,7 @@ NVIM_BIN="https://github.com/neovim/neovim/releases/download/stable/nvim-linux64
 
 DOTFILES_INSTALL_DIR=$(dirname $(dirname $(dirname $(dirname $(readlink -fn -- "$0")))))
 
-echo $DOTFILES_INSTALL_DIR
-exit
-
-CTAGS_URL="https://github.com/universal-ctags/ctags/releases/download/v6.1.0/universal-ctags-6.1.0.tar.gz"
-
+CTAGS_URL="https://github.com/universal-ctags/ctags-nightly-build/releases/download/2024.12.09%2B4d5547ee80c8c38f3dae349ef7caa51f5b778984/uctags-2024.12.09-1-x86_64.pkg.tar.xz"
 
 
 function setup_bash() {
@@ -125,6 +120,7 @@ function install_dotfiles() {
   mkdir -p $XDG_CONFIG_HOME
   ln -s $DOTFILES_INSTALL_DIR/dotfiles/.config/nvim $XDG_CONFIG_HOME
   ln -s $DOTFILES_INSTALL_DIR/dotfiles/.config/git $XDG_CONFIG_HOME
+  ln -s $DOTFILES_INSTALL_DIR/dotfiles/.config/tmux $XDG_CONFIG_HOME
 }
 
 function install_ctags() {
@@ -134,10 +130,13 @@ function install_ctags() {
   curl -OL $CTAGS_URL
   tarfile=`basename $CTAGS_URL`
 
-  tar xvf $tarfile
+  mkdir ctags
+  cd ctags
+  tar xvf ../$tarfile
   ctags_dir=${tarfile%%.tar.xz}
-  ln -s $SRC_INSTALL_DIR/$ctags_dir/bin/ctags $BIN_INSTALL_DIR
+  ln -s $SRC_INSTALL_DIR/ctags/usr/local/bin/ctags $BIN_INSTALL_DIR
 
+  cd ../
   rm $tarfile
 }
 
