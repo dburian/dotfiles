@@ -2,12 +2,16 @@
 ## Programs
 export EDITOR="nvim"
 
+## Helpful constants
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_CACHE_HOME="$HOME"/.cache
+
 ## PATH
 export PATH="$PATH:/usr/lib/jvm/default/bin"
-export PATH="$PATH:/home/dburian/.cache/cabal/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$XDG_DATA_HOME/go/bin"
-export PATH="/home/dburian/.local/share/cargo/bin:$PATH"
+export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 export PATH="$PATH:$HOME/.local/src/lua-language-server/bin"
 
 # export ANDROID_SDK_ROOT='/opt/android-sdk'
@@ -16,10 +20,6 @@ export PATH="$PATH:$HOME/.local/src/lua-language-server/bin"
 # export PATH=$PATH:$ANDROID_ROOT/emulator
 # export PATH=$PATH:$ANDROID_SDK_ROOT/tools/
 
-## Helpful constants
-export XDG_CONFIG_HOME="$HOME"/.config
-export XDG_DATA_HOME="$HOME"/.local/share
-export XDG_CACHE_HOME="$HOME"/.cache
 
 ## Cleaning ~
 export XAUTHORITY="$XDG_CONFIG_HOME"/X11/Xauthority
