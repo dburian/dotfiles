@@ -9,7 +9,7 @@ export XDG_CACHE_HOME="$HOME"/.cache
 
 ## PATH
 export PATH="$PATH:/usr/lib/jvm/default/bin"
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:$XDG_DATA_HOME/go/bin"
 export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 export PATH="$PATH:$HOME/.local/src/lua-language-server/bin"

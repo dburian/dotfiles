@@ -46,10 +46,19 @@ local source_configs = {
       factory = helpers.formatter_factory,
     })
   },
-  { 'ruff', null_ls.builtins.formatting.ruff },
-  { 'ruff', null_ls.builtins.diagnostics.ruff },
+  { 'ruff', null_ls.builtins.formatting.ruff.with({
+        diagnostics_format = "[#{c}] #{m} (#{s})",
+    }),
+  },
+  { 'ruff', null_ls.builtins.diagnostics.ruff.with({
+        diagnostics_format = "[#{c}] #{m} (#{s})",
+    }),
+  },
   { 'chktex', null_ls.builtins.diagnostics.chktex },
-  { 'mypy', null_ls.builtins.diagnostics.mypy },
+  { 'mypy', null_ls.builtins.diagnostics.mypy.with({
+        diagnostics_format = "[#{c}] #{m} (#{s})",
+    }),
+  },
 }
 
 local sources = {}

@@ -48,3 +48,7 @@ source $XDG_CONFIG_HOME/zsh/funcs
 
 # Initializes pyenv so we can use local python versions
 # eval "$(pyenv init -)"
+
+export UV_CACHE_DIR='/mnt/home/dburian/.cache/uv'
+export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+. "/mnt$HOME/.local/bin/env"

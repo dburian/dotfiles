@@ -53,6 +53,7 @@ local servers = {
   pyright = {
     ctags_fallback = true,
   },
+  ruff = {},
   lua_ls = {
     config = {
       settings = {
