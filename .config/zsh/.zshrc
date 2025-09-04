@@ -1,8 +1,9 @@
 # Enable colors
 autoload -U colors && colors
 
-
-fpath+=(/opt/pure/)
+[ -e ~/.local/opt/pure ] && fpath+=(~/.local/opt/pure/)
+[ -e /opt/pure/ ] && fpath+=(/opt/pure)
+[ -e ~/.local/share/zsh/completions/ ] && fpath+=(~/.local/share/zsh/completions/)
 
 # Pure prompt
 autoload -U promptinit; promptinit
@@ -40,7 +41,6 @@ autoload zmv
 source $XDG_CONFIG_HOME/zsh/funcs
 
 # zsh-syntax-highlighting
-[ -d /usr/share/zsh/plugins/zsh-syntax-highlighting ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -d /usr/share/zsh-syntax-highlighting ] && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
