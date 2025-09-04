@@ -70,6 +70,16 @@ return require('packer').startup(function(use)
   -- Colors
   use 'RRethy/base16-nvim'
 
+  use {
+    "olimorris/codecompanion.nvim",
+    config = function()
+      require("codecompanion").setup()
+    end,
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    }
+  }
 
 
   -- Automatically set up your configuration after cloning packer.nvim
