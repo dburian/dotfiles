@@ -1,8 +1,6 @@
 # Enable colors
 autoload -U colors && colors
 
-# Adding stuff from nix to FPATH
-[ -d ~/.nix-profile ] && export FPATH=~/.nix-profile/share/zsh/site-functions:$FPATH
 
 fpath+=(/opt/pure/)
 
@@ -44,7 +42,6 @@ source $XDG_CONFIG_HOME/zsh/funcs
 # zsh-syntax-highlighting
 [ -d /usr/share/zsh/plugins/zsh-syntax-highlighting ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -d /usr/share/zsh-syntax-highlighting ] && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[ -d ~/.nix-profile ] && source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
