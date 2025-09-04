@@ -14,6 +14,7 @@ export PATH="$PATH:$XDG_DATA_HOME/go/bin"
 export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 export PATH="$PATH:$HOME/.local/src/lua-language-server/bin"
 
+
 # export ANDROID_SDK_ROOT='/opt/android-sdk'
 # export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
 # export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin/
@@ -69,6 +70,5 @@ alias edit="locate-edit"
 
 ## Always with these flags
 alias rofi="rofi -show combi"
-alias ssh="TERM=xterm-color ssh"
 alias pip="pip3"
 alias mvn='mvn -gs "$XDG_CONFIG_HOME"/maven/settings.xml'
