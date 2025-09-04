@@ -16,6 +16,14 @@ DARK_THEME_THRESHOLD = 324
 random.seed(42)
 
 def get_cmd_output(cmd):
+    # if isinstance(cmd, list):
+    #     ps = subprocess.Popen()
+    #     for c in cmd:
+    #         output = subprocess.check_output(('grep', 'process_name'), stdin=ps.stdout)
+
+# ps.wait()
+    #         stdin = subprocess.check_output(c, shell=True, encoding='utf-8', stdin=stdin)
+    #     return stdin[:-1]
     return subprocess.check_output(cmd, shell=True, encoding='utf-8')[:-1]
 
 
@@ -43,6 +51,8 @@ def cycle_colors(args):
         main_color_hex = get_cmd_output(
             f'flavours info {theme} -r | head -n 3 | tail -n 1 | cut -d"#" -f 2'
         )
+        if len(main_color_hex) == 0:
+            return False
         main_color_int = hex_to_int(main_color_hex)
 
         if (args.light and main_color_int < DARK_THEME_THRESHOLD) or \
@@ -50,6 +60,7 @@ def cycle_colors(args):
             return False
 
         return True
+
 
     themes = get_all_themes()
     old_theme = curr_theme()
@@ -63,7 +74,8 @@ def cycle_colors(args):
     end = False
     while not end:
         theme_ind = (theme_ind + 1) % len(themes)
-        while not check_theme(themes[theme_ind]): theme_ind = (theme_ind + 1) % len(themes)
+        while not check_theme(themes[theme_ind]):
+            theme_ind = (theme_ind + 1) % len(themes)
 
         set_theme(themes[theme_ind])
         print(f'Current theme: {themes[theme_ind]}')
