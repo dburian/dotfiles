@@ -25,39 +25,39 @@ end
 
 local source_configs = {
   -- { 'black', null_ls.builtins.formatting.black },
-  { 'latexindent', null_ls.builtins.formatting.latexindent },
-  { 'eslint_d', null_ls.builtins.diagnostics.eslint_d },
-  {
-    -- Adjusted ruff to replace black
-    'ruff',
-    helpers.make_builtin({
-      name = "ruff(replacing black)",
-      meta = {
-        url = "https://github.com/charliermarsh/ruff/",
-        description = "An extremely fast Python linter, written in Rust.",
-      },
-      method = methods.internal.FORMATTING,
-      filetypes = { "python" },
-      generator_opts = {
-        command = "ruff",
-        args = { "format", "--respect-gitignore", "--stdin-filename", "$FILENAME", "-" },
-        to_stdin = true,
-      },
-      factory = helpers.formatter_factory,
-    })
-  },
-  { 'ruff', null_ls.builtins.formatting.ruff.with({
-        diagnostics_format = "[#{c}] #{m} (#{s})",
-    }),
-  },
-  { 'ruff', null_ls.builtins.diagnostics.ruff.with({
-        diagnostics_format = "[#{c}] #{m} (#{s})",
-    }),
-  },
-  { 'chktex', null_ls.builtins.diagnostics.chktex },
+  -- { 'latexindent', null_ls.builtins.formatting.latexindent },
+  -- { 'eslint_d',    null_ls.builtins.diagnostics.eslint_d },
+  -- {
+  --   -- Adjusted ruff to replace black
+  --   'ruff',
+  --   helpers.make_builtin({
+  --     name = "ruff(replacing black)",
+  --     meta = {
+  --       url = "https://github.com/charliermarsh/ruff/",
+  --       description = "An extremely fast Python linter, written in Rust.",
+  --     },
+  --     method = methods.internal.FORMATTING,
+  --     filetypes = { "python" },
+  --     generator_opts = {
+  --       command = "ruff",
+  --       args = { "format", "--respect-gitignore", "--stdin-filename", "$FILENAME", "-" },
+  --       to_stdin = true,
+  --     },
+  --     factory = helpers.formatter_factory,
+  --   })
+  -- },
+  -- { 'ruff', null_ls.builtins.formatting.ruff.with({
+  --       diagnostics_format = "[#{c}] #{m} (#{s})",
+  --   }),
+  -- },
+  -- { 'ruff', null_ls.builtins.diagnostics.ruff.with({
+  --       diagnostics_format = "[#{c}] #{m} (#{s})",
+  --   }),
+  -- },
+  -- { 'chktex', null_ls.builtins.diagnostics.chktex },
   { 'mypy', null_ls.builtins.diagnostics.mypy.with({
-        diagnostics_format = "[#{c}] #{m} (#{s})",
-    }),
+    diagnostics_format = "[#{c}] #{m} (#{s})",
+  }),
   },
 }
 
