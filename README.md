@@ -25,6 +25,18 @@ In case of any questions, feel free to raise an issue.
     - perhaps https://github.com/nvim-telescope/telescope-ui-select.nvim
     - treesitter markdown custom queries and highlighting
     - mapping to yank the cwd into clipboard
+    - colors:
+      - nvim tries to guess background from terminal color
+      - if the user didn't set it manually, nvim will guess it and apply
+        automatically
+      - if nvim applies it, the colors are reset
+      - ergo to make my colorscheme stick, I have to set background color
+      - setting it right after `highlight clear` did the trick
+      - it seems it doesn't matter whether it agrees with the actual colors
+        (either dark or light, just set it)
+      - what needs to be done:
+        - my custom flavours template with background setting
+        - lualine theme to correspond with it
 - rofi
     - bluetooth script
     - flash disks -- mounting
