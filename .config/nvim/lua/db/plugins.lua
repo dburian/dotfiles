@@ -67,6 +67,9 @@ return require('packer').startup(function(use)
   -- Status line
   use 'nvim-lualine/lualine.nvim'
 
+  -- Colors
+  use 'RRethy/base16-nvim'
+
 
 
   -- Automatically set up your configuration after cloning packer.nvim

@@ -1,5 +1,5 @@
 # Ignoring theme files
-.config/nvim/after/plugin/theme.lua
+.config/nvim/colors/db.lua
 .config/alacritty/theme.toml
 
 # Ingoring system-dependent files

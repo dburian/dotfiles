@@ -5,8 +5,9 @@ subtemplate = 'default-256'
 rewrite = true
 
 [[item]]
-file = '~/.config/nvim/after/plugin/theme.lua'
+file = '~/.config/nvim/colors/db.lua'
 template = 'nvim'
+subtemplate = 'base16-nvim'
 rewrite = true
 
 # [[item]]

@@ -4,8 +4,11 @@
 --  - after/plugin - configuration of plugins (possibly using lua/db/..)
 --  - plugin/ - files that should be loaded automatically ASAP
 
+vim.cmd [[colorscheme db]]
+
 -- Leader
 vim.g.mapleader = ','
+
 
 -- Load plugins
 require('db.plugins')
