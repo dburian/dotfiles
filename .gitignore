@@ -1,6 +1,6 @@
 # Ignoring theme files
 .config/nvim/after/plugin/theme.lua
-.config/alacritty/theme.yml
+.config/alacritty/theme.toml
 
 # Ingoring system-dependent files
 .config/alacritty/system.yml
