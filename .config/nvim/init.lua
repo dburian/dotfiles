@@ -4,7 +4,9 @@
 --  - after/plugin - configuration of plugins (possibly using lua/db/..)
 --  - plugin/ - files that should be loaded automatically ASAP
 
-vim.cmd [[colorscheme db]]
+if vim.fn.filereadable(vim.fn.expand('~/.config/nvim/colors/db.lua')) > 0 then
+  vim.cmd [[colorscheme db]]
+end
 
 -- Leader
 vim.g.mapleader = ','
