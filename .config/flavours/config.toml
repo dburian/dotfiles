@@ -9,6 +9,7 @@ file = '~/.config/nvim/colors/db.lua'
 template = 'nvim'
 subtemplate = 'base16-nvim'
 rewrite = true
+hook = "nvim_color_sync jarnik"
 
 # [[item]]
 # file = '~/.config/rofi/colors.rasi'

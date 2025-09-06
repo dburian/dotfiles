@@ -1,0 +1,5 @@
+#!/bin/bash
+# Pushes nvim colors to given remote machine
+
+ssh "$1" mkdir -p ~/.config/nvim/colors
+scp ~/.config/nvim/colors/db.lua "$1":~/.config/nvim/colors/
