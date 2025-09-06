@@ -1,6 +1,5 @@
 local lsp_config = require('lspconfig')
 local nmap = require 'db.keymap'.nmap
-local imap = require 'db.keymap'.imap
 
 local augroup_format = vim.api.nvim_create_augroup('augroup_format', { clear = true })
 local function format_on_save(filter)
@@ -68,29 +67,34 @@ end
 function M.custom_ls_attach(_, _)
   local opts = { noremap = true, silent = true, buffer = 0 }
 
-  nmap({ 'gd', vim.lsp.buf.definition, opts })
-  nmap({ 'gD', vim.lsp.buf.declaration, opts })
-  nmap({ 'gT', vim.lsp.buf.type_definition, opts })
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+  vim.keymap.set('n', 'gT', vim.lsp.buf.type_definition, opts)
 
-  nmap({ 'gr', vim.lsp.buf.references, opts })
-  nmap({ 'gi', vim.lsp.buf.implementation, opts })
 
-  nmap({ 'K', vim.lsp.buf.hover, opts })
-  imap({ '<leader>s', vim.lsp.buf.signature_help, opts })
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
 
-  nmap({ '<leader>rn', vim.lsp.buf.rename, opts })
-  nmap({ '<leader>ca', vim.lsp.buf.code_action, opts })
-  nmap({ '<leader>fs', function()
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+  vim.keymap.set('i', '<leader>s', vim.lsp.buf.signature_help, opts)
+
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+  vim.keymap.set('n', '<leader>fs', function()
     require 'telescope.builtin'.lsp_document_symbols()
-  end, opts })
+  end, opts)
 
-  nmap({ '[d', vim.diagnostic.goto_prev, opts })
-  nmap({ ']d', vim.diagnostic.goto_next, opts })
-  nmap({ '<leader>dl', vim.diagnostic.setqflist, opts })
-  nmap({ '<leader>fo', vim.lsp.buf.format, opts })
+  vim.keymap.set('n', '[d', function()
+    vim.diagnostic.jump({ count = -1 })
+  end, opts)
+  vim.keymap.set('n', ']d', function()
+    vim.diagnostic.jump({ count = 1 })
+  end, opts)
+  vim.keymap.set('n', '<leader>dl', vim.diagnostic.setqflist, opts)
+  vim.keymap.set('n', '<leader>fo', vim.lsp.buf.format, opts)
 
 
-  local filetype = vim.api.nvim_buf_get_option(0, 'filetype')
+  local filetype = vim.api.nvim_get_option_value('filetype', { buf = 0 })
   filetype_attach[filetype]()
 end
 
@@ -142,7 +146,8 @@ function M.setup_language_server(server, spec)
     local server_filetypes = lsp_config[server].document_config.default_config.filetypes
     set_ctags_mappings_on_buf_enter(server_filetypes)
   else
-    lsp_config[server].setup(config)
+    vim.lsp.config(server, config)
+    vim.lsp.enable(server, true)
   end
 end
 

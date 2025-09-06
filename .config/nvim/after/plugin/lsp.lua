@@ -13,6 +13,9 @@ local lua_runtime_path = vim.split(package.path, ';')
 table.insert(lua_runtime_path, 'lua/?.lua')
 table.insert(lua_runtime_path, 'lua/?/init.lua')
 
+-- Enable virtual text for diagnostics for all buffers
+vim.diagnostic.config({ virtual_text = true })
+
 local servers = {
   ccls = {
     ctags_fallback = true,
