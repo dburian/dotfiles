@@ -140,6 +140,17 @@ nmap({
 })
 
 nmap({
+  "<leader>flg",
+  function()
+    builtin.live_grep({
+      cwd = utils.buffer_dir(),
+    })
+  end,
+  { noremap = true, silent = true }
+})
+
+
+nmap({
   '<leader>ft',
   function()
     require("telescope").extensions.file_browser.file_browser({
