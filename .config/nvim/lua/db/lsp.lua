@@ -1,4 +1,3 @@
-local lsp_config = require('lspconfig')
 local nmap = require 'db.keymap'.nmap
 
 local augroup_format = vim.api.nvim_create_augroup('augroup_format', { clear = true })
@@ -38,7 +37,7 @@ local filetype_attach = setmetatable({
 
 local M = {}
 
-function M.custom_ctags_attach()
+function M.ctags_attach()
   vim.notify("Using ctags for current buffer.", vim.log.levels.INFO)
   local opts = { noremap = true, silent = true, buffer = 0 }
 
@@ -61,10 +60,12 @@ function M.custom_ctags_attach()
   end, opts })
 
   local filetype = vim.api.nvim_buf_get_option(0, 'filetype')
+
+  -- TODO: Should be probably defined per server
   filetype_attach[filetype]()
 end
 
-function M.custom_ls_attach(_, _)
+function M.ls_attach(_, _)
   local opts = { noremap = true, silent = true, buffer = 0 }
 
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
@@ -98,53 +99,62 @@ function M.custom_ls_attach(_, _)
   filetype_attach[filetype]()
 end
 
-local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
-updated_capabilities = require('cmp_nvim_lsp').default_capabilities(updated_capabilities)
+M.updated_capabilities = vim.lsp.protocol.make_client_capabilities()
+M.updated_capabilities = require('cmp_nvim_lsp').default_capabilities(M.updated_capabilities)
 
 local buf_enter_ft = vim.api.nvim_create_augroup('buf_enter_ft', { clear = true })
 local function set_ctags_mappings_on_buf_enter(fts)
   vim.api.nvim_clear_autocmds { buffer = 0, group = buf_enter_ft }
   vim.api.nvim_create_autocmd("FileType", {
     pattern = fts,
-    callback = M.custom_ctags_attach,
+    callback = M.ctags_attach,
   })
 end
 
-function M.setup_language_server(server, spec)
-  if lsp_config[server] == nil then
-    vim.notify(
-      "Error in lsp config: config for server " .. server .. " cannot be found",
-      vim.log.levels.ERROR
-    )
-    return
-  end
-
-  local config = spec.config or {}
-  if type(config) == "function" then
-    config = config()
-  end
-
-  config = vim.tbl_deep_extend("force", {
-    on_attach = M.custom_ls_attach,
-    capabilities = updated_capabilities,
-    flags = {
-      debounce_text_changes = nil,
-    },
-  }, config)
-
-  local cmd_no_args = config.cmd or lsp_config[server].document_config.default_config.cmd
+local get_no_args_command = function(server, config)
+  local cmd_no_args = config.cmd
   if type(cmd_no_args) == 'table' then
     cmd_no_args = cmd_no_args[1]
-  elseif type(cmd_no_args) == 'string' then
-    cmd_no_args = vim.fn.split(cmd_no_args, ' ')[1]
   else
     vim.notify("Unknown type of command: " .. cmd_no_args, vim.log.levels.ERROR)
     return
   end
 
-  if vim.fn.executable(cmd_no_args) == 0 and spec.ctags_fallback then
-    local server_filetypes = lsp_config[server].document_config.default_config.filetypes
-    set_ctags_mappings_on_buf_enter(server_filetypes)
+  return cmd_no_args
+end
+
+function M.fallback_to_uv(server, config)
+  config = vim.tbl_deep_extend('force', vim.lsp.config[server], config or {})
+  local cmd_no_args = get_no_args_command(server, config)
+
+  if cmd_no_args == nil then
+    return nil
+  end
+
+  if vim.fn.executable(cmd_no_args) == 0 and vim.fn.executable('uv') == 1 then
+    local uv_cmd = { 'uv', 'run' }
+    if type(config.cmd) == 'table' then
+      for _, cmd_crumb in ipairs(config.cmd) do
+        table.insert(uv_cmd, cmd_crumb)
+      end
+    else
+      vim.notify("Unknown type of command: " .. cmd_no_args, vim.log.levels.ERROR)
+      return nil
+    end
+
+    return uv_cmd
+  end
+
+  return config.cmd
+end
+
+function M.enable_or_ctags(server, config)
+  config = vim.tbl_deep_extend('force', vim.lsp.config[server], config or {})
+
+  local cmd_no_args = get_no_args_command(server, config)
+
+  if cmd_no_args == nil or vim.fn.executable(cmd_no_args) == 0 then
+    set_ctags_mappings_on_buf_enter(config.filetypes)
   else
     vim.lsp.config(server, config)
     vim.lsp.enable(server, true)
