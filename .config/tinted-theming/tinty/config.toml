@@ -1,0 +1,22 @@
+# Tinty config (https://github.com/tinted-theming/tinty)
+shell = "sh -c '{}'"
+default-scheme = "base16-rose-pine-dawn"
+
+# Local templates; after editing them run `tinty build` (also after `tinty sync`).
+
+# Local copy of the old base16 alacritty 256 template (bright black = base03,
+# readable on light themes; upstream tinted-alacritty uses base02).
+[[items]]
+name = "base16-alacritty-db"
+path = "~/.config/tinted-theming/tinty/templates/base16-alacritty-db"
+themes-dir = "colors"
+supported-systems = ["base16"]
+hook = "cp -f %f ~/.config/alacritty/theme.toml"
+
+[[items]]
+name = "base16-nvim-db"
+path = "~/.config/tinted-theming/tinty/templates/base16-nvim-db"
+themes-dir = "colors"
+supported-systems = ["base16"]
+# Set TINTY_NO_SYNC=1 to skip pushing colors to the remote machine (used by `taste` while previewing).
+hook = "cp -f %f ~/.config/nvim/colors/db.lua && { [ -n \"$TINTY_NO_SYNC\" ] || nvim_color_sync jarnik; }"

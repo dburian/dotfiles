@@ -4,9 +4,9 @@ Welcome to my dotfiles. Nothing amazing here, but you may like:
 
 - [my nvim configuration](.config/nvim) (see also [tjdevries nvim
   config](https://github.com/tjdevries/config_manager/tree/master/xdg_config/nvim))
-- [my config](.config/flavours) for
-  [flavours](https://github.com/Misterio77/flavours) and helpful
-  [taste](.local/bin/taste) script, which helps you discover flavours more
+- [my config](.config/tinted-theming/tinty) for
+  [tinty](https://github.com/tinted-theming/tinty) and helpful
+  [taste](.local/bin/taste) script, which helps you discover themes more
   easily
 - [my rofi script](.config/rofi/scripts/main.lua)
 - [my zsh helper functions](.config/zsh/funcs)
@@ -35,7 +35,7 @@ In case of any questions, feel free to raise an issue.
       - it seems it doesn't matter whether it agrees with the actual colors
         (either dark or light, just set it)
       - what needs to be done:
-        - my custom flavours template with background setting
+        - ~~my custom flavours template with background setting~~ (done via tinty template)
         - lualine theme to correspond with it
 - rofi
     - bluetooth script

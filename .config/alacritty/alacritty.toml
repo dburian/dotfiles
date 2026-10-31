@@ -35,7 +35,7 @@ mods = "Alt"
 hide_when_typing = true
 
 [scrolling]
-history = 10000
+history = 100000
 
 [selection]
 save_to_clipboard = true
