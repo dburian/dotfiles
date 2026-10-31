@@ -6,3 +6,5 @@ tags
 
 # Ignoring my temproary scratch files
 /tmpfile.md
+
+**/.claude/settings.local.json

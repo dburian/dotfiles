@@ -38,12 +38,37 @@ return require('packer').startup(function(use)
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use 'dburian/telescope-markdown-links'
+  -- use 'dburian/telescope-markdown-links'
   use 'nvim-telescope/telescope-ui-select.nvim'
 
   -- LSP
   use 'neovim/nvim-lspconfig'
   use 'nvimtools/none-ls.nvim'
+
+  -- AI
+  use {
+    "olimorris/codecompanion.nvim",
+    config = function()
+      require("codecompanion").setup()
+    end,
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    }
+  }
+
+  -- use {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("copilot").setup({
+  --       suggestion = { enabled = false },
+  --       panel = { enabled = false },
+  --       copilot_node_command = '/home/dburian/.config/nvm/versions/node/v24.14.0/bin/node',
+  --     })
+  --   end,
+  -- }
 
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -56,10 +81,18 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-emoji'
   use 'saadparwaiz1/cmp_luasnip'
-  use 'dburian/cmp-markdown-link'
+  -- use 'dburian/cmp-markdown-link'
   use 'quangnguyen30192/cmp-nvim-tags'
 
   use 'onsails/lspkind-nvim' -- nice icons in autocomplete menu
+
+  -- use {
+  --   "zbirenbaum/copilot-cmp",
+  --   after = { "copilot.lua" },
+  --   config = function()
+  --     require("copilot_cmp").setup()
+  --   end
+  -- }
 
   -- Snippets
   use 'L3MON4D3/LuaSnip'
@@ -69,17 +102,6 @@ return require('packer').startup(function(use)
 
   -- Colors
   use 'RRethy/base16-nvim'
-
-  use {
-    "olimorris/codecompanion.nvim",
-    config = function()
-      require("codecompanion").setup()
-    end,
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    }
-  }
 
 
   -- Automatically set up your configuration after cloning packer.nvim

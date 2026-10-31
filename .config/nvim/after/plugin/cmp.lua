@@ -29,12 +29,14 @@ cmp.setup {
     ['<c-p>'] = cmp.mapping.select_prev_item(),
   },
   sources = {
-    { name = 'luasnip' },
-    { name = 'nvim_lsp' },
-    { name = 'tags' },
-    { name = 'path' },
-    { name = 'buffer' },
-    { name = 'emoji' },
+    { name = 'luasnip',  group_index = 1 },
+    { name = 'nvim_lsp', group_index = 1 },
+    { name = 'path',     group_index = 1 },
+    { name = 'emoji',    group_index = 1 },
+    -- { name = "copilot",  group_index = 2 },
+    -- Fallbacks
+    { name = 'buffer',   group_index = 2 },
+    { name = 'tags',     group_index = 2 },
     -- { name = 'markdown-link',
     --   option = {
     --     reference_link_location = 'top',

@@ -89,7 +89,7 @@ require('telescope').setup {
 
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('file_browser')
-require('telescope').load_extension('markdown-links')
+-- require('telescope').load_extension('markdown-links')
 require("telescope").load_extension("ui-select")
 
 nmap({
@@ -116,13 +116,14 @@ nmap({
 nmap({
   '<leader>ff',
   function()
-    local cwd = vim.uv.cwd()
-    local in_worktree = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' }, cwd)
-    if in_worktree[1] ~= 'true' then
-      return builtin.find_files()
-    else
-      return builtin.git_files({ show_untracked = true })
-    end
+    -- Previously used `builtin.git_files` with `show_untracked = true` option,
+    -- but this is not compatible with recursing into submodules. So I had to
+    -- choose one.
+
+    -- AFAIK `builtin.find_files` with `no_ignore=false` (default) does exactly
+    -- the same as `builtin.git_files` with `show_untracked=true` option, but
+    -- it also recurses into submodules, so I switched to it.
+    return builtin.find_files()
   end,
   { noremap = true, silent = true }
 })
@@ -144,6 +145,10 @@ nmap({
   function()
     builtin.live_grep({
       cwd = utils.buffer_dir(),
+      grep_open_files = false,
+      search_dirs = { '.' },
+      prompt_title = "Local grep for " .. utils.buffer_dir(),
+      additional_args = { '--no-ignore', }, -- don't take .gitignore into an account
     })
   end,
   { noremap = true, silent = true }

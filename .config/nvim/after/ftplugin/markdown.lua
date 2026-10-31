@@ -22,13 +22,13 @@ vim.cmd [[
 
 ]]
 
-nmap({
-    '<leader>gd',
-    require 'telescope'.extensions['markdown-links'].find_links,
-    { noremap = true, silent = true, buffer = 0 }
-})
-nmap({
-    '<leader>gr',
-    require 'telescope'.extensions['markdown-links'].find_backlinks,
-    { noremap = true, silent = true, buffer = 0 }
-})
+-- nmap({
+--     '<leader>gd',
+--     require 'telescope'.extensions['markdown-links'].find_links,
+--     { noremap = true, silent = true, buffer = 0 }
+-- })
+-- nmap({
+--     '<leader>gr',
+--     require 'telescope'.extensions['markdown-links'].find_backlinks,
+--     { noremap = true, silent = true, buffer = 0 }
+-- })
